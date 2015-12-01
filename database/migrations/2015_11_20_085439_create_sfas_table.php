@@ -16,8 +16,10 @@ class CreateSfasTable extends Migration
             $table->increments('id');
             $table->integer('supdt_id')->unsigned();
             $table->string('code',10);
-            $table->string('name',50);
-            $table->string('rank',20);
+            $table->string('name',100);
+            $table->string('rank',100);
+            $table->integer('service');
+            $table->string('image',50);
             $table->timestamps();
             $table->foreign('supdt_id')->references('id')->on('supdts')->onDelete('cascade')->onUpdate('cascade');
         });

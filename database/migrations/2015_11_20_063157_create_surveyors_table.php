@@ -14,7 +14,7 @@ class CreateSurveyorsTable extends Migration
     {
         Schema::create('surveyors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->unique();
             $table->integer('supdt_id')->unsigned();
             $table->string('name');
             $table->string('image');

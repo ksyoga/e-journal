@@ -7,10 +7,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="dist/img/{{$user->image}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{!! (Auth::user()->name) !!}</p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
@@ -29,17 +29,35 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="header">HEADER</li>
+     <!--  <li class="header">HEADER</li> -->
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="#">Link in level 2</a></li>
-          <li><a href="#">Link in level 2</a></li>
-        </ul>
-      </li>
+      @if(Auth::user()->rank=="survy")
+        <!-- Optionally, you can add icons to the links -->
+        <li class="active"><a href="/"><i class="glyphicon glyphicon-list-alt"></i> <span>Surveyor Diary</span></a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-calendar"></i> <span>Following Week Programme</span></a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-indent-left"></i> <span>Month Involved</span></a></li>
+        <li><a href="#"><i class="fa fa-calendar-check-o"></i> <span>Self Check</span></a></li>
+        <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requsition</span></a></li>
+        <li><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
+        <li><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
+        <li><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
+        <li><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+          </li>
+      @endif
+
+      @if(Auth::user()->rank=="supdt")
+          <li class="active"><a href="/supdt"><i class="glyphicon  glyphicon-user"></i> <span>Surveyor</span></a></li>
+          <li><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
+          <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requsition</span></a></li>
+          <li><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
+          <li><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
+          <li><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li>
+      @endif
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

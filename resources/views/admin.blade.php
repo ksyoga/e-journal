@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Surveyor | Journal</title>
+    <title>{!! (Auth::user()->name) !!}'s Journal</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -66,28 +66,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @include('sidebar')
       <!-- Left side column. contains the logo and sidebar End-->
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Page Header
-            <small>Optional description</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
+     
 
           <!-- Your Page Content Here -->
            @yield('content')
 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+       
 
       <!-- Main Footer Start -->
        @include('footer')
@@ -107,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h3 class="control-sidebar-heading">Recent Activity</h3>
             <ul class="control-sidebar-menu">
               <li>
-                <a href="javascript::;">
+                <a href="#;">
                   <i class="menu-icon fa fa-birthday-cake bg-red"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
@@ -120,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h3 class="control-sidebar-heading">Tasks Progress</h3>
             <ul class="control-sidebar-menu">
               <li>
-                <a href="javascript::;">
+                <a href="#;">
                   <h4 class="control-sidebar-subheading">
                     Custom Template Design
                     <span class="label label-danger pull-right">70%</span>

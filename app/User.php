@@ -36,4 +36,13 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+     public function supdt()
+    {
+        return $this->hasOne('App\Supdt');
+    }
+    public function surveyor()
+    {
+        return $this->hasOne('App\Surveyor');
+    }
 }

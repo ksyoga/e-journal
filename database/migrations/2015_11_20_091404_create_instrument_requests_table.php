@@ -19,6 +19,7 @@ class CreateInstrumentRequestsTable extends Migration
             $table->date('required_date');
             $table->string('request_for');
             $table->integer('approved_by');
+            $table->string('supdt_note');
             $table->timestamps();
             $table->foreign('instrument_id')->references('id')->on('instruments')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('surveyor_id')->references('id')->on('surveyors')->onDelete('cascade')->onUpdate('cascade');
