@@ -25,3 +25,10 @@ Route::resource('vehicle','VehicleController');
 Route::resource('requisition','RequisitionController');
 Route::resource('sfa','SFAController');
 Route::resource('amendment','AmendmentController');
+Route::resource('week','WeekController');
+Route::resource('selfcheck','SelfCheckController');
+Route::resource('diary','DiaryController'); 
+Route::resource('monthinvolved','MonthInvolvedController');
+
+
+

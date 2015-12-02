@@ -33,11 +33,11 @@
       <!-- Optionally, you can add icons to the links -->
       @if(Auth::user()->rank=="survy")
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/"><i class="glyphicon glyphicon-list-alt"></i> <span>Surveyor Diary</span></a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-calendar"></i> <span>Following Week Programme</span></a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-indent-left"></i> <span>Month Involved</span></a></li>
-        <li><a href="#"><i class="fa fa-calendar-check-o"></i> <span>Self Check</span></a></li>
-        <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requsition</span></a></li>
+        <li class="active"><a href="/diary"><i class="glyphicon glyphicon-list-alt"></i> <span>Surveyor Diary</span></a></li>
+        <li><a href="/week"><i class="glyphicon glyphicon-calendar"></i> <span>Following Week Programme</span></a></li>
+        <li><a href="/monthinvolved"><i class="glyphicon glyphicon-indent-left"></i> <span>Month Involved</span></a></li>
+        <li><a href="/selfcheck"><i class="fa fa-calendar-check-o"></i> <span>Self Check</span></a></li>
+        <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requisition</span></a></li>
         <li><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
         <li><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
         <li><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
@@ -53,7 +53,7 @@
       @if(Auth::user()->rank=="supdt")
           <li class="active"><a href="/supdt"><i class="glyphicon  glyphicon-user"></i> <span>Surveyor</span></a></li>
           <li><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
-          <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requsition</span></a></li>
+          <li><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requisition</span></a></li>
           <li><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
           <li><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
           <li><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li>

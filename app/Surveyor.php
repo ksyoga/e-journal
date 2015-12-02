@@ -25,6 +25,11 @@ class Surveyor extends Model
     	return $this->hasMany('App\Diary');
     }
 
+    public function week()
+    {
+        return $this->hasMany('App\Week');
+    }
+
     public function instrumentrequest()
     {
         return $this->hasMany('App\InstrumentRequest');

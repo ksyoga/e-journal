@@ -44,7 +44,7 @@
                 <th>Date</th>
                 <th>Surveyor</th>
                 <th>Purpose</th>
-                <th>Approvel</th>
+                <th>Approval</th>
               </tr>
               @foreach($vehicle->vehiclerequest()->get() as $request)
               
