@@ -23,7 +23,11 @@
     
   		 <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Diyatalawa Division</h3>
+              @if(Auth::user()->rank=="supdt")
+              <a href="/requisition/create"> <button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add new Requisitino"><i class="glyphicon glyphicon-plus"></i></button></a>
+              @else
+                &nbsp
+              @endif
               <div class="box-tools">
                 <div class="input-group" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -49,23 +53,34 @@
                   <th><span data-toggle="tooltip" title="Field Works">F.W</span></th>
                   <th><span data-toggle="tooltip" title="Plane Works">P.W</span></th>
                   <th>Note</th>
+                  <th></th>
                 </tr>
                 
             	@foreach($requisitions as $requisition)
             	<tr>
-		        	<td><span class="label label-warning">Pending</span></td>
-		        	<td>{{$requisition->requisition_no}}</td>
-		        	<td>{{$requisition->category}}</td>
-		        	<td>{{$requisition->work_load}}</td>
-		        	<td>{{$requisition->lots}}</td>
-		        	<td>{{$requisition->extent}}</td>
-		        	<td>{{$requisition->received_date}}</td>
-		        	<td>{{$requisition->issued}}</td>
-		        	<td>{{$requisition->surveyor->name}}</td>
-		        	<td>{{$requisition->commanced}}</td>
-		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->fieldwork}}</span></td>
-		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->planwork}}</span></td>
-		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
+  		        	<td><span class="label label-warning">Pending</span></td>
+  		        	<td>{{$requisition->requisition_no}}</td>
+  		        	<td>{{$requisition->category}}</td>
+  		        	<td>{{$requisition->work_load}}</td>
+  		        	<td>{{$requisition->lots}}</td>
+  		        	<td>{{$requisition->extent}}</td>
+  		        	<td>{{$requisition->received_date}}</td>
+  		        	<td>{{$requisition->issued}}</td>
+  		        	<td>{{$requisition->surveyor->name}}</td>
+  		        	<td>{{$requisition->commanced}}</td>
+  		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->fieldwork}}</span></td>
+  		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->planwork}}</span></td>
+  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
+                <td align="right">
+                    <div class="tools">
+                      @if(Auth::user()->rank=="supdt")
+                        <a href="requisition/{{$requisition->id}}/edit"><i class="fa fa-edit"></i></a>
+                        <i class="fa fa-trash-o"></i>
+                      @else
+                        <a href="requisition/{{$requisition->id}}/edit"><i class="fa fa-edit"></i></a>
+                      @endif
+                      </div>
+                </td>
             	</tr>
             	@endforeach
                 

@@ -23,7 +23,12 @@
     
   		 <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Diyatalawa Division</h3>
+              <div class="box-header">
+                @if(Auth::user()->rank=="supdt")
+                <a href="/amendment/create"> <button class="btn btn-xs btn-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></button></a>
+                @else
+                  &nbsp
+                @endif
               <div class="box-tools">
                 <div class="input-group" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -43,18 +48,28 @@
                   <th>Surveyor</th>
                   <th><span data-toggle="tooltip" title="Date">Completeed</span></th>
                   <th>Note</th>
+                  <th>&nbsp</th>
                 </tr>
                 
             	@foreach($amendments as $amendment)
             	<tr>
-		        	<td><span class="label label-warning">Pending</span></td>
-		        	<td>{{$amendment->plan_no}}</td>
-		        	<td>{{$amendment->received}}</td>
-		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
-		        	<td>{{$amendment->surveyor->name}}</td>
-		        	<td>{{$amendment->completion}}</td>
-		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
-		        	
+  		        	<td><span class="label label-warning">Pending</span></td>
+  		        	<td>{{$amendment->plan_no}}</td>
+  		        	<td>{{$amendment->received}}</td>
+  		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
+  		        	<td>{{$amendment->surveyor->name}}</td>
+  		        	<td>{{$amendment->completion}}</td>
+  		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
+  		        	<td align="right">
+                    <div class="tools">
+                      @if(Auth::user()->rank=="supdt")
+                        <a href="amendment/{{$amendment->id}}/edit"><i class="fa fa-edit"></i></a>
+                        <i class="fa fa-trash-o"></i>
+                      @else
+                        <a href="amendment/{{$amendment->id}}/edit"><i class="fa fa-edit"></i></a>
+                      @endif
+                      </div>   
+                </td>
             	</tr>
             	@endforeach
                 

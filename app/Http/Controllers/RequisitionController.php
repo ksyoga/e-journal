@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Supdt;
-use App\Surveyor;//temperory
+use App\Surveyor;
 use App\Requisition;
+use App\Category;
 
 class RequisitionController extends Controller
 {
@@ -24,15 +25,19 @@ class RequisitionController extends Controller
     public function index()
     {   
         $surveyors = Surveyor::all();
-        $requisitions = Requisition::all();
+        
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
         }
+
+
       
         return view('requisition.index',compact('user','surveyors','requisitions'));
     }
@@ -43,8 +48,18 @@ class RequisitionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $surveyors = Surveyor::all();
+        $categorys = Category::all();
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+
+        return view('requisition.create',compact('user','surveyors','categorys'));
     }
 
     /**
@@ -55,7 +70,12 @@ class RequisitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$request['supdt_id']=1;
+       
+        Requisition::create($request->all());
+
+        return redirect('requisition');
+        
     }
 
     /**
@@ -77,7 +97,19 @@ class RequisitionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $surveyors = Surveyor::all();//lists('name','id');//all();
+        $categorys = Category::all();//lists('sub_category','id');
+        $requisition = Requisition::findOrFail($id);
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+
+        return view('requisition.edit',compact('user','requisition','surveyors','categorys'));
     }
 
     /**
@@ -89,7 +121,9 @@ class RequisitionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requisition = Requisition::findOrFail($id);
+        $requisition->update($request->all());
+        return redirect('requisition');
     }
 
     /**

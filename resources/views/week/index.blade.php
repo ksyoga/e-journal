@@ -26,6 +26,7 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">November 2015</h3>
+                  <a href="week/create" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Week Programe "><i class="glyphicon glyphicon-plus"></i></button></a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                 	

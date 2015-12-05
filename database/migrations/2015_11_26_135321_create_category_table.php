@@ -16,7 +16,7 @@ class CreateCategoryTable extends Migration
             $table->increments('id');
             $table->integer('main_id');
             $table->string('main_category',50);
-            $table->double('sub_id');
+            $table->string('sub_id',4)->unique();
             $table->string('sub_category',250);
             $table->timestamps();
         });

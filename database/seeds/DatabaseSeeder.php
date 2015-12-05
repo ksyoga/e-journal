@@ -28,11 +28,7 @@ class DatabaseSeeder extends Seeder
          $this->call(AmendmentTableSeeder::class);
          $this->call(WeekTableSeeder::class);
          $this->call(DiaryTableSeeder::class);
-
-         
-         
-         
-         
+         $this->call(CategoryTableSeeder::class); 
          
 
         Model::reguard();

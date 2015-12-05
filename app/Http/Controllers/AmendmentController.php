@@ -24,14 +24,16 @@ class AmendmentController extends Controller
     public function index()
     {
        // $surveyors = Surveyor::all();
-        $amendments = Amendment::all();
+       
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+             $amendments = Amendment::where('supdt_id',$user->id)->orderBy('id','desc')->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $amendments = Amendment::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
         }
       
         return view('amendment.index',compact('user','amendments'));
@@ -45,7 +47,16 @@ class AmendmentController extends Controller
      */
     public function create()
     {
-        //
+        $surveyors = Surveyor::all();
+         if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+
+        return view('amendment.create',compact('user','surveyors'));
     }
 
     /**
@@ -56,7 +67,10 @@ class AmendmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        Amendment::create($request->all());
+
+        return redirect('amendment');
     }
 
     /**
@@ -78,7 +92,17 @@ class AmendmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $surveyors = Surveyor::all();//lists('name','id');//all();
+        $amendment = Amendment::findOrFail($id);
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+        return view('amendment.edite',compact('user','surveyors','amendment'));
     }
 
     /**
@@ -90,7 +114,9 @@ class AmendmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $amendment = Amendment::findOrFail($id);
+        $amendment->update($request->all());
+        return redirect('amendment');
     }
 
     /**

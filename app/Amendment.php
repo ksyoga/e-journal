@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Amendment extends Model
 {
     protected $table = 'amendments';
-    protected $filable = ['supdt_id','surveyor_id','plan_no','received','supdt_note','completion','surveyor_note'];
+    protected $fillable = ['supdt_id','surveyor_id','plan_no','received','supdt_note','completion','surveyor_note'];
 
     public function supdt()
     {

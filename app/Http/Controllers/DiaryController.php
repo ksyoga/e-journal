@@ -43,8 +43,15 @@ class DiaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+         if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+        return view('diary.create',compact('user'));
     }
 
     /**

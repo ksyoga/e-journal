@@ -30,7 +30,7 @@
                   <li class="active"><a href="#tab_1" data-toggle="tab">Propose of the day spendby Surveyor &amp; Daily Progress of Surveyor</a></li>
                   <li><a href="#tab_2" data-toggle="tab">Duties of Surveyor Field Assistans on the Day, Job done by SFA, Other Information &amp; Remark</a></li>
                   
-                  
+                  <li class="pull-right"><a href="diary/create" class="text-muted"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Diary "><i class="glyphicon glyphicon-plus"></i></button></a></li>
                   <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
                 </ul>
                 <div class="tab-content">
