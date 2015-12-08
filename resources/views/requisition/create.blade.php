@@ -42,17 +42,17 @@
 
 		                  			<div class="form-group">
 										<label for="requisition_no" class="control-label" >Requisition No : </label>
-										<input class="form-control" name="requisition_no" id="requisition_no" placeholder="Requisition No.">
+										<input class="form-control" required name="requisition_no" id="requisition_no" placeholder="Requisition No.">
 									</div>
 
 									<div class="form-group">
 										<label for="received_date" class="control-label">Received Date : </label>
-										<input class="form-control" type="date" name="received_date" id="received_date" placeholder="Received Date:">
+										<input class="form-control" required type="date" name="received_date" id="received_date" placeholder="Received Date:">
 									</div>
 
 									<div class="form-group">
 										<label for="category" class="control-label ">Category : </label>
-										<select class="form-control" name="category" id="category" placeholder="Category No ">
+										<select class="form-control" required name="category" id="category" placeholder="Category No ">
 											<option></option>
 											@foreach($categorys as $category )
 											<option value="{{$category->sub_id}}">{{$category->sub_category}}</option>
@@ -63,7 +63,7 @@
 
 									<div class="form-group">
 										<label for="work_load" class="control-label ">Work Load : </label>
-										<input class="form-control" name="work_load" id="work_load" placeholder="Work Load">
+										<input class="form-control" required type="number" min="0" step="0.01"name="work_load" id="work_load" placeholder="Work Load">
 									</div>
 
 								</div>
@@ -73,17 +73,17 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="lots" class="control-label ">Number of Lote :</label>
-										<input class="form-control" type="number" name="lots" id="lots" placeholder="Number of Lote ">
+										<input class="form-control" type="number" min="0"  step="1" name="lots" id="lots" placeholder="Number of Lote ">
 									</div>
 
 									<div class="form-group">
 										<label for="extent" class="control-label">Extent :</label>
-										<input class="form-control" name="extent" id="extent" placeholder="Extent ">
+										<input class="form-control"type="number" min="0"  step="0.00001" name="extent" id="extent" placeholder="Extent ">
 									</div>
 
 									<div class="form-group">
 										<label for="surveyor_id" class="control-label">Surveyor :</label>
-										<select class="form-control" name="surveyor_id" id="surveyor_id" placeholder="Surveyor ">
+										<select class="form-control" required name="surveyor_id" id="surveyor_id" placeholder="Surveyor ">
 											<option></option>
 											@foreach($surveyors as $surveyor )
 											<option value="{{$surveyor->id}}">{{$surveyor->name}}</option>

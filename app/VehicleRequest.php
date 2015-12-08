@@ -8,6 +8,8 @@ class VehicleRequest extends Model
 {
     protected $table = 'vehicle_requests';
 
+    protected $fillable = ['vehicle_id','surveyor_id','required_date','request_for','approved_by','supdt_note'];
+
 
     public function vehicle()
     {

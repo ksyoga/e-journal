@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Supdt;
 use App\Surveyor;
 use App\Instrument;
+use App\InstrumentRequest;
 
 class InstrumentController extends Controller
 {
@@ -46,7 +47,35 @@ class InstrumentController extends Controller
      */
     public function create()
     {
-        //
+         $instruments = Instrument::all();
+         // $surveyors = Surveyor::all();
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+      
+        return view('instrument.create',compact('user','instruments'));
+    }
+
+    public function requist($id)
+    {
+         //$instruments = Instrument::where('id',$id)->get();
+         // $surveyors = Surveyor::all();
+        $instrumentsid = $id;
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+      
+        return view('instrument.create',compact('user','instrumentsid'));
     }
 
     /**
@@ -57,7 +86,9 @@ class InstrumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        InstrumentRequest::create($request->all());
+        return redirect('instrument');
     }
 
     /**
@@ -79,7 +110,17 @@ class InstrumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $requist = InstrumentRequest::findOrFail($id);
+         if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+
+        return view('instrument.edit',compact('user','requist'));
+        
     }
 
     /**
@@ -91,7 +132,9 @@ class InstrumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requist = InstrumentRequest::findOrFail($id);
+        $requist->update($request->all());
+        return redirect('instrument');
     }
 
     /**

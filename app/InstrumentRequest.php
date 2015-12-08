@@ -8,6 +8,8 @@ class InstrumentRequest extends Model
 {
      protected $table = 'instrument_requests';
 
+     protected $fillable = ['instrument_id','surveyor_id','required_date','request_for','approved_by','supdt_note'];
+
 
     public function instrument()
     {

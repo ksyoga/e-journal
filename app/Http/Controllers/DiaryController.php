@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Supdt;
 use App\Surveyor;
 use App\Diary;
+use App\SFA;
+use App\Category;
+use App\Requisition;
 
 class DiaryController extends Controller
 {
@@ -44,14 +47,19 @@ class DiaryController extends Controller
      */
     public function create()
     {   
-         if(Auth::user()->rank == 'supdt'){
+        $sfas = SFA::all();
+        $categorys = Category::all();
 
-            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',2)->orderBy('id','desc')->get();
         }
-        return view('diary.create',compact('user'));
+        return view('diary.create',compact('user','sfas','categorys','requisitions'));
     }
 
     /**
@@ -62,7 +70,16 @@ class DiaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(isset($request->field_50))
+        {
+            $field_50 = implode(',',$request->field_50);
+            $request['field_50'] = $field_50;
+        }
+
+        Diary::create($request->all());
+
+        return redirect('diary');
+    
     }
 
     /**
@@ -73,7 +90,7 @@ class DiaryController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -84,7 +101,20 @@ class DiaryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sfas = SFA::all();
+        $categorys = Category::all();
+        $diary =Diary::findOrFail($id);
+        $selected_sfas = explode(',', $diary->field_50);
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',2)->orderBy('id','desc')->get();
+        }
+        return view('diary.edit',compact('user','sfas','categorys','requisitions','diary','selected_sfas'));
     }
 
     /**
@@ -96,7 +126,15 @@ class DiaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(isset($request->field_50))
+        {
+            $field_50 = implode(',',$request->field_50);
+            $request['field_50'] = $field_50;
+        }
+        $diary = Diary::findOrFail($id);
+        $diary->update($request->all());
+        return redirect('diary');
+        
     }
 
     /**

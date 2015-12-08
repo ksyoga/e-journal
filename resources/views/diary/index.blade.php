@@ -35,7 +35,7 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
-                    <table id="mytable" class="table table-bordered table-hover">
+                    <table id="mytable" class="table table-bordered table-hover diary-seprater">
                       <tbody>
                         <tr>
                           <th scope="col">Datae</th>
@@ -44,38 +44,44 @@
                         </tr>
                         <tr align="center">
                           <th scope="row">&nbsp;</th>
-                          <td><span data-toggle="tooltip" title="Requisition No.">01</span></td>
-                          <td><span data-toggle="tooltip" title="Category No.">02</span></td>
-                          <td><span data-toggle="tooltip" title="Investigating Reqn .in Office.">03</span></td>
-                          <td><span data-toggle="tooltip" title="Investigating & Locating Reqn .in Field.">04</span></td>
-                          <td><span data-toggle="tooltip" title="Re-opening Boundary/ Setting out.">05</span></td>
-                          <td><span data-toggle="tooltip" title="Surveying or Leveling.">06</span></td>
-                          <td><span data-toggle="tooltip" title="Plan Work.">07</span></td>
-                          <td><span data-toggle="tooltip" title="Inspection by Senior Officer.">08</span></td>
-                          <td><span data-toggle="tooltip" title="Other Duties.">09</span></td>
-                          <td><span data-toggle="tooltip" title="Weekend & Public Holidays.">10</span></td>
-                          <td><span data-toggle="tooltip" title="Leave.">11</span></td>
-                          <td><span data-toggle="tooltip" title="No. of line reset or setout.">12</span></td>
-                          <td><span data-toggle="tooltip" title="No. of points Setout by using Total station.">13</span></td>
-                          <td><span data-toggle="tooltip" title="No. of line Surveyed.">14</span></td>
-                          <td><span data-toggle="tooltip" title="No. of Shots taken by using Total station.">15</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km reset or setout/ km. Surveyed.">16</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km. Levelled/ Sketches prepared for GPS sys.">17</span></td>
-                          <td><span data-toggle="tooltip" title="No. of new LMM Surveyed.">18</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lots staked out.">19</span></td>
-                          <td><span data-toggle="tooltip" title="No. of Allotment handed over/ CAD plans prepared.">20</span></td>
-                          <td><span data-toggle="tooltip" title="No. of points/ lines Traverse adjustment.">21</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lots Join, describe boundaries, Editing.">22</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lots Re-Plotting & Screen digitzing.">23</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lots Lotting parcels, Lot computaions.">24</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lots - Preparation of Tenement List.">25</span></td>
-                          <td><span data-toggle="tooltip" title="No. of Tracing, amendment tracing prepared.">26</span></td>
-                          <td><span data-toggle="tooltip" title="Completing FB entries, preparing Reqn. file.Put X.">27</span></td>
-                          <td><span data-toggle="tooltip" title="Attending plan amendments given by SS.Put X.">28</span></td>
+                          <th><span data-toggle="tooltip" title="Requisition No.">01</span></th>
+                          <th><span data-toggle="tooltip" title="Category No.">02</span></th>
+                          <th><span data-toggle="tooltip" title="Investigating Reqn .in Office.">03</span></th>
+                          <th><span data-toggle="tooltip" title="Investigating & Locating Reqn .in Field.">04</span></th>
+                          <th><span data-toggle="tooltip" title="Re-opening Boundary/ Setting out.">05</span></th>
+                          <th><span data-toggle="tooltip" title="Surveying or Leveling.">06</span></th>
+                          <th><span data-toggle="tooltip" title="Plan Work.">07</span></th>
+                          <th><span data-toggle="tooltip" title="Inspection by Senior Officer.">08</span></th>
+                          <th><span data-toggle="tooltip" title="Other Duties.">09</span></th>
+                          <th><span data-toggle="tooltip" title="Weekend & Public Holidays.">10</span></th>
+                          <th><span data-toggle="tooltip" title="Leave.">11</span></th>
+                          <th><span data-toggle="tooltip" title="No. of line reset or setout.">12</span></th>
+                          <th><span data-toggle="tooltip" title="No. of points Setout by using Total station.">13</span></th>
+                          <th><span data-toggle="tooltip" title="No. of line Surveyed.">14</span></th>
+                          <th><span data-toggle="tooltip" title="No. of Shots taken by using Total station.">15</span></th>
+                          <th><span data-toggle="tooltip" title="No. of km reset or setout/ km. Surveyed.">16</span></th>
+                          <th><span data-toggle="tooltip" title="No. of km. Levelled/ Sketches prepared for GPS sys.">17</span></th>
+                          <th><span data-toggle="tooltip" title="No. of new LMM Surveyed.">18</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lots staked out.">19</span></th>
+                          <th><span data-toggle="tooltip" title="No. of Allotment handed over/ CAD plans prepared.">20</span></th>
+                          <th><span data-toggle="tooltip" title="No. of points/ lines Traverse adjustment.">21</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lots Join, describe boundaries, Editing.">22</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lots Re-Plotting & Screen digitzing.">23</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lots Lotting parcels, Lot computaions.">24</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lots - Preparation of Tenement List.">25</span></th>
+                          <th><span data-toggle="tooltip" title="No. of Tracing, amendment tracing prepared.">26</span></th>
+                          <th><span data-toggle="tooltip" title="Completing FB entries, preparing Reqn. file.Put X.">27</span></th>
+                          <th><span data-toggle="tooltip" title="Attending plan amendments given by SS.Put X.">28</span></th>
                         </tr>
                         @foreach($diarys as $diary)
                         <tr>
-                          <th scope="row">{{$diary->day}}</th>
+                          <!-- <th scope="row">{{$diary->day}}</th> -->
+                          <th scope="row">
+                              {{date_format(date_create($diary->day),'d/m/Y')}}
+                              @if(Auth::user()->rank=="survy")
+                                <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+                              @endif
+                          </th>
                           <td>{{$diary->field_1}}</td>
                           <td>{{$diary->field_2}}</td>
                           <td>{{$diary->field_3}}</td>
@@ -947,7 +953,7 @@
                     </table>
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_2">
-                    <table id="mytable" class="table table-bordered table-hover">
+                    <table id="mytable" class="table table-bordered table-hover diary-seprater">
                       <tbody>
                         <tr>
                           <th scope="col">Datae</th>
@@ -958,33 +964,39 @@
                         </tr>
                         <tr align="center">
                           <th scope="row">&nbsp;</th>
-                          <td><span data-toggle="tooltip" title="No. of SFA assigned fron the day.">29</span></td>
-                          <td><span data-toggle="tooltip" title="Requisition No.">30</span></td>
-                          <td><span data-toggle="tooltip" title="Category No.">31</span></td>
-                          <td><span data-toggle="tooltip" title="Clearing.">32</span></td>
-                          <td><span data-toggle="tooltip" title="Picketing/ Landmarking/ GPS monumentation.">33</span></td>
-                          <td><span data-toggle="tooltip" title="Assisiting for Survying or Leveling.">34</span></td>
-                          <td><span data-toggle="tooltip" title="Construction of BMM.">35</span></td>
-                          <td><span data-toggle="tooltip" title="Construction of LMM, CPP & etc...">36</span></td>
-                          <td><span data-toggle="tooltip" title="Assisiting for fieldlecting Information in field.">37</span></td>
-                          <td><span data-toggle="tooltip" title="Assisiting for Handing over allotments to GN etc.">38</span></td>
-                          <td><span data-toggle="tooltip" title="Assigned SFA reported to Div.SO.">39</span></td>
-                          <td><span data-toggle="tooltip" title="Other duties.">40</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km cleared.">41</span></td>
-                          <td><span data-toggle="tooltip" title="No. of lines picketed.">42</span></td>
-                          <td><span data-toggle="tooltip" title="No. of LMM buried/GPS monumentation.">43</span></td>
-                          <td><span data-toggle="tooltip" title="No. of LMM constructed/CPP constructed.">44</span></td>
-                          <td><span data-toggle="tooltip" title="No. of BMM constructed.">45</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km cleared.">46</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km. travelled by Foot.">47</span></td>
-                          <td><span data-toggle="tooltip" title="No. of km. travelled by Vehicle.">48</span></td>
-                          <td><span data-toggle="tooltip" title="Surveyor.">49</span></td>
-                          <td><span data-toggle="tooltip" title="Survey Field Assistans.">50</span></td>
-                          <td><span data-toggle="tooltip" title="Supdt.Of Surveys.">51</span></td>
+                          <th><span data-toggle="tooltip" title="No. of SFA assigned fron the day.">29</span></th>
+                          <th><span data-toggle="tooltip" title="Requisition No.">30</span></th>
+                          <th><span data-toggle="tooltip" title="Category No.">31</span></th>
+                          <th><span data-toggle="tooltip" title="Clearing.">32</span></th>
+                          <th><span data-toggle="tooltip" title="Picketing/ Landmarking/ GPS monumentation.">33</span></th>
+                          <th><span data-toggle="tooltip" title="Assisiting for Survying or Leveling.">34</span></th>
+                          <th><span data-toggle="tooltip" title="Construction of BMM.">35</span></th>
+                          <th><span data-toggle="tooltip" title="Construction of LMM, CPP & etc...">36</span></th>
+                          <th><span data-toggle="tooltip" title="Assisiting for fieldlecting Information in field.">37</span></th>
+                          <th><span data-toggle="tooltip" title="Assisiting for Handing over allotments to GN etc.">38</span></th>
+                          <th><span data-toggle="tooltip" title="Assigned SFA reported to Div.SO.">39</span></th>
+                          <th><span data-toggle="tooltip" title="Other duties.">40</span></th>
+                          <th><span data-toggle="tooltip" title="No. of km cleared.">41</span></th>
+                          <th><span data-toggle="tooltip" title="No. of lines picketed.">42</span></th>
+                          <th><span data-toggle="tooltip" title="No. of LMM buried/GPS monumentation.">43</span></th>
+                          <th><span data-toggle="tooltip" title="No. of LMM constructed/CPP constructed.">44</span></th>
+                          <th><span data-toggle="tooltip" title="No. of BMM constructed.">45</span></th>
+                          <th><span data-toggle="tooltip" title="Weather;Fine=F;Wet or Windy=W.">46</span></th>
+                          <th><span data-toggle="tooltip" title="No. of km. travelled by Foot.">47</span></th>
+                          <th><span data-toggle="tooltip" title="No. of km. travelled by Vehicle.">48</span></th>
+                          <th><span data-toggle="tooltip" title="Surveyor.">49</span></th>
+                          <th><span data-toggle="tooltip" title="Survey Field Assistans.">50</span></th>
+                          <th><span data-toggle="tooltip" title="Supdt.Of Surveys.">51</span></th>
                         </tr>
                         @foreach($diarys as $diary)
                         <tr>
-                          <th scope="row">{{$diary->day}}</th>
+                          <!-- <th scope="row">{{$diary->day}}</th> -->
+                          <th scope="row">
+                              {{date_format(date_create($diary->day),'d/m/Y')}}
+                              @if(Auth::user()->rank=="survy")
+                                <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+                              @endif
+                          </th>
                           <td>{{$diary->field_29}}</td>
                           <td>{{$diary->field_30}}</td>
                           <td>{{$diary->field_31}}</td>
@@ -996,6 +1008,7 @@
                           <td>{{$diary->field_37}}</td>
                           <td>{{$diary->field_38}}</td>
                           <td>{{$diary->field_39}}</td>
+                          <td>{{$diary->field_40}}</td>
                           <td>{{$diary->field_41}}</td>
                           <td>{{$diary->field_42}}</td>
                           <td>{{$diary->field_43}}</td>
@@ -1004,19 +1017,19 @@
                           <td>{{$diary->field_46}}</td>
                           <td>{{$diary->field_47}}</td>
                           <td>{{$diary->field_48}}</td>
-                          <td>{{$diary->field_49}}</td>
+                          <td><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td>
+                          <td>{{$diary->field_50}}</td>
                           <td>{{$diary->field_51}}</td>
-                          <td>{{$diary->field_52}}</td>
-                          <td>{{$diary->field_53}}</td>
+                          
                         </tr>
                         @endforeach
                         <tr>
                           <th scope="row">&nbsp;</th>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
+                          <td>&nbsp;&frac12</td>
+                          <td>&nbsp;&#151</td>
+                          <td>&nbsp;-</td>
+                          <td>&nbsp;<sup>1</sup>&frasl;<sub>2</sub></td>
+                          <td></td>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>

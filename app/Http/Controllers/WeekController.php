@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Supdt;
 use App\Surveyor;
 use App\Week;
+use App\Requisition;
 
 class WeekController extends Controller
 {
@@ -24,14 +25,16 @@ class WeekController extends Controller
      */
     public function index()
     {
-         $weeks = Week::all();
+         
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $weeks = Week::all();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $weeks = Week::where('surveyor_id',$user->id)->orderBy('day','asc')->get();
         }
       
         return view('week.index',compact('user','weeks'));
@@ -44,7 +47,17 @@ class WeekController extends Controller
      */
     public function create()
     {
-        //
+        
+         if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',2)->orderBy('id','desc')->get();
+        }
+        return view('week.create',compact('user','requisitions'));
     }
 
     /**
@@ -55,7 +68,9 @@ class WeekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Week::create($request->all());
+
+        return redirect('week');
     }
 
     /**
@@ -77,7 +92,19 @@ class WeekController extends Controller
      */
     public function edit($id)
     {
-        //
+        $week = Week::findOrFail($id);
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
+        }
+
+        return view('week.edit',compact('user','requisitions','week'));
     }
 
     /**
@@ -89,7 +116,9 @@ class WeekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $week = Week::findOrFail($id);
+        $week->update($request->all());
+        return redirect('week');
     }
 
     /**

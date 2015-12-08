@@ -9,7 +9,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Authentication routes...
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('supdt');
 });
 Route::get('admin', function () {
     return view('admin');
@@ -29,6 +29,9 @@ Route::resource('week','WeekController');
 Route::resource('selfcheck','SelfCheckController');
 Route::resource('diary','DiaryController'); 
 Route::resource('monthinvolved','MonthInvolvedController');
+
+Route::get('instrument/{id}/requist','InstrumentController@requist');
+Route::get('vehicle/{id}/requist','VehicleController@requist');
 
 
 

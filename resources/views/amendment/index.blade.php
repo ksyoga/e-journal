@@ -56,10 +56,11 @@
   		        	<td><span class="label label-warning">Pending</span></td>
   		        	<td>{{$amendment->plan_no}}</td>
   		        	<td>{{$amendment->received}}</td>
-  		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
+  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
   		        	<td>{{$amendment->surveyor->name}}</td>
-  		        	<td>{{$amendment->completion}}</td>
-  		        	<td ><i class="fa fa-sticky-note" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
+  		        	<td>{{$amendment->completion}}</td> 
+                <!-- <td>{{date_format(date_create($amendment->completion),'d/m/Y')}}</td> -->
+  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
   		        	<td align="right">
                     <div class="tools">
                       @if(Auth::user()->rank=="supdt")

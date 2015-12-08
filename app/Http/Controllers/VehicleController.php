@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Supdt;
 use App\Surveyor;
 use App\Vehicle;
+use App\VehicleRequest;
 
 class VehicleController extends Controller
 {
@@ -46,6 +47,22 @@ class VehicleController extends Controller
     {
         //
     }
+     public function requist($id)
+    {
+         //$instruments = Instrument::where('id',$id)->get();
+         // $surveyors = Surveyor::all();
+        $vehicle = $id;
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+      
+        return view('vehicle.create',compact('user','vehicle'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -55,7 +72,8 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        VehicleRequest::create($request->all());
+        return redirect('vehicle');
     }
 
     /**
@@ -77,7 +95,16 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $requist = VehicleRequest::findOrFail($id);
+         if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+        }
+
+        return view('vehicle.edit',compact('user','requist'));
     }
 
     /**
@@ -89,7 +116,9 @@ class VehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requist = VehicleRequest::findOrFail($id);
+        $requist->update($request->all());
+        return redirect('vehicle');
     }
 
     /**

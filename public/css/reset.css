@@ -28,7 +28,7 @@
     bottom: 0;
 }
 #mytable {
-   font-size: 0.8em;
+   font-size: 0.9em;
    
 }
 #mytable tr th{
@@ -40,12 +40,16 @@
 .week-seprater tr:nth-child(5n+2){
      border-bottom: 2px solid #F39C12;
 }
+.diary-seprater tr:nth-child(2){
+     border-bottom: 2px solid #F39C12;
+}
 /*.diary-seprater tr:nth-child(12),tr:nth-child(29),tr:nth-child(41),tr:nth-child(46),tr:nth-child(49){
      border-bottom: 2px solid #F39C12;
 }*/
 /*tr:nth-child(12),tr:nth-child(17),tr:nth-child(22),tr:nth-child(27),tr:nth-child(32)*/
 #mytable tr th, #mytable tr td{
     border: 1px solid #3C8DBC;
+    padding: 7px;
 }
 #mytable p{
     padding: 0;
@@ -65,5 +69,6 @@
     font-weight:400;
 }
 .control-label{
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 0.9em;
 }

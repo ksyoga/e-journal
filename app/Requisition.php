@@ -18,10 +18,12 @@ class Requisition extends Model
                             'extent',
                             'surveyor_id',
                             'issued',
+                            'commanced',
                             'fieldwork',
                             'planwork',
-                            'commanced',
-                            'note'];
+                            'status',
+                            'complet_date',
+                            'note',];
 
      public function supdt()
     {

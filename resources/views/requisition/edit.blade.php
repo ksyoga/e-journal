@@ -28,7 +28,7 @@
 		              <!-- Horizontal Form -->
 		              <div class="box box-info">
 		                <div class="box-header with-border">
-		                  <h3 class="box-title">Add New Requisition Details</h3>
+		                  <h3 class="box-title">Edit Requisition Details</h3>
 		                </div><!-- /.box-header -->
 		                <!-- form start -->
 		                <form method="POST" action="/requisition/{{$requisition->id}}" >
@@ -54,9 +54,9 @@
 
 									<div class="form-group">
 										<label for="category" class="control-label ">Category : </label>
-										<select class="form-control" name="category" id="category" placeholder="Category No ">
+										<select class="form-control" name="category" <?php  Auth::user()->rank=="survy" ? print "disabled" : "" ?> id="category" placeholder="Category No ">
 											@foreach($categorys as $category )
-											<option value="{{$category->sub_id}}" <?php  $requisition->category === $category->sub_id ? print "selected" : "" ?> <?php  Auth::user()->rank=="survy" ? print "disabled" : "" ?> >{{$category->sub_category}}</option>
+											<option value="{{$category->sub_id}}" <?php  $requisition->category === $category->sub_id ? print "selected" : "" ?>  >{{$category->sub_category}}</option>
 											@endforeach
 										</select>
 										<!-- <input class="form-control" name="category" id="category" placeholder="Category No "> -->
@@ -69,10 +69,17 @@
 									@if(Auth::user()->rank=="survy")
 									<hr/>
 									<div class="form-group">
+									<label for="status" class="control-label ">Requisition Status : </label>
+										<select class="form-control" name="status"  id="status" placeholder="Category No ">
+											<option value="1" <?php  $requisition->status == 1 ? print "selected" : "" ?>  >Awarded</option>
+											<option value="2" <?php  $requisition->status == 2 ? print "selected" : "" ?>  >Commance</option>
+											<option value="3" <?php  $requisition->status == 3 ? print "selected" : "" ?>  >Completed</option>
+										</select>
+									</div>
+
+									<div class="form-group">
 										<label for="note" class="control-label">Surveyor Note :</label>
-										<textarea  id="note" name="note" class="textarea" placeholder="Place some text here" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-											{{$requisition->note}}
-										</textarea>
+										<textarea  id="note" name="note" class="textarea" placeholder="Surveyor Note" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$requisition->note}}</textarea>
 									</div>
 									@endif
 								</div>
@@ -92,9 +99,9 @@
 
 									<div class="form-group">
 										<label for="surveyor_id" class="control-label">Surveyor :</label>
-										<select class="form-control" name="surveyor_id" id="surveyor_id" placeholder="Surveyor ">
+										<select class="form-control" <?php  Auth::user()->rank=="survy" ? print "disabled" : "" ?> name="surveyor_id" id="surveyor_id" placeholder="Surveyor ">
 											@foreach($surveyors as $surveyor )
-											<option value="{{$surveyor->id}}" <?php  $requisition->surveyor_id === $surveyor->id ? print "selected" : "" ?><?php  Auth::user()->rank=="survy" ? print "disabled" : "" ?>>{{$surveyor->name}}</option>
+											<option value="{{$surveyor->id}}" <?php  $requisition->surveyor_id === $surveyor->id ? print "selected" : "" ?>>{{$surveyor->name}}</option>
 											@endforeach
 										</select>
 										<!-- <input class="form-control" name="surveyor_id" id="surveyor_id" placeholder="Surveyor "> -->
@@ -107,7 +114,7 @@
 									@if(Auth::user()->rank=="survy")
 									<hr/>
 									<div class="form-group">
-										<label for="commanced" class="control-label">Commance Date :</label>
+										<label for="commanced" class="control-label">Requisition Commance Date :</label>
 										<input class="form-control" type="date" value="{{$requisition->commanced}}" name="commanced" id="commanced" placeholder="Issued Date ">
 									</div>
 									<div class="form-group">
@@ -117,6 +124,11 @@
 									<div class="form-group">
 										<label for="planwork" class="control-label">No of Days for Plan :</label>
 										<input class="form-control" type="number" step="0.5" value="{{$requisition->planwork}}" name="planwork" id="planwork" placeholder="Issued Date ">
+									</div>
+
+									<div class="form-group">
+										<label for="complet_date" class="control-label">Requisition Completed Date :</label>
+										<input class="form-control" type="date"  value="{{$requisition->complet_date}}" name="complet_date" id="complet_date" placeholder="Complet Date ">
 									</div>
 									@endif
 									

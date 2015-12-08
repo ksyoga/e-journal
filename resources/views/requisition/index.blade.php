@@ -52,13 +52,14 @@
                   <th>Commance</th>
                   <th><span data-toggle="tooltip" title="Field Works">F.W</span></th>
                   <th><span data-toggle="tooltip" title="Plane Works">P.W</span></th>
+                  <th>Completed</th>
                   <th>Note</th>
                   <th></th>
                 </tr>
                 
             	@foreach($requisitions as $requisition)
             	<tr>
-  		        	<td><span class="label label-warning">Pending</span></td>
+  		        	<td><span class="label label-warning">Pending</span>{{$requisition->status}}</td>
   		        	<td>{{$requisition->requisition_no}}</td>
   		        	<td>{{$requisition->category}}</td>
   		        	<td>{{$requisition->work_load}}</td>
@@ -70,6 +71,7 @@
   		        	<td>{{$requisition->commanced}}</td>
   		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->fieldwork}}</span></td>
   		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->planwork}}</span></td>
+                <td>{{$requisition->complet_date}}</td>
   		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
                 <td align="right">
                     <div class="tools">

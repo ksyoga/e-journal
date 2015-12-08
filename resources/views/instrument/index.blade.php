@@ -30,6 +30,9 @@
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
+              @if(Auth::user()->rank=="survy")
+                <a href="instrument/{{$instrument->id}}/requist" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Reservation of Instrument"><i class="glyphicon glyphicon-plus"></i></button></a>
+              @endif
               <div class="widget-user-image">
                 <img class="img-circle" src="../dist/img/edm/{{$instrument->image}}" alt="User Avatar">
               </div><!-- /.widget-user-image -->
@@ -48,15 +51,41 @@
                 <th>Date</th>
                 <th>Surveyor</th>
                 <th>Purpose</th>
-                <th>Approval</th>
+                <th>Statuses</th>
               </tr>
-              @foreach($instrument->instrumentrequest()->get() as $request)
+              @foreach($instrument->instrumentrequest()->orderBy('required_date', 'desc')->take(10)->get() as $request)
               
                 <tr>
-                  <td>{{$request->required_date}}</td>
+                  <!-- <td>{{$request->required_date}}</td> -->
+                  <td>{{date_format(date_create($request->required_date),'d/m/Y')}}</td>
                   <td>{{$request->surveyorrequest->name}}</td>
                   <td>{{$request->request_for}}</td>
-                  <td class="text-center"><input type="checkbox" ></td>
+                  @if(Auth::user()->rank=="supdt")
+                    <td>
+                       @if($request->approved_by == 1)
+                          <span class="label label-success" data-toggle="tooltip" title="{{$request->supdt_note}}">Approved</span>
+                          <a href="instrument/{{$request->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+                        @elseif($request->approved_by == 2)
+                         <span class="label label-danger" data-toggle="tooltip" title="{{$request->supdt_note}}">Denied</span>
+                         <a href="instrument/{{$request->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+                        @else
+                         <span class="label label-warning" data-toggle="tooltip" title="{{$request->supdt_note}}">Pending</span>
+                          <a href="instrument/{{$request->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+                        @endif
+                    </td>
+                  @elseif(Auth::user()->rank=="survy")
+                    <td class="text-center">
+                      @if($request->approved_by == 1)
+                        <span class="label label-success" data-toggle="tooltip" title="{{$request->supdt_note}}">Approved</span>
+                      @elseif($request->approved_by == 2)
+                        <span class="label label-danger" data-toggle="tooltip" title="{{$request->supdt_note}}">Denied</span>
+                      @else
+                        <span class="label label-warning" data-toggle="tooltip" title="{{$request->supdt_note}}">Pending</span>
+                      @endif
+                    </td>
+                  @endif
+                 
+                  
                 </tr>
               @endforeach
               

@@ -50,14 +50,14 @@ class CreateDiarysTable extends Migration
             $table->smallInteger('field_24')->nullable()->comment('No. of lots Lotting parcels, Lot computaions');
             $table->smallInteger('field_25')->nullable()->comment('No. of lots - Preparation of Tenement List');
             $table->smallInteger('field_26')->nullable()->comment('No. of Tracing, amendment tracing prepared');
-            $table->boolean('field_27')->nullable()->comment('Completing FB entries, preparing Reqn. file.Put X');
-            $table->boolean('field_28')->nullable()->comment('Attending plan amendments given by SS.Put X');
+            $table->enum('field_27',['-','X'])->nullable()->comment('Completing FB entries, preparing Reqn. file.Put X');
+            $table->enum('field_28',['-','X'])->nullable()->comment('Attending plan amendments given by SS.Put X');
             /**
              * Duties of Survey Field Assistance on the day
              */
             $table->smallInteger('field_29')->nullable()->comment('No. of SFA assigned fron the day');
             $table->string('field_30')->nullable()->comment('Requisition No');
-            $table->smallInteger('field_31')->nullable()->comment('Category No');
+            $table->string('field_31',20)->nullable()->comment('Category No');
             $table->double('field_32',2,1)->nullable()->comment('Clearing');
             $table->double('field_33',2,1)->nullable()->comment('Picketing/ Landmarking/ GPS monumentation');
             $table->double('field_34',2,1)->nullable()->comment('Assisiting for Survying or Leveling');
@@ -78,7 +78,7 @@ class CreateDiarysTable extends Migration
             /**
              * Other Information
              */
-            $table->smallInteger('field_46')->nullable()->comment('No. of km cleared');
+            $table->enum('field_46',['F','W'])->nullable()->comment('Weather;Fine=F;Wet or Windy=W');
             $table->double('field_47')->nullable()->comment('No. of km. travelled by Foot.');
             $table->double('field_48')->nullable()->comment('No. of km. travelled by Vehicle.');
             /**

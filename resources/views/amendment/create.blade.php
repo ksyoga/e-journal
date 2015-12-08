@@ -68,9 +68,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="supdt_note" class="control-label ">Supdt Note :</label>
-										<textarea class="textarea" name="supdt_note" id="supdt_note" placeholder="Place some text here" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-											
-										</textarea>
+										<textarea class="textarea" name="supdt_note" id="supdt_note" placeholder="Supdt Note" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 									</div>
 
 									<!-- <div class="form-group">

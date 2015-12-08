@@ -26,6 +26,8 @@ class CreateRequisitionTable extends Migration
             $table->date('commanced');
             $table->double('fieldwork');
             $table->double('planwork');
+            $table->integer('status');
+            $table->date('complet_date');
             $table->string('note');
             $table->timestamps();
             $table->foreign('supdt_id')->references('id')->on('supdts')->onDelete('cascade')->onUpdate('cascade');

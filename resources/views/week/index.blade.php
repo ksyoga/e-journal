@@ -51,7 +51,13 @@
 					    </tr>
 					    @foreach($weeks as $week)
 					    <tr>
-					      <td>{{$week->day}}</td>
+					      <td>
+					       	{{date_format(date_create($week->day),'d/m/Y')}}
+					      	<!-- {{$week->day}}-->
+					      	@if(Auth::user()->rank=="survy")
+					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+					      	@endif
+					      </td>
 					      <td>{{$week->req_no}}</td>
 					      <td>{{$week->pro_work}}</td>
 					      <td align="center">{{$week->no_sfa}}</td>
@@ -60,7 +66,12 @@
 					      <td align="center">{{$week->travel}}</td>
 					      <td>{{$week->sfa_req_no}}</td>
 					      <td>{{$week->sfa_work_asign}}</td>
-					      <td align="center">{{$week->ss_note}}</td>
+					      <td align="center">
+					      	{{$week->ss_note}}
+					      	@if(Auth::user()->rank=="supdt")
+					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+					      	@endif
+					      </td>
 					    </tr>
 					    @endforeach
 					    
