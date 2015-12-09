@@ -15,7 +15,7 @@ class CategoryTableSeeder extends Seeder
          Category::create([
          	'main_id'		=>	2,
          	'main_category'	=>	'Land Marking',
-         	'sub_id'		=>	2.1,
+         	'sub_id'		=>	'2.1',
          	'sub_category'	=>	'L.D.O.Grants',
          ]);
 
@@ -78,7 +78,7 @@ class CategoryTableSeeder extends Seeder
          Category::create([
          	'main_id'		=>	2,
          	'main_category'	=>	'Land Marking',
-         	'sub_id'		=>	2.10,
+         	'sub_id'		=>	'2.10',
          	'sub_category'	=>	'Landmarking Surveys - Estate Plantation',
          ]);
 
@@ -113,7 +113,7 @@ class CategoryTableSeeder extends Seeder
          Category::create([
          	'main_id'		=>	3,
          	'main_category'	=>	'Misc. Surveys',
-         	'sub_id'		=>	3.1,
+         	'sub_id'		=>	'3.1',
          	'sub_category'	=>	'Land Alienation - Staking out Homesteads',
          ]);
 
@@ -176,7 +176,7 @@ class CategoryTableSeeder extends Seeder
          Category::create([
          	'main_id'		=>	3,
          	'main_category'	=>	'Misc. Surveys',
-         	'sub_id'		=>	3.10,
+         	'sub_id'		=>	'3.10',
          	'sub_category'	=>	'Irrigable & Homesteads - Staking Out (Mahaweli)',
          ]);
 

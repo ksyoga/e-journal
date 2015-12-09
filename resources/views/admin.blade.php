@@ -16,10 +16,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Font Awesome -->
     
     <!-- Ionicons -->
-    
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('plugins/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ url('dist/css/AdminLTE.min.css') }}">

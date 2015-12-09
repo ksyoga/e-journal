@@ -44,4 +44,8 @@ class Utilities
 		}
 	}
 
+	public static function journalMonth($month){
+		return date('F',mktime(0,0,0,$month));
+	}
+
 }

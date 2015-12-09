@@ -41,8 +41,14 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasOne('App\Supdt');
     }
+
     public function surveyor()
     {
         return $this->hasOne('App\Surveyor');
+    }
+
+    public function division()
+    {
+        return $this->belongsTo('App\Division');
     }
 }

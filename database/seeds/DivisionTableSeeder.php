@@ -14,7 +14,7 @@ class DivisionTableSeeder extends Seeder
     {
          Division::create([
          	 'district_id'	=>	'1',
-        	 'name'     	=>  'Badulla',     
+        	 'name'     	=>  'Diyatalawa',     
         ]);
     }
 }

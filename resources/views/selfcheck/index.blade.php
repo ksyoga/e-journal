@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -6,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Self Check by Surveyor at the end of the month
+        Self Check by Surveyor at the end of the month 
         <!-- <small> Diyatalawa Division</small> -->
 
       </h1>
@@ -25,7 +26,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">December 2015</h3>
+                  <h3 class="box-title">{{$utilities::journalMonth($user->month)}} {{$user->year}}</h3>
                   <!-- <div class="box-tools pull-right">
                     <ul class="pagination pagination-sm inline">
                       <li><a href="#">&laquo;</a></li>

@@ -7,7 +7,7 @@
     <section class="content-header">
       <h1>
         Instruments Details
-        <small> Diyatalawa Division</small>
+        <small> {{Auth::user()->division->name}} Division</small>
 
       </h1>
       <ol class="breadcrumb">

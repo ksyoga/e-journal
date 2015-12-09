@@ -23,8 +23,10 @@ class RequisitionTableSeeder extends Seeder
         	 'surveyor_id'		=>	1,
         	 'issued'			=>	'2015-10-23',
         	 'commanced'		=>	'2015-10-28',
+             'status'           =>  1,
         	 'fieldwork'		=>	3,
         	 'planwork'			=>	5,
+             'complet_date'     =>  '2015-12-03',
         	 'note'				=>	'Bacon ipsum dolor sit amet salami venison chicken flank fatback doner'
         ]);
 
@@ -39,8 +41,10 @@ class RequisitionTableSeeder extends Seeder
              'surveyor_id'      =>  2,
              'issued'           =>  '2015-10-23',
              'commanced'        =>  '2015-10-28',
+             'status'           =>  2,
              'fieldwork'        =>  3,
              'planwork'         =>  5,
+             'complet_date'     =>  '2015-12-05',
              'note'             =>  'Bacon ipsum dolor sit amet salami venison chicken flank fatback doner'
         ]);
 
@@ -55,8 +59,10 @@ class RequisitionTableSeeder extends Seeder
              'surveyor_id'      =>  12,
              'issued'           =>  '2015-10-23',
              'commanced'        =>  '2015-10-28',
+             'status'           =>  3,
              'fieldwork'        =>  3,
              'planwork'         =>  5,
+             'complet_date'     =>  '2015-12-17',
              'note'             =>  'Bacon ipsum dolor sit amet salami venison chicken flank fatback doner'
         ]);
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Supdt;
 use App\Surveyor;
 use App\Diary;
@@ -27,14 +28,16 @@ class DiaryController extends Controller
      */
     public function index()
     {
-         $diarys = Diary::all();
+         
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $diarys = Diary::where('month',$user->month)->orderBy('day','desc')->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $diarys = Diary::where('surveyor_id',$user->id)->where('month',$user->month)->orderBy('day','asc')->get();
         }
       
         return view('diary.index',compact('user','diarys'));

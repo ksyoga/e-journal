@@ -24,6 +24,8 @@
   		<form method="POST" action="/diary" >
 		{{ csrf_field() }}
 		<input type="hidden" name="surveyor_id" value="{{ $user->id }}">
+		<input type="hidden" name="year" value="{{ $user->year }}">
+		<input type="hidden" name="month" value="{{ $user->month }}">
 
 	  	<div class="row">
 						<!-- left column -->

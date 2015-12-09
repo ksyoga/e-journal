@@ -34,7 +34,7 @@ class WeekController extends Controller
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
-            $weeks = Week::where('surveyor_id',$user->id)->orderBy('day','asc')->get();
+            $weeks = Week::where('surveyor_id',$user->id)->where('month',$user->month)->orderBy('day','asc')->get();
         }
       
         return view('week.index',compact('user','weeks'));

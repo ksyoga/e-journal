@@ -21,6 +21,11 @@ class Division extends Model
         return $this->hasMany('App\Supdt');
       
     }
+    public function user()
+    {
+        return $this->hasMany('App\User');
+      
+    }
 
     
 

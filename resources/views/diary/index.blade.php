@@ -7,7 +7,8 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Journal of November 2015
+        Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
+
         <!-- <small> Diyatalawa Division</small> -->
 
       </h1>
@@ -83,34 +84,34 @@
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif
                           </th>
-                          <td>{!!$utilities::spendday($diary->field_1)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_2)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_3)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_4)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_5)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_6)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_7)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_8)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_9)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_10)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_11)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_12)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_13)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_14)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_15)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_16)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_17)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_18)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_19)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_20)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_21)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_22)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_23)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_24)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_25)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_26)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_27)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_28)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_1)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_2)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_3)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_4)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_5)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_6)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_7)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_8)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_9)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_10)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_11)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_12)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_13)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_14)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_15)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_16)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_17)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_18)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_19)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_20)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_21)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_22)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_23)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_24)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_25)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_26)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_27)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_28)!!}</td>
                         </tr>
                         @endforeach
                         <tr>
@@ -998,29 +999,29 @@
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif
                           </th>
-                          <td>{!!$utilities::spendday($diary->field_29)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_30)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_31)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_32)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_33)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_34)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_35)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_36)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_37)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_38)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_39)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_40)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_41)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_42)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_43)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_44)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_45)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_46)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_47)!!}</td>
-                          <td>{!!$utilities::spendday($diary->field_48)!!}</td>
-                          <td><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td>
-                          <td>{!!$utilities::spendday($diary->field_50)!!}</td>
-                          <td>{{$diary->field_51}}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_29)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_30)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_31)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_32)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_33)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_34)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_35)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_36)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_37)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_38)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_39)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_40)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_41)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_42)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_43)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_44)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_45)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_46)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_47)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_48)!!}</td>
+                          <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td>
+                          <td align="center">{!!$utilities::spendday($diary->field_50)!!}</td>
+                          <td align="center">{{$diary->field_51}}</td>
                           
                         </tr>
                         @endforeach
