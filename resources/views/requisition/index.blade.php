@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -59,19 +60,19 @@
                 
             	@foreach($requisitions as $requisition)
             	<tr>
-  		        	<td><span class="label label-warning">Pending</span>{{$requisition->status}}</td>
+  		        	<td>{!!$utilities::status($requisition->status)!!}</td>
   		        	<td>{{$requisition->requisition_no}}</td>
   		        	<td>{{$requisition->category}}</td>
   		        	<td>{{$requisition->work_load}}</td>
   		        	<td>{{$requisition->lots}}</td>
   		        	<td>{{$requisition->extent}}</td>
-  		        	<td>{{$requisition->received_date}}</td>
-  		        	<td>{{$requisition->issued}}</td>
+  		        	<td>{!!$utilities::sldate($requisition->received_date)!!}</td>
+  		        	<td>{!!$utilities::sldate($requisition->issued)!!}</td>
   		        	<td>{{$requisition->surveyor->name}}</td>
-  		        	<td>{{$requisition->commanced}}</td>
+  		        	<td>{!!$utilities::sldate($requisition->commanced)!!}</td>
   		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->fieldwork}}</span></td>
   		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->planwork}}</span></td>
-                <td>{{$requisition->complet_date}}</td>
+                <td>{!!$utilities::sldate($requisition->complet_date)!!}</td>
   		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
                 <td align="right">
                     <div class="tools">

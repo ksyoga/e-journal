@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -77,39 +78,39 @@
                         <tr>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">
-                              {{date_format(date_create($diary->day),'d/m/Y')}}
+                              {!!$utilities::sldate($diary->day)!!}
                               @if(Auth::user()->rank=="survy")
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif
                           </th>
-                          <td>{{$diary->field_1}}</td>
-                          <td>{{$diary->field_2}}</td>
-                          <td>{{$diary->field_3}}</td>
-                          <td>{{$diary->field_4}}</td>
-                          <td>{{$diary->field_5}}</td>
-                          <td>{{$diary->field_6}}</td>
-                          <td>{{$diary->field_7}}</td>
-                          <td>{{$diary->field_8}}</td>
-                          <td>{{$diary->field_9}}</td>
-                          <td>{{$diary->field_10}}</td>
-                          <td>{{$diary->field_11}}</td>
-                          <td>{{$diary->field_12}}</td>
-                          <td>{{$diary->field_13}}</td>
-                          <td>{{$diary->field_14}}</td>
-                          <td>{{$diary->field_15}}</td>
-                          <td>{{$diary->field_16}}</td>
-                          <td>{{$diary->field_17}}</td>
-                          <td>{{$diary->field_18}}</td>
-                          <td>{{$diary->field_19}}</td>
-                          <td>{{$diary->field_20}}</td>
-                          <td>{{$diary->field_21}}</td>
-                          <td>{{$diary->field_22}}</td>
-                          <td>{{$diary->field_23}}</td>
-                          <td>{{$diary->field_24}}</td>
-                          <td>{{$diary->field_25}}</td>
-                          <td>{{$diary->field_26}}</td>
-                          <td>{{$diary->field_27}}</td>
-                          <td>{{$diary->field_28}}</td>
+                          <td>{!!$utilities::spendday($diary->field_1)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_2)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_3)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_4)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_5)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_6)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_7)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_8)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_9)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_10)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_11)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_12)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_13)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_14)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_15)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_16)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_17)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_18)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_19)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_20)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_21)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_22)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_23)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_24)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_25)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_26)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_27)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_28)!!}</td>
                         </tr>
                         @endforeach
                         <tr>
@@ -960,7 +961,7 @@
                           <th colspan="12" scope="col">Duties of Surveyor Field</th>
                           <th colspan="5" scope="col">Job Done by SFA</th>
                           <th colspan="3" scope="col">Outher Information</th>
-					      <th colspan="3" scope="col">Remark</th>
+					                <th colspan="3" scope="col">Remark</th>
                         </tr>
                         <tr align="center">
                           <th scope="row">&nbsp;</th>
@@ -997,38 +998,38 @@
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif
                           </th>
-                          <td>{{$diary->field_29}}</td>
-                          <td>{{$diary->field_30}}</td>
-                          <td>{{$diary->field_31}}</td>
-                          <td>{{$diary->field_32}}</td>
-                          <td>{{$diary->field_33}}</td>
-                          <td>{{$diary->field_34}}</td>
-                          <td>{{$diary->field_35}}</td>
-                          <td>{{$diary->field_36}}</td>
-                          <td>{{$diary->field_37}}</td>
-                          <td>{{$diary->field_38}}</td>
-                          <td>{{$diary->field_39}}</td>
-                          <td>{{$diary->field_40}}</td>
-                          <td>{{$diary->field_41}}</td>
-                          <td>{{$diary->field_42}}</td>
-                          <td>{{$diary->field_43}}</td>
-                          <td>{{$diary->field_44}}</td>
-                          <td>{{$diary->field_45}}</td>
-                          <td>{{$diary->field_46}}</td>
-                          <td>{{$diary->field_47}}</td>
-                          <td>{{$diary->field_48}}</td>
+                          <td>{!!$utilities::spendday($diary->field_29)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_30)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_31)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_32)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_33)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_34)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_35)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_36)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_37)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_38)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_39)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_40)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_41)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_42)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_43)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_44)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_45)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_46)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_47)!!}</td>
+                          <td>{!!$utilities::spendday($diary->field_48)!!}</td>
                           <td><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td>
-                          <td>{{$diary->field_50}}</td>
+                          <td>{!!$utilities::spendday($diary->field_50)!!}</td>
                           <td>{{$diary->field_51}}</td>
                           
                         </tr>
                         @endforeach
                         <tr>
                           <th scope="row">&nbsp;</th>
-                          <td>&nbsp;&frac12</td>
-                          <td>&nbsp;&#151</td>
-                          <td>&nbsp;-</td>
-                          <td>&nbsp;<sup>1</sup>&frasl;<sub>2</sub></td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
                           <td></td>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>

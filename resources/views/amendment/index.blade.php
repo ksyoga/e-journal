@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -41,8 +42,8 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>Status</th>
-                  <th>Plane No</th>
+                  <!-- <th>Status</th> -->
+                  <th>Plane No/Requisition No</th>
                   <th><span data-toggle="tooltip" title="Date">Received</span></th>
                   <th>Supdt Note</th>
                   <th>Surveyor</th>
@@ -53,12 +54,12 @@
                 
             	@foreach($amendments as $amendment)
             	<tr>
-  		        	<td><span class="label label-warning">Pending</span></td>
+  		        	<!-- <td><span class="label label-warning">Pending</span></td> -->
   		        	<td>{{$amendment->plan_no}}</td>
-  		        	<td>{{$amendment->received}}</td>
+  		        	<td>{!!$utilities::sldate($amendment->received)!!}</td>
   		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
   		        	<td>{{$amendment->surveyor->name}}</td>
-  		        	<td>{{$amendment->completion}}</td> 
+  		        	<td>{!!$utilities::sldate($amendment->completion)!!}</td> 
                 <!-- <td>{{date_format(date_create($amendment->completion),'d/m/Y')}}</td> -->
   		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
   		        	<td align="right">

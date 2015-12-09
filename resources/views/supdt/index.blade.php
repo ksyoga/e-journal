@@ -44,9 +44,9 @@
                 <ul class="nav nav-stacked">
                   <li><a href="#">Awarded Work Load <span class="pull-right badge bg-blue">31</span></a></li>
                   <li><a href="#">Completed Work Load <span class="pull-right badge bg-aqua">5</span></a></li>
-                  <li><a href="#">On going Requisition <span class="pull-right badge bg-green">12</span></a></li>
-                  <li><a href="#">Not Started Requisition <span class="pull-right badge bg-red">842</span></a></li>
-                  <li><a href="#">Today Worke <span class="pull-right badge bg-red">842</span></a></li>
+                  <li><a href="#">Involved Field Work Days  <span class="pull-right badge bg-green">12</span></a></li>
+                  <li><a href="#">Involved Plan Work Days  <span class="pull-right badge bg-red">842</span></a></li>
+                  <li><a href="#">Today Worke : <span class="pull-right badge bg-red">842</span></a></li>
 
                 </ul>
               </div>
