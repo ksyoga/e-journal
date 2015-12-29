@@ -24,14 +24,30 @@ class SelfCheckController extends Controller
      */
     public function index()
     {
-         $selfchecks = SelfCheck::all();
-
+         
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $selfchecks = SelfCheck::all();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $selfchecks = SelfCheck::where('surveyor_id',$user->id)->where('year',$user->year)->where('month',$user->month)->first();
+            $check= [
+                        'surveyor_id'   =>    $user->id,
+                        'year'          =>    $user->year,
+                        'month'         =>    $user->month,
+                        
+                    ];
+            if($selfchecks==null){
+                
+                SelfCheck::create($check);
+                $selfchecks = SelfCheck::where('surveyor_id',$user->id)->where('month',$user->month)->first();
+
+            }
+            
+
+
         }
       
         return view('selfcheck.index',compact('user','selfchecks'));
@@ -44,7 +60,7 @@ class SelfCheckController extends Controller
      */
     public function create()
     {
-        //
+       // return view('selfcheck.creat');
     }
 
     /**
@@ -66,7 +82,21 @@ class SelfCheckController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $surveyor = Surveyor::findOrFail($id);
+            $selfchecks = SelfCheck::where('surveyor_id',$id)->where('month',$surveyor->month)->where('year',$surveyor->year)->first();
+
+
+            if($selfchecks == null){
+                return redirect('/supdt');
+            }
+
+        }else{
+            return redirect('/supdt');
+        }
+        return view('selfcheck.shows',compact('user','selfchecks','surveyor'));
     }
 
     /**
@@ -89,7 +119,25 @@ class SelfCheckController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $field = [
+                    'field_1'  =>'off',
+                    'field_2'  =>'off',
+                    'field_3'  =>'off',
+                    'field_4'  =>'off',
+                    'field_5'  =>'off',
+                    'field_6'  =>'off',
+                    'field_7'  =>'off',
+                    'field_8'  =>'off',
+                    'field_9'  =>'off',
+                    'field_10'  =>'off',
+                    'field_11'  =>'off',
+                    'field_12'  =>'off',
+        ];
+
+        $selfcheck = SelfCheck::findOrFail($id);
+        $selfcheck->update($field);
+        $selfcheck->update($request->all());
+        return redirect('selfcheck');
     }
 
     /**

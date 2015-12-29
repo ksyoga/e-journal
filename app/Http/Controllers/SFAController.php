@@ -23,15 +23,16 @@ class SFAController extends Controller
      */
     public function index()
     {
-       // $surveyors = Surveyor::all();
-        $sfas = SFA::all();
+          
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $sfas = SFA::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $sfas = SFA::where('supdt_id',$user->id)->get();
         }
       
         return view('sfa.index',compact('user','sfas'));

@@ -19,4 +19,8 @@ class Instrument extends Model
     {
     	return $this->hasMany('App\InstrumentRequest');
     }
+
+    public function iutilize(){
+        return $this->hasMany('App\IUtilize');
+    }
 }

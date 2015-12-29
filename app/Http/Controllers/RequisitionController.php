@@ -10,6 +10,8 @@ use App\Supdt;
 use App\Surveyor;
 use App\Requisition;
 use App\Category;
+use App\Vehicle;
+use App\Instrument;
 
 class RequisitionController extends Controller
 {
@@ -24,22 +26,27 @@ class RequisitionController extends Controller
      */
     public function index()
     {   
-        $surveyors = Surveyor::all();
-        
+            
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
             $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+            $surveyors = Surveyor::where('supdt_id',$user->id)->get();
+           // $vehicles = Vehicle::where('supdt_id',$user->id)->get();
+           // $instuments = Instrument::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
             $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
+            $surveyors = Surveyor::where('supdt_id',$user->supdt->id)->get();
+            //$vehicles = Vehicle::where('supdt_id',$user->supdt->id)->get();
+           // $instuments = Instrument::where('supdt_id',$user->supdt->id)->get();
         }
 
 
       
-        return view('requisition.index',compact('user','surveyors','requisitions'));
+        return view('requisition.index',compact('user','surveyors','requisitions','vehicles','instuments'));
     }
 
     /**
@@ -49,14 +56,15 @@ class RequisitionController extends Controller
      */
     public function create()
     {   
-        $surveyors = Surveyor::all();
         $categorys = Category::all();
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $surveyors = Surveyor::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $surveyors = Surveyor::where('supdt_id',$user->supdt->id)->get();
         }
 
         return view('requisition.create',compact('user','surveyors','categorys'));
@@ -86,7 +94,22 @@ class RequisitionController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $surveyor = Surveyor::findOrFail($id);
+            $requisitions = Requisition::where('surveyor_id',$surveyor->id)->orderBy('issued','asc')->get();
+            //dd($requisitions);
+            if(isset($requisitions['0']) == false){
+               
+                return redirect('/supdt');
+            }
+            
+        }else{
+            return redirect('/');
+        }
+      
+        return view('requisition.show',compact('user','requisitions','surveyor'));
     }
 
     /**
@@ -97,19 +120,26 @@ class RequisitionController extends Controller
      */
     public function edit($id)
     {
-        $surveyors = Surveyor::all();//lists('name','id');//all();
+       
         $categorys = Category::all();//lists('sub_category','id');
         $requisition = Requisition::findOrFail($id);
+       
 
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $surveyors = Surveyor::where('supdt_id',$user->id)->get();
+            $vehicles = Vehicle::where('supdt_id',$user->id)->get();
+            $instuments = Instrument::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $surveyors = Surveyor::where('supdt_id',$user->supdt->id)->get();
+            $vehicles = Vehicle::where('supdt_id',$user->supdt->id)->get();
+            $instuments = Instrument::where('supdt_id',$user->supdt->id)->get();
         }
 
-        return view('requisition.edit',compact('user','requisition','surveyors','categorys'));
+        return view('requisition.edit',compact('user','requisition','surveyors','categorys','vehicles','instuments'));
     }
 
     /**

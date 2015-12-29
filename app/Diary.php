@@ -18,4 +18,15 @@ class Diary extends Model
     {
         return $this->belongsTo('App\Surveyor');
     }
+
+     public function requisition()
+    {
+        return $this->belongsTo('App\Requisition','field_1');
+        
+    }
+    public function requisitionsfa()
+    {
+        return $this->belongsTo('App\Requisition','field_30');
+        
+    }
 }

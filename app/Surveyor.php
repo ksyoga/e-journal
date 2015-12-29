@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Surveyor extends Model
 {	
     protected $table = 'surveyors';
-    protected $filable = ['user_id','supdt_id','name','image','year','month'];
+    protected $fillable = ['user_id','supdt_id','name','image','year','month'];
 
 
     public function user()
@@ -38,6 +38,13 @@ class Surveyor extends Model
    public function requisition()
     {
         return $this->hasMany('App\Requisition');
+    }
+
+    public function scopeFiedSum($query)
+    {
+        //$surveyor = Surveyor::findOrFail($surveyors_id);
+        //return $surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('$field_no');
+        //return $query->where('id',1)::diary();
     }
 
 }

@@ -18,4 +18,8 @@ class Vehicle extends Model
     {
     	return $this->hasMany('App\VehicleRequest');
     }
+
+    public function vutilize(){
+        return $this->hasMany('App\VUtilize');
+    }
 }

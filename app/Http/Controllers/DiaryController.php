@@ -37,7 +37,7 @@ class DiaryController extends Controller
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
-            $diarys = Diary::where('surveyor_id',$user->id)->where('month',$user->month)->orderBy('day','asc')->get();
+            $diarys = Diary::where('surveyor_id',$user->id)->where('year',$user->year)->where('month',$user->month)->orderBy('day','asc')->get();
         }
       
         return view('diary.index',compact('user','diarys'));
@@ -93,7 +93,22 @@ class DiaryController extends Controller
      */
     public function show($id)
     {
-        
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $surveyor = Surveyor::findOrFail($id);
+            $diarys = Diary::where('surveyor_id',$surveyor->id)->where('year',$surveyor->year)->where('month',$surveyor->month)->orderBy('day','asc')->get();
+            
+            if(isset($diarys['0']) == false){
+               
+                return redirect('/supdt');
+            }
+            
+        }else{
+            return redirect('/');
+        }
+      
+        return view('diary.show',compact('user','diarys','surveyor'));
     }
 
     /**
@@ -136,7 +151,13 @@ class DiaryController extends Controller
         }
         $diary = Diary::findOrFail($id);
         $diary->update($request->all());
-        return redirect('diary');
+
+        if(Auth::user()->rank == 'supdt'){
+           return redirect()->action('DiaryController@show',$diary->surveyor_id);
+        }else{
+            return redirect('diary');
+        }   
+       
         
     }
 

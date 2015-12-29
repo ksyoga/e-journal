@@ -35,6 +35,18 @@ class Requisition extends Model
         return $this->belongsTo('App\Surveyor');
     }
 
+    public function iutilize(){
+        return $this->hasMany('App\IUtilize');
+    }
 
+    public function vutilize(){
+        return $this->hasMany('App\VUtilize');
+    }
+
+    public function diary(){
+        return $this->hasMany('App\Diary');
+    }
+
+     
 
 }

@@ -81,7 +81,22 @@ class WeekController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $surveyor = Surveyor::findOrFail($id);
+            $weeks = Week::where('surveyor_id',$surveyor->id)->where('year',$surveyor->year)->where('month',$surveyor->month)->orderBy('day','asc')->get();
+            
+            if(isset($weeks['0']) == false){
+               
+                return redirect('/supdt');
+            }
+            
+        }else{
+            return redirect('/');
+        }
+      
+        return view('week.show',compact('user','weeks','surveyor'));
     }
 
     /**
@@ -118,7 +133,14 @@ class WeekController extends Controller
     {
         $week = Week::findOrFail($id);
         $week->update($request->all());
-        return redirect('week');
+        if(Auth::user()->rank == 'supdt'){
+            //return $week->surveyor_id;
+            return redirect()->action('WeekController@show',$week->surveyor_id);
+        }else{
+            return redirect('week');
+        }    
+       
+        //return back();
     }
 
     /**

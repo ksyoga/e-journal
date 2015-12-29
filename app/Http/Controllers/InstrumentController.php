@@ -26,14 +26,16 @@ class InstrumentController extends Controller
     public function index()
     {
        // $surveyors = Surveyor::all();
-        $instruments = Instrument::all();
+        
 
         if(Auth::user()->rank == 'supdt'){
 
-            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $instruments = Instrument::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $instruments = Instrument::where('supdt_id',$user->supdt->id)->get();
         }
       
         return view('instrument.index',compact('user','instruments'));
@@ -47,15 +49,15 @@ class InstrumentController extends Controller
      */
     public function create()
     {
-         $instruments = Instrument::all();
-         // $surveyors = Surveyor::all();
-
+        
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $instruments = Instrument::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $instruments = Instrument::where('supdt_id',$user->supdt->id)->get();
         }
       
         return view('instrument.create',compact('user','instruments'));

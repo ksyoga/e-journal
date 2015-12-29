@@ -29,6 +29,8 @@ Route::resource('week','WeekController');
 Route::resource('selfcheck','SelfCheckController');
 Route::resource('diary','DiaryController'); 
 Route::resource('monthinvolved','MonthInvolvedController');
+Route::resource('iutilize','IUtilizeController');
+Route::resource('vutilize','VUtilizeController');
 
 Route::get('instrument/{id}/requist','InstrumentController@requist');
 Route::get('vehicle/{id}/requist','VehicleController@requist');

@@ -40,6 +40,11 @@
 .week-seprater tr:nth-child(5n+2){
      border-bottom: 2px solid #F39C12;
 }
+.diary-seprater tr:last-child{
+     
+    border-top: 2px solid #F39C12;
+    border-bottom: 2px solid #F39C12;
+}
 .diary-seprater tr:nth-child(2){
      border-bottom: 2px solid #F39C12;
 }
@@ -80,3 +85,11 @@
     font-weight: 600;
     font-size: 0.9em;
 }
+.bottom-line{
+    border-bottom:solid 1px  #f4f4f4;
+}
+
+/*.user-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}*/
