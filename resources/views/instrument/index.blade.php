@@ -6,7 +6,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Instruments Details
+        Instruments Reservations Details
         <small> {{Auth::user()->division->name}} Division</small>
 
       </h1>
@@ -29,9 +29,10 @@
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-aqua-active">
+            <div class="widget-user-header bg-aqua-active" style="padding-right:0px;">
               @if(Auth::user()->rank=="survy")
-                <a href="instrument/{{$instrument->id}}/requist" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Reservation of Instrument"><i class="glyphicon glyphicon-plus"></i></button></a>
+                <a href="instrument/{{$instrument->id}}/requist"><span class="label label-success pull-right" data-toggle="tooltip" title="Reservation of Instrument"><i class="glyphicon glyphicon-plus"></i></span></a>
+                <!-- <a href="instrument/{{$instrument->id}}/requist" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Reservation of Instrument"><i class="glyphicon glyphicon-plus"></i></button></a> -->
               @endif
               <div class="widget-user-image">
                 <img class="img-circle" src="../dist/img/edm/{{$instrument->image}}" alt="User Avatar">

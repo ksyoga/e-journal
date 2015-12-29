@@ -8,9 +8,16 @@
     <section class="content-header">
       <h1>
         Amendment Details
-        <small> {{Auth::user()->division->name}} Division</small>
+        <small> 
+            {{Auth::user()->division->name}} Division &nbsp;
+             @if(Auth::user()->rank=="supdt")
+              <a href="/amendment/create"><span class="label label-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></span></a>
+              <!-- <a href="/amendment/create"> <button class="btn btn-xs btn-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></button></a> -->
+             @endif
+        </small>
 
       </h1>
+     
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
@@ -21,65 +28,52 @@
     <section class="content">
 
   <!-- Your Page Content Here -->
-    
-  		 <div class="box">
-            <div class="box-header">
-              <div class="box-header">
-                @if(Auth::user()->rank=="supdt")
-                <a href="/amendment/create"> <button class="btn btn-xs btn-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></button></a>
-                @else
-                  &nbsp
-                @endif
-              <div class="box-tools">
-                <div class="input-group" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-                  <div class="input-group-btn">
-                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+           <div class="row">
+            @foreach($amendments as $amendment)
+              <div class="col-md-3">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{$amendment->plan_no}}</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
-                </div>
-              </div>
-            </div><!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <!-- <th>Status</th> -->
-                  <th>Plane No/Requisition No</th>
-                  <th><span data-toggle="tooltip" title="Date">Received</span></th>
-                  <th>Supdt Note</th>
-                  <th>Surveyor</th>
-                  <th><span data-toggle="tooltip" title="Date">Completeed</span></th>
-                  <th>Note</th>
-                  <th>&nbsp</th>
-                </tr>
-                
-            	@foreach($amendments as $amendment)
-            	<tr>
-  		        	<!-- <td><span class="label label-warning">Pending</span></td> -->
-  		        	<td>{{$amendment->plan_no}}</td>
-  		        	<td>{!!$utilities::sldate($amendment->received)!!}</td>
-  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->supdt_note}}"></i></td>
-  		        	<td>{{$amendment->surveyor->name}}</td>
-  		        	<td>{!!$utilities::sldate($amendment->completion)!!}</td> 
-                <!-- <td>{{date_format(date_create($amendment->completion),'d/m/Y')}}</td> -->
-  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$amendment->surveyor_note}}"></i></td>
-  		        	<td align="right">
-                    <div class="tools">
-                      @if(Auth::user()->rank=="supdt")
-                        <a href="amendment/{{$amendment->id}}/edit"><i class="fa fa-edit"></i></a>
-                        <i class="fa fa-trash-o"></i>
-                      @else
-                        <a href="amendment/{{$amendment->id}}/edit"><i class="fa fa-edit"></i></a>
-                      @endif
-                      </div>   
-                </td>
-            	</tr>
-            	@endforeach
-                
-                
-                
-              </table>
-            </div><!-- /.box-body -->
-          </div><!-- /.box -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <strong><i class="fa fa-book margin-r-5"></i>Plane No/Requisition No</strong>
+                  <p class="text-muted">
+                    {{$amendment->plan_no}}
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-download margin-r-5"></i> Received Date &  Supdt Note</strong>
+                  <p class="text-muted">{!!$utilities::sldate($amendment->received)!!}, {{$amendment->supdt_note}}</p>
+
+                  <hr>
+
+                  <strong><i class="glyphicon glyphicon-user margin-r-5"></i> Surveyor</strong>
+                  <p>
+                   {{$amendment->surveyor->name}}
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-upload margin-r-5"></i> Completeed Date & Notes</strong>
+                  <p>{!!$utilities::sldate($amendment->completion)!!}, {{$amendment->surveyor_note}}</p>
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="amendment/{{$amendment->id}}/edit">&nbsp;<span class="pull-right text-yellow"><i class="fa fa-edit"></i></span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+            </div>
+            @endforeach
+          </div>  
+    
+  		
+
    
 
  	</section><!-- /.content -->

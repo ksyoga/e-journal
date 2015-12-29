@@ -21,7 +21,7 @@ class CreateDiarysTable extends Migration
             /**
              * @Purpose of the day spent by Surveyor
              */
-            $table->string('field_1',20)->nullable()->comment('Requisition No');
+            $table->integer('field_1')->unsigned()->nullable()->comment('Requisition No');
             $table->string('field_2',20)->nullable()->comment('Category No');
             $table->double('field_3',2,1)->nullable()->comment('Investigating Reqn .in Office');
             $table->double('field_4',2,1)->nullable()->comment('Investigating & Locating Reqn .in Field');
@@ -56,7 +56,7 @@ class CreateDiarysTable extends Migration
              * Duties of Survey Field Assistance on the day
              */
             $table->smallInteger('field_29')->nullable()->comment('No. of SFA assigned fron the day');
-            $table->string('field_30')->nullable()->comment('Requisition No');
+            $table->integer('field_30')->unsigned()->nullable()->comment('Requisition No');
             $table->string('field_31',20)->nullable()->comment('Category No');
             $table->double('field_32',2,1)->nullable()->comment('Clearing');
             $table->double('field_33',2,1)->nullable()->comment('Picketing/ Landmarking/ GPS monumentation');
@@ -90,6 +90,7 @@ class CreateDiarysTable extends Migration
 
             $table->timestamps();
             $table->foreign('surveyor_id')->references('id')->on('surveyors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('field_1')->references('id')->on('requisitions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

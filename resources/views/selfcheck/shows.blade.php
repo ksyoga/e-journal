@@ -26,7 +26,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">{{$utilities::journalMonth($user->month)}} {{$user->year}} </h3>
+                  <h3 class="box-title">{{$surveyor->name}}'s Self Check at {{$utilities::journalMonth($user->month)}} {{$user->year}} </h3>
                   <!-- <div class="box-tools pull-right">
                     <ul class="pagination pagination-sm inline">
                       <li><a href="#">&laquo;</a></li>
@@ -104,7 +104,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                       <input type="checkbox"  name="field_5"  <?php  $selfchecks->field_5 == 'on' ? print "checked" : "" ?>>
-                      <span class="text">Any unattended correspondences</span>
+                      <span class="text">Any unsttended correspondences</span>
                       <!-- <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small> -->
                       
                     </li>
@@ -115,7 +115,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                       <input type="checkbox"  name="field_6"  <?php  $selfchecks->field_6 == 'on' ? print "checked" : "" ?>>
-                      <span class="text">Any amendment tracings  received for corrections</span>
+                      <span class="text">Any amendment trscings received for corrections</span>
                       <!-- <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small> -->
                       
                     </li>
@@ -137,7 +137,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                       <input type="checkbox"  name="field_8"  <?php  $selfchecks->field_8 == 'on' ? print "checked" : "" ?>>
-                      <span class="text">Cancelled Vrs.for returned documents received</span>
+                      <span class="text">Cancelled Vrs.for returned documents receved</span>
                       <!-- <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small> -->
                       
                     </li>
@@ -148,7 +148,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                       <input type="checkbox"  name="field_9"  <?php  $selfchecks->field_9 == 'on' ? print "checked" : "" ?>>
-                      <span class="text">Any clearance certificated to be received</span>
+                      <span class="text">Any clearance certificated to be receved</span>
                       <!-- <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small> -->
                       
                     </li>
@@ -159,7 +159,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                       <input type="checkbox"  name="field_10"  <?php  $selfchecks->field_10 == 'on' ? print "checked" : "" ?>>
-                      <span class="text">Any unnecessary  or unserviceable store with you</span>
+                      <span class="text">Any unnecssary or unserviceable store with you</span>
                       <!-- <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small> -->
                       
                     </li>
@@ -187,9 +187,9 @@
                     </li>
                   </ul>
                 </div><!-- /.box-body -->
-                <div class="box-footer clearfix no-border">
+                <!-- <div class="box-footer clearfix no-border">
                   <button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Update Check List</button>
-                </div>
+                </div> -->
               </div><!-- /.box -->
 
               </form>

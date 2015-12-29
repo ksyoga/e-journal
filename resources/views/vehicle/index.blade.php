@@ -29,9 +29,10 @@
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-aqua-active">
+            <div class="widget-user-header bg-aqua-active" style="padding-right:0px;">
               @if(Auth::user()->rank=="survy")
-                <a href="vehicle/{{$vehicle->id}}/requist" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Reservation of Vehicle"><i class="glyphicon glyphicon-plus"></i></button></a>
+                <a href="vehicle/{{$vehicle->id}}/requist"><span class="label label-success pull-right" data-toggle="tooltip" title="Reservation of Vehicle"><i class="glyphicon glyphicon-plus"></i></span></a>
+                <!-- <a href="vehicle/{{$vehicle->id}}/requist" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Reservation of Vehicle"><i class="glyphicon glyphicon-plus"></i></button></a> -->
               @endif
               <div class="widget-user-image">
                 <img class="img-circle" src="../dist/img/vehicles/{{$vehicle->image}}" alt="User Avatar">

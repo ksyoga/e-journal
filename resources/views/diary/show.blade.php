@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
+       {{$surveyor->name}}'s Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
 
         <!-- <small> Diyatalawa Division</small> -->
 
@@ -33,8 +33,6 @@
                   <li><a href="#tab_2" data-toggle="tab">Duties of Surveyor Field Assistans on the Day, Job done by SFA, Other Information &amp; Remark</a></li>
                   
                   <!-- <li class="pull-right"><a href="diary/create" class="text-muted"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Diary "><i class="glyphicon glyphicon-plus"></i></button></a></li> -->
-                  <!-- <li class="pull-right"><a href="diary/create"><span class="label label-success pull-right" data-toggle="tooltip" title="Add Diary"><i class="glyphicon glyphicon-plus"></i></span></a></li>
- -->                  {!!$utilities::diarylimt($user->year,$user->month,$diarys->count())!!}
                   <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
                 </ul>
                 <div class="tab-content">
@@ -80,19 +78,9 @@
                         @foreach($diarys as $diary)
                         <tr>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
-                          <th scope="row">
-                              {!!$utilities::sldate($diary->day)!!}
-                              @if(Auth::user()->rank=="survy")
-                                <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
-                              @endif
-                          </th>
-                          @if($diary->field_1 != 0 || $diary->field_1 != NULL)
-                          <td align="center">{!!$utilities::spendday($diary->requisition->requisition_no)!!}</td>
-                          <td align="center">{!!$utilities::spendday($diary->requisition->category)!!}</td>
-                          @else
+                          <th scope="row">{!!$utilities::sldate($diary->day)!!}</th>
                           <td align="center">{!!$utilities::spendday($diary->field_1)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_2)!!}</td>
-                          @endif
                           <td align="center">{!!$utilities::spendday($diary->field_3)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_4)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_5)!!}</td>
@@ -127,30 +115,30 @@
                           <th scope="row">Total</th>
                           <th>&nbsp;</th>
                           <th>&nbsp;</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_3'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_4'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_5'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_6'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_7'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_8'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_9'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_10'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_11'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_12'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_13'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_14'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_15'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_16'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_17'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_18'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_19'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_20'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_21'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_22'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_23'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_24'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_25'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_26'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_3'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_4'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_5'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_6'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_7'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_8'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_9'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_10'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_11'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_12'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_13'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_14'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_15'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_16'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_17'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_18'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_19'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_20'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_21'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_22'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_23'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_24'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_25'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_26'))!!}</th>
                           <th>—</th>
                           <th>—</th>
                         </tr>
@@ -202,66 +190,68 @@
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif
                           </th>
-                            <td align="center">{!!$utilities::spendday($diary->field_29)!!}</td>
-                            @if($diary->field_30 != 0 || $diary->field_30 != NULL)
-                            <td align="center">{!!$utilities::spendday($diary->requisitionsfa->requisition_no)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->requisitionsfa->category)!!}</td>
-                            @else
-                            <td align="center">{!!$utilities::spendday($diary->field_30)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_31)!!}</td>
-                            @endif
-                            <td align="center">{!!$utilities::spendday($diary->field_32)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_33)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_34)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_35)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_36)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_37)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_38)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_39)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_40)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_41)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_42)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_43)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_44)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_45)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_46)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_47)!!}</td>
-                            <td align="center">{!!$utilities::spendday($diary->field_48)!!}</td>
-                            <td align="center">{!!$utilities::note($diary->field_49)!!}</td>
-                            <!-- <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td> -->
-                            <td align="center">{!!$utilities::spendday($diary->field_50)!!}</td>
-                            <!-- <td align="center">{{$diary->field_51}}</td> -->
-                            <td align="center">{!!$utilities::note($diary->field_51)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_29)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_30)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_31)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_32)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_33)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_34)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_35)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_36)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_37)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_38)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_39)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_40)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_41)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_42)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_43)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_44)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_45)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_46)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_47)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->field_48)!!}</td>
+                          <td align="center">{!!$utilities::note($diary->field_49)!!}</td>
+                          <!-- <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td> -->
+                          <td align="center">{!!$utilities::spendday($diary->field_50)!!}</td>
+                          
+                          <td align="center">
+                              {!!$utilities::note($diary->field_51)!!} &nbsp;
+                             <!--  <i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_51}}"></i> -->
+                             <!-- {{action('DiaryController@edit', ['id' => $diary->id])}} -->
+                              @if(Auth::user()->rank=="supdt")
+                                <a href="" data-toggle="modal" data-target="#DiaryModal{{$diary->id}}" class="pull-right"><i class="fa fa-edit"></i></a>
+                                    
+                              @endif
+                          </td>
                           
                         </tr>
                         @endforeach
                         <!-- For Total -->
                         <tr>
                           <th scope="row">Total</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_29'))!!}</th>
+                          <th>{{$surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_29')}}</th>
                           <th>—</th>
                           <th>—</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_32'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_33'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_34'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_35'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_36'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_37'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_38'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_39'))!!}</th>
-                          <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_40'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_41'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_42'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_43'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_44'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_45'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_32'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_33'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_34'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_35'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_36'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_37'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_38'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_39'))!!}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_40'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_41'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_42'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_43'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_44'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_45'))!!}</th>
                           <th>—</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_47'))!!}</th>
-                          <th>{!!$utilities::spendday($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_48'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_47'))!!}</th>
+                          <th>{!!$utilities::spendday($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_48'))!!}</th>
                           <th>—</th>
                           <th>—</th>
                           <th>—</th>
-                          
                         </tr>
                         
                       </tbody>
@@ -273,7 +263,38 @@
             </div><!-- /.col -->
 
   		</div>
-   
+      <!-- model start -->
+       @foreach($diarys as $diary)
+      <div class="modal fade" id="DiaryModal{{$diary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">{{$surveyor->name}}'s Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}</h4>
+              </div>
+              <div class="modal-body">
+              <form method="POST" action="/diary/{{$diary->id}}" >
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="PUT">
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">Date : {{date_format(date_create($diary->day),'d/m/Y')}}</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="field_51" class="control-label">Supdt. Of Surveys note.</label>
+                    <textarea id="field_51" name="field_51" class="textarea" placeholder="Supdt. Of Surveys note" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$diary->field_51}}</textarea>
+                  </div>
+               
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add Remark</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <!-- modelend -->
+        @endforeach
 
  	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

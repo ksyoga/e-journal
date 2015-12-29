@@ -55,9 +55,7 @@
 
 		                  			<div class="form-group">
 										<label for="request_for" class="control-label ">Purpose of Vehicle :</label>
-										<textarea class="textarea" name="request_for" id="request_for" placeholder="Purpose of Vehicle" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-											
-										</textarea>
+										<textarea class="textarea" name="request_for" id="request_for" placeholder="Purpose of Vehicle" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 									</div>
 
 									

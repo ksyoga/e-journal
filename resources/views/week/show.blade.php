@@ -26,9 +26,8 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">{{$utilities::journalMonth($user->month)}} {{$user->year}}</h3>
-                  <!-- <a href="week/create" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Week Programe "><i class="glyphicon glyphicon-plus"></i></button></a> -->
-                  <a href="week/create"><span class="label label-success pull-right" data-toggle="tooltip" title="Add Week Programe"><i class="glyphicon glyphicon-plus"></i></span></a>
+                  <h3 class="box-title">{{$surveyor->name}}'s following week Programme for {{$utilities::journalMonth($user->month)}} {{$user->year}}</h3>
+                  <a href="week/create" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Week Programe "><i class="glyphicon glyphicon-plus"></i></button></a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                 	
@@ -71,7 +70,7 @@
 					      <td align="center">
 					      	{{$week->ss_note}}
 					      	@if(Auth::user()->rank=="supdt")
-					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+					      		<a href="{{action('WeekController@edit', ['id' => $week->id])}}" class="pull-right"><i class="fa fa-edit"></i></a>
 					      	@endif
 					      </td>
 					    </tr>

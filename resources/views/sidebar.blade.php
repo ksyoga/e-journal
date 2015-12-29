@@ -41,14 +41,22 @@
         <li class="{{Request::is('requisition')?'active':''}}"><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requisition</span></a></li>
         <li class="{{Request::is('amendment')?'active':''}}"><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
         <li class="{{Request::is('sfa')?'active':''}}"><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
-        <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
-        <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+       <!--  <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
+        <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li> -->
+        <li class="treeview {{Request::is('instrument')?'active':''}} {{Request::is('iutilize')?'active':''}}">
+          <a href="#"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station </span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </li>
+            <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
+            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+          </ul>
+        </li>
+        <li class="treeview {{Request::is('vehicle')?'active':''}} {{Request::is('vutilize')?'active':''}}">
+          <a href="#"><i class="fa fa-truck"></i> <span>Vehicle </span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
+            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+          </ul>
+        </li>
       @endif
 
       @if(Auth::user()->rank=="supdt")
@@ -56,8 +64,22 @@
           <li class="{{Request::is('sfa')?'active':''}}"><a href="/sfa"><i class="fa fa-users"></i> <span>Survey Field Assistant</span></a></li>
           <li class="{{Request::is('requisition')?'active':''}}"><a href="/requisition"><i class="fa fa-object-group"></i> <span>Requisition</span></a></li>
           <li class="{{Request::is('amendment')?'active':''}}"><a href="/amendment"><i class="glyphicon glyphicon-retweet"></i> <span>Amendments</span></a></li>
-          <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
-          <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li>
+          <!-- <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station</span></a></li>
+          <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="fa fa-truck"></i> <span>Vehicles</span></a></li> -->
+          <li class="treeview {{Request::is('instrument')?'active':''}} {{Request::is('iutilize')?'active':''}}">
+          <a href="#"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station </span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
+            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+          </ul>
+        </li>
+        <li class="treeview {{Request::is('vehicle')?'active':''}} {{Request::is('vutilize')?'active':''}}">
+          <a href="#"><i class="fa fa-truck"></i> <span>Vehicle </span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
+            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+          </ul>
+        </li>
       @endif
     </ul><!-- /.sidebar-menu -->
   </section>

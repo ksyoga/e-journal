@@ -6,7 +6,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Survey Field Assistans
+        Survey Field Assistants 
         <small> {{Auth::user()->division->name}} Division</small>
 
       </h1>

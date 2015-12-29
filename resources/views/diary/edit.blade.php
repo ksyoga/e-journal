@@ -49,9 +49,9 @@
 								<label for="field_1" class="control-label">Requisition No:</label>
 								<!-- <input class="form-control input-sm" name="field_1" id="field_1" placeholder="Requisition No."> -->
 								<select class="form-control input-sm" name="field_1" id="field_1" >
-									<option value="-" <?php $diary->field_1 === '-' ? print "selected" : "" ?>>-</option>
+									<option value="" <?php $diary->field_1 === '' ? print "selected" : "" ?>>-</option>
 								 @foreach($requisitions as $requisition)
-			                      	<option value="{{$requisition->requisition_no}}" <?php  $requisition->requisition_no === $diary->field_1 ? print "selected" : "" ?>>{{$requisition->requisition_no}}</option>
+			                      	<option value="{{$requisition->id}}" <?php  $requisition->id === $diary->field_1 ? print "selected" : "" ?>>{{$requisition->requisition_no}}</option>
 			                      @endforeach
 			                    </select>
 							</div>
@@ -240,9 +240,9 @@
 									<label for="field_30" class="control-label">Requsition No.</label>
 									<!-- <input class="form-control input-sm" id="field_30" name="field_30" placeholder="Requsition No."> -->
 									<select class="form-control input-sm" name="field_30" id="field_30" >
-										<option value="-" <?php $diary->field_30 === '-' ? print "selected" : "" ?>>-</option>
+										<option value="" <?php $diary->field_30 === 'null' ? print "selected" : "" ?>>-</option>
 									 @foreach($requisitions as $requisition)
-				                      	<option value="{{$requisition->requisition_no}}" <?php  $requisition->requisition_no === $diary->field_30 ? print "selected" : "" ?>>{{$requisition->requisition_no}}</option>
+				                      	<option value="{{$requisition->id}}" <?php  $requisition->id === $diary->field_30 ? print "selected" : "" ?>>{{$requisition->requisition_no}}</option>
 				                      @endforeach
 				                    </select>
 								</div>

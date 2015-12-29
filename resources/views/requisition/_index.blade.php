@@ -46,14 +46,17 @@
                   <th>Requisition No</th>
                   <th>Category</th>
                   <th>Work Load</th>
-                  <th  colspan="2">Lots & Extent</th>
-                  <th  colspan="2">Received & Issued</th>
+                  <th>Lots</th>
+                  <th>Extent</th>
+                  <th>Received</th>
+                  <th>Issued</th>
                   <th>Surveyor</th>
-                  <th  colspan="2">Commance & Completed</th>
-                  <th colspan="2"><span data-toggle="tooltip" title="Field  & Plane Works">Work</span></th>
-                  <th colspan="2">Utilize</th>
+                  <th>Commance</th>
+                  <th><span data-toggle="tooltip" title="Field Works">F.W</span></th>
+                  <th><span data-toggle="tooltip" title="Plane Works">P.W</span></th>
+                  <th>Completed</th>
                   <th>Note</th>
-                  <th width="50px;"></th>
+                  <th></th>
                 </tr>
                 
             	@foreach($requisitions as $requisition)
@@ -62,29 +65,25 @@
   		        	<td>{{$requisition->requisition_no}}</td>
   		        	<td>{{$requisition->category}}</td>
   		        	<td>{{$requisition->work_load}}</td>
-  		        	<td align="center">{{$requisition->lots}}</td>
-                <td><span class="pull-right">{{$requisition->extent}} </span></td>
+  		        	<td>{{$requisition->lots}}</td>
+  		        	<td>{{$requisition->extent}}</td>
   		        	<td>{!!$utilities::sldate($requisition->received_date)!!}</td>
-                <td>{!!$utilities::sldate($requisition->issued)!!}</td>
+  		        	<td>{!!$utilities::sldate($requisition->issued)!!}</td>
   		        	<td>{{$requisition->surveyor->name}}</td>
   		        	<td>{!!$utilities::sldate($requisition->commanced)!!}</td>
+  		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->fieldwork}}</span></td>
+  		        	<td><span data-toggle="tooltip" title="Days">{{$requisition->planwork}}</span></td>
                 <td>{!!$utilities::sldate($requisition->complet_date)!!}</td>
-  		        	<td><span data-toggle="tooltip" title="Field Work Days">{!!$utilities::dec2fracso($requisition->fieldwork)!!}</span> </td>
-  		        	<td><span data-toggle="tooltip" title="Plan Work Days" class="pull-right">{!!$utilities::dec2fracso($requisition->planwork)!!}</span></td>
-                <td><span data-toggle="tooltip" title="Total Station Utilize">{!!$utilities::dec2fracso($requisition->iutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span></td> 
-                <td><span data-toggle="tooltip" title="Vehicle Utilize" class="pull-right">{!!$utilities::dec2fracso($requisition->vutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span></td>
-               
-                <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
-                <td align="right" width="50px;">
-                   
+  		        	<td ><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
+                <td align="right">
+                    <div class="tools">
                       @if(Auth::user()->rank=="supdt")
-                        <i class=" pull-right text-red fa fa-trash-o"></i>
-                        <a href="requisition/{{$requisition->id}}/edit"><i class="pull-right text-yellow fa fa-edit"></i></a>
-                        
+                        <a href="requisition/{{$requisition->id}}/edit"><i class="fa fa-edit"></i></a>
+                        <i class="fa fa-trash-o"></i>
                       @else
-                        <a href="requisition/{{$requisition->id}}/edit"><i class="pull-right text-yellow fa fa-edit"></i></a>
+                        <a href="requisition/{{$requisition->id}}/edit"><i class="fa fa-edit"></i></a>
                       @endif
-                     
+                      </div>
                 </td>
             	</tr>
             	@endforeach
@@ -94,7 +93,7 @@
               </table>
             </div><!-- /.box-body -->
           </div><!-- /.box -->
-       
+   
 
  	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

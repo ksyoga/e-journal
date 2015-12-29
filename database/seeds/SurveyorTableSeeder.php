@@ -42,7 +42,7 @@ class SurveyorTableSeeder extends Seeder
         Surveyor::create([
         	 'user_id'  => 10076,
         	 'supdt_id' =>	1,
-        	 'name'		=>	'K.G.L.C.Kahatagahadiwela',
+        	 'name'		=>	'K.G.Lakshika',
              'image'    =>  '10076.jpg',
         	 'year'		=>	2015,
         	 'month' 	=>	12,
@@ -51,7 +51,7 @@ class SurveyorTableSeeder extends Seeder
          Surveyor::create([
         	 'user_id'  => 10044,
         	 'supdt_id' =>	1,
-        	 'name'		=>	'W.H.T.R.Hettrachchi',
+        	 'name'		=>	'W.H.Tushani',
              'image'    =>  '10044.jpg',
         	 'year'		=>	2015,
         	 'month' 	=>	12,
@@ -69,7 +69,7 @@ class SurveyorTableSeeder extends Seeder
         Surveyor::create([
         	 'user_id'  => 10084,
         	 'supdt_id' =>	1,
-        	 'name'		=>	'J.D.N.Nanayakkara',
+        	 'name'		=>	'J.D.Nelumka',
              'image'    =>  '10084.jpg',
         	 'year'		=>	2015,
         	 'month' 	=>	12,
