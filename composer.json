@@ -5,7 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "shared-calendar": "*",
+        //"ext-calendar": "*",
+        "ext-bcmath": "*",
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*"
     },
