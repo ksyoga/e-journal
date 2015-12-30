@@ -20,15 +20,18 @@ class DatabaseSeeder extends Seeder
          $this->call(SupdtTableSeeder::class);
          $this->call(SurveyorTableSeeder::class);
          $this->call(InstrumentTableSeeder::class);
-         $this->call(InstrumentRequestTableSeeder::class);
          $this->call(VehicleTableSeeder::class);
-         $this->call(VehicleRequestTableSeeder::class);
-         $this->call(RequisitionTableSeeder::class);
          $this->call(SfasTableSeeder::class);
-         $this->call(AmendmentTableSeeder::class);
-         $this->call(WeekTableSeeder::class);
-         $this->call(DiaryTableSeeder::class);
-         $this->call(CategoryTableSeeder::class); 
+         $this->call(CategoryTableSeeder::class);
+         
+        //  $this->call(RequisitionTableSeeder::class);
+        //  $this->call(InstrumentRequestTableSeeder::class);
+        //  $this->call(VehicleRequestTableSeeder::class);
+         
+        //  $this->call(AmendmentTableSeeder::class);
+        //  $this->call(WeekTableSeeder::class);
+        //  $this->call(DiaryTableSeeder::class);
+          
          
 
         Model::reguard();
