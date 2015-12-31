@@ -14,11 +14,11 @@ class UserTableSeeder extends Seeder
     {
         User::create([
         	 'id'           => 10105,
-             'division_id'  =>  1,
-        	 'name' 	  =>	'S.Yogananth',
-        	 'email'	  =>	'ksyoga@gmail.com',
+             'division_id'   =>  1,
+        	 'name' 	    =>	'S.Yogananth',
+        	 'email'	    =>	'ksyoga@gmail.com',
              'rank'         =>  'survy',
-        	 'password'	=>	Hash::make('yoga'),
+        	 'password'	    =>	Hash::make('yoga'),
              // 'month'     =>  12,
              // 'year'      =>  2015,
         ]);
@@ -36,7 +36,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10048,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'D.M.S.K.Dissanayake',
              'email'    =>  'sampath@gmail.com',
              'rank'     =>  'survy',
@@ -47,29 +47,29 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10076,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'K.G.L.C.Kahatagahadiwela',
-             'email'    =>  'luxce@gmail.com',
+             'email'    =>  'lakshi@gmail.com',
              'rank'     =>  'survy',
-             'password' =>  Hash::make('luxce'),
+             'password' =>  Hash::make('lakshi'),
              // 'month'     =>  12,
              // 'year'      =>  2015,
         ]);
 
         User::create([
         	 'id'       => 10044,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'W.H.T.R.Hettrachchi',
-             'email'    =>  'tusane@gmail.com',
+             'email'    =>  'tushani@gmail.com',
              'rank'     =>  'survy',
-             'password' =>  Hash::make('tusane'),
+             'password' =>  Hash::make('tushani'),
              // 'month'     =>  12,
              // 'year'      =>  2015,
         ]);
 
         User::create([
         	 'id'       => 10047,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'J.A.S.Manuranga',
              'email'    =>  'manu@gmail.com',
              'rank'     =>  'survy',
@@ -80,18 +80,18 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10084,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'J.D.N.Nanayakkara',
-             'email'    =>  'nelum@gmail.com',
+             'email'    =>  'nelumka@gmail.com',
              'rank'     =>  'survy',
-             'password' =>  Hash::make('nelum'),
+             'password' =>  Hash::make('nelumka'),
              // 'month'     =>  12,
              // 'year'      =>  2015,
         ]);
 
         User::create([
         	 'id'       => 10049,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'K.B.Perera',
              'email'    =>  'bathe@gmail.com',
              'rank'     =>  'survy',
@@ -102,7 +102,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10046,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'K.S.F.Ranwalage',
              'email'    =>  'doma@gmail.com',
              'rank'     =>  'survy',
@@ -113,7 +113,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10053,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'L.R.G.K.Rathnayake',
              'email'    =>  'gunash@gmail.com',
              'rank'     =>  'survy',
@@ -124,7 +124,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10050,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'K.L.Roshan',
              'email'    =>  'roshan@gmail.com',
              'rank'     =>  'survy',
@@ -134,7 +134,7 @@ class UserTableSeeder extends Seeder
         ]);
         User::create([
         	 'id'       => 10096,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'A.Zuhas',
              'email'    =>  'zuhas@gmail.com',
              'rank'     =>  'survy',
@@ -145,7 +145,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
         	 'id'       => 10000,
-              'division_id'  =>  1,
+             'division_id'  =>  1,
              'name'     =>  'S.M.R.A.Pathirathna',
              'email'    =>  'pathi@gmail.com',
              'rank'     =>  'supdt',
