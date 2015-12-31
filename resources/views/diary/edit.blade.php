@@ -60,7 +60,7 @@
 								<label for="field_2" class="control-label">Category No:</label>
 								<!-- <input class="form-control input-sm" name="field_2" id="field_2" placeholder="Category No."> -->
 								<select class="form-control input-sm" name="field_2" id="field_2" >
-									<option value="-" <?php $diary->field_2 === '-' ? print "selected" : "" ?>>-</option>
+									<option value=" " <?php $diary->field_2 == '' ? print "selected" : "" ?>>-</option>
 								 @foreach($categorys as $category)
 			                      	<option value="{{$category->sub_id}}" <?php  $category->sub_id === $diary->field_2 ? print "selected" : "" ?>>{{$category->sub_category}}</option>
 			                      @endforeach
@@ -251,7 +251,7 @@
 									<label for="field_31" class="control-label">Category No.</label>
 									<!-- <input class="form-control input-sm" id="field_31" name="field_31" placeholder="Category No."> -->
 									<select class="form-control input-sm" name="field_31" id="field_31" >
-									<option value="-" <?php $diary->field_31 === '-' ? print "selected" : "" ?>>-</option>
+									<option value=" " <?php $diary->field_31 == ' ' ? print "selected" : "" ?>>-</option>
 								 @foreach($categorys as $category)
 			                      	<option value="{{$category->sub_id}}" <?php  $category->sub_id === $diary->field_31 ? print "selected" : "" ?>>{{$category->sub_category}}</option>
 			                      @endforeach
