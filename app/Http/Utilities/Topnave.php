@@ -78,16 +78,22 @@ class Topnave
 
    	public static function com_work_pecentage(){
         
-        	if(Auth::user()->rank == 'supdt'){
+        if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();
             $work_lodae = Requisition::where('supdt_id',$user->id)->where('status','!=',0)->sum('work_load');
             $com_work_lodae = Requisition::where('supdt_id',$user->id)->where('status',3)->sum('work_load');
+            if($work_lodae==0){
+                return 0;
+            }
             return ($com_work_lodae/$work_lodae)*100 ;
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
              $work_lodae = Requisition::where('surveyor_id',$user->id)->where('status','!=',0)->sum('work_load');
             $com_work_lodae = Requisition::where('surveyor_id',$user->id)->where('status',3)->sum('work_load');
+            if($work_lodae==0){
+                return 0;
+            }
             return ($com_work_lodae/$work_lodae)*100 ;
         }           
         
