@@ -13,6 +13,7 @@ class SupdtTableSeeder extends Seeder
     public function run()
     {
         Supdt::create([
+             'id'           =>1, 
         	 'user_id' 		=>	10000,
         	 'division_id'	=>	1,
              'name'     	=>  'S.M.R.A.Pathirathna',
@@ -23,6 +24,7 @@ class SupdtTableSeeder extends Seeder
         ]);
 
         Supdt::create([
+            'id'           =>2,
              'user_id'      =>  20000,
              'division_id'  =>  2,
              'name'         =>  'D.G.G.Kithsiri',
