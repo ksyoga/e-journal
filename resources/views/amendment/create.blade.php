@@ -22,7 +22,7 @@
   <!-- Your Page Content Here -->
 
   		 <form method="POST" action="/amendment" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 		        <input type="hidden" name="supdt_id" id="supdt_id"  value="{{$user->id}}">
 				
 				<div class="row">

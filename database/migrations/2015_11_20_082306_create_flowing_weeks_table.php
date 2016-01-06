@@ -21,7 +21,7 @@ class CreateFlowingWeeksTable extends Migration
              * Surveyor
              */
             $table->date('day');
-            $table->string('req_no',20)->nullable()->comment('Requisition No');
+            $table->integer('requ_id')->unsigned()->nullable()->comment('Requisition No');
             $table->string('pro_work',250)->nullable()->comment('Programmed work');
             /**
              * Requirements of Resources
@@ -33,7 +33,7 @@ class CreateFlowingWeeksTable extends Migration
             /**
              * Proposed duty to SFA
              */
-            $table->string('sfa_req_no',20)->nullable()->comment('Requisition No');
+            $table->integer('sfa_requ_id')->unsigned()->nullable()->comment('Requisition No');
             $table->string('sfa_work_asign')->nullable()->comment('Work to be assigned');
             /**
              * SS's note

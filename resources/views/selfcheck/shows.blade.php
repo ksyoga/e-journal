@@ -40,7 +40,7 @@
                 <div class="box-body">
 
                 <form method="POST" action="/selfcheck/{{$selfchecks->id}}" class="form-horizontal">
-                    {{ csrf_field() }}
+                    {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="PUT">
                 
                       

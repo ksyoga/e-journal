@@ -21,7 +21,7 @@
 
   <!-- Your Page Content Here -->
   		<form method="POST" action="/week/{{$week->id}}" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 				<input type="hidden" name="_method" value="PUT">
 		        	
 				<div class="row">
@@ -50,17 +50,17 @@
 																		
 									
 									<div class="form-group">
-										<label for="req_no" class="control-label ">Requisition No :</label>
-										<!-- <input class="form-control"  name="req_no" id="req_no" placeholder="Requisition No : "> -->
+										<label for="requ_id" class="control-label ">Requisition No :</label>
+										<!-- <input class="form-control"  name="requ_id" id="requ_id" placeholder="Requisition No : "> -->
 										@if(Auth::user()->rank=="survy")
-										<select class="form-control" name="req_no" id="req_no" placeholder="Surveyor ">
-											<option></option>
+										<select class="form-control" name="requ_id" id="requ_id" placeholder="Surveyor ">
+											<option value="">-</option>
 											@foreach($requisitions as $requisition )
-											<option value="{{$requisition->requisition_no}}" <?php  $week->req_no == $requisition->requisition_no ? print "selected" : "" ?> >{{$requisition->requisition_no}}</option>
+											<option value="{{$requisition->id}}" <?php  $week->requ_id == $requisition->id ? print "selected" : "" ?> >{{$requisition->requisition_no}}</option>
 											@endforeach
 										</select>
 										@elseif(Auth::user()->rank=="supdt")
-											<input class="form-control"  disabled value="{{$week->req_no}}" name="req_no" id="req_no" placeholder=" Requisition:">
+											<input class="form-control"  disabled value="{{$week->requ_id}}" name="requ_id" id="requ_id" placeholder=" Requisition:">
 										@endif
 									</div>
 									
@@ -123,17 +123,17 @@
 									</div>
 
 									<div class="form-group">
-										<label for="sfa_req_no" class="control-label ">Proposed duty to SFA Requisition No :  </label>
-										<!-- <input class="form-control"  name="sfa_req_no" id="sfa_req_no" placeholder="Requisition No : "> -->
+										<label for="sfa_requ_id" class="control-label ">Proposed duty to SFA Requisition No :  </label>
+										<!-- <input class="form-control"  name="sfa_requ_id" id="sfa_requ_id" placeholder="Requisition No : "> -->
 										@if(Auth::user()->rank=="survy")
-										<select class="form-control" name="sfa_req_no" id="sfa_req_no" placeholder="Surveyor ">
-											<option></option>
+										<select class="form-control" name="sfa_requ_id" id="sfa_requ_id" placeholder="Surveyor ">
+											<option value="">-</option>
 											@foreach($requisitions as $requisition )
-											<option value="{{$requisition->requisition_no}}" <?php  $requisition->requisition_no == $week->sfa_req_no  ? print "selected" : "" ?> >{{$requisition->requisition_no}}</option>
+											<option value="{{$requisition->id}}" <?php  $requisition->id == $week->sfa_requ_no  ? print "selected" : "" ?> >{{$requisition->requisition_no}}</option>
 											@endforeach
 										</select>
 										@elseif(Auth::user()->rank=="supdt")
-											<input class="form-control"    disabled value="{{$week->sfa_req_no}}" name="sfa_req_no" id="sfa_req_no" placeholder="Proposed duty to SFA Requisition No ">
+											<input class="form-control"    disabled value="{{$week->sfa_requ_id}}" name="sfa_requ_id" id="sfa_requ_id" placeholder="Proposed duty to SFA Requisition No ">
 										@endif
 									</div>
 

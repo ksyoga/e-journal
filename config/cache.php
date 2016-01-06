@@ -42,10 +42,10 @@ return [
             'connection' => null,
         ],
 
-        'file' => [
-            'driver' => 'file',
-            'path'   => storage_path('framework/cache'),
-        ],
+		'file' => [
+			'driver' => 'file',
+			'path'   => storage_path().'/cache',
+		],
 
         'memcached' => [
             'driver'  => 'memcached',

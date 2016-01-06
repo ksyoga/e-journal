@@ -85,40 +85,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-print"></i></a></li>
           <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
           <!-- Home tab content -->
           <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
+            <h3 class="control-sidebar-heading">Recent Report & Activity</h3>
             <ul class="control-sidebar-menu">
               <li>
-                <a href="#;">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                  <i class="menu-icon  fa fa-object-group bg-purple"></i>
                   <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                    <p>Will be 23 on April 24th</p>
+                    <h4 class="control-sidebar-subheading">Requisition Detailes</h4>
+                    <span class="label label-danger ">Unknown</span> 
+                    <span class="label label-warning ">Awarded</span> 
+                    <span class="label label-info ">Commance</span> 
+                    <span class="label label-success ">Completed</span>
                   </div>
-                </a>
+              </li>
+              <hr>
+              <li>
+                  <i class="menu-icon  fa fa fa-inbox bg-orange"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Surveyor Journal</h4>
+                    <span class="label label-danger ">January</span> 
+                    <span class="label label-warning ">February</span> 
+                    <span class="label label-info ">March</span> 
+                    <span class="label label-success ">Aprial</span>
+
+                    <span class="label bg-orange ">May</span> 
+                    <span class="label bg-purple ">June</span> 
+                    <span class="label bg-olive ">July</span> 
+                    <span class="label label-primary">August</span>
+
+                    <span class="label label-danger ">September</span> 
+                    <span class="label label-warning ">October</span> 
+                    <span class="label label-info ">November</span> 
+                    <span class="label label-success ">December</span>
+                  </div>
+              </li>
+              <hr>
+
+              <li>
+                  <i class="menu-icon  fa fa-bar-chart bg-olive"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Utilization Detailes</h4>
+                    <span class="label label-info">Total Station</span> 
+                    <span class="label label-primary">Vehicle</span> 
+                  </div>
               </li>
             </ul><!-- /.control-sidebar-menu -->
 
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="#;">
-                  <h4 class="control-sidebar-subheading">
-                    Custom Template Design
-                    <span class="label label-danger pull-right">70%</span>
-                  </h4>
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
+            
 
           </div><!-- /.tab-pane -->
           <!-- Stats tab content -->

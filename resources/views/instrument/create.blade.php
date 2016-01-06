@@ -21,7 +21,7 @@
 
   <!-- Your Page Content Here -->
   		<form method="POST" action="/instrument" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 				<input type="hidden" name="surveyor_id" value="{{ $user->id }}">
 				<input type="hidden" name="instrument_id" value="{{$instrumentsid}}">
 		        	

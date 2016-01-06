@@ -153,5 +153,40 @@ class UserTableSeeder extends Seeder
              // 'month'     =>  12,
              // 'year'      =>  2015,
         ]);
+
+        // New Devision
+
+        User::create([
+             'id'       => 20000,
+             'division_id'  =>  2,
+             'name'     =>  'D.G.G.Kithsiri',
+             'email'    =>  'kith@gmail.com',
+             'rank'     =>  'supdt',
+             'password' =>  Hash::make('kith'),
+             // 'month'     =>  12,
+             // 'year'      =>  2015,
+        ]);
+
+        User::create([
+             'id'       => 10106,
+             'division_id'  =>  2,
+             'name'     =>  'P.Dineshkumar',
+             'email'    =>  'dina@gmail.com',
+             'rank'     =>  'survy',
+             'password' =>  Hash::make('dina'),
+             // 'month'     =>  12,
+             // 'year'      =>  2015,
+        ]);
+
+        User::create([
+             'id'       => 10097,
+             'division_id'  =>  2,
+             'name'     =>  'J.Vijayatharsan',
+             'email'    =>  'tharsan@gmail.com',
+             'rank'     =>  'survy',
+             'password' =>  Hash::make('tharsan'),
+             // 'month'     =>  12,
+             // 'year'      =>  2015,
+        ]);
     }
 }

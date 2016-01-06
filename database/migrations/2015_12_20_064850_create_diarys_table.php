@@ -90,7 +90,7 @@ class CreateDiarysTable extends Migration
 
             $table->timestamps();
             $table->foreign('surveyor_id')->references('id')->on('surveyors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('field_1')->references('id')->on('requisitions')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreign('field_1')->references('id')->on('requisitions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

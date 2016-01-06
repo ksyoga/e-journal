@@ -16,7 +16,7 @@ class Utilities
 		}elseif ($id==3) {
 			return "<small class=\"label label-success\">Completed</small>";
 		}else{
-			return "<small class=\"label label-danger\">Unknown</small>";
+			return "<small class=\"label label-danger\">Unmindful</small>";
 		}
 	}
 

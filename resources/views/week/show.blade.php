@@ -59,13 +59,21 @@
 					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
 					      	@endif
 					      </td>
-					      <td>{{$week->req_no}}</td>
+					      @if($week->requ_id != NULL || $week->requ_id != 0)
+					      <td align="center">{!!$utilities::spendday($week->requ_survey->requisition_no)!!}</td>
+					      @else
+					      <td align="center">—</td>
+					      @endif
 					      <td>{{$week->pro_work}}</td>
-					      <td align="center">{{$week->no_sfa}}</td>
+					      <td align="center">{!!$utilities::spendday($week->no_sfa)!!}</td>
 					      <td align="center">{{$week->instrument}}</td>
 					      <td align="center">{{$week->vehicle}}</td>
-					      <td align="center">{{$week->travel}}</td>
-					      <td>{{$week->sfa_req_no}}</td>
+					      <td align="center">{!!$utilities::spendday($week->travel)!!}</td>
+					      @if($week->sfa_requ_id != NULL || $week->sfa_requ_id != 0)
+					      <td align="center">{!!$utilities::spendday($week->requ_sfa->requisition_no)!!}</td>
+					      @else
+					      <td align="center">—</td>
+					      @endif
 					      <td>{{$week->sfa_work_asign}}</td>
 					      <td align="center">
 					      	{{$week->ss_note}}

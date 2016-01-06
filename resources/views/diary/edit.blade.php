@@ -22,7 +22,7 @@
   <!-- Your Page Content Here -->
 
   		<form method="POST" action="/diary/{{$diary->id}}" >
-		{{ csrf_field() }}
+		{!! csrf_field() !!}
 		<input type="hidden" name="_method" value="PUT">
 		
 

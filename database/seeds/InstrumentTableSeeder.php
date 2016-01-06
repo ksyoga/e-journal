@@ -15,21 +15,42 @@ class InstrumentTableSeeder extends Seeder
         Instrument::create([
         	 'supdt_id'	=> 1,
         	 'brand' 	=>	'Trimble',
-        	 'model'	=>	'HB-12X74',
+        	 'model'	=>	'C4-12X74',
              'image'    =>  'trimble.jpg',
         ]);
 
         Instrument::create([
         	 'supdt_id'	=> 1,
         	 'brand' 	=>	'Sokia',
-        	 'model'	=>	'ED-MX3D4',
+        	 'model'	=>	'C4-MX3D4',
              'image'    =>  'sokia.jpg',
         ]);
 
         Instrument::create([
         	 'supdt_id'	=> 1,
         	 'brand' 	=>	'Lica',
-        	 'model'	=>	'D3X6-VX',
+        	 'model'	=>	'C4-3X6-VX',
+             'image'    =>  'lica.jpg',
+        ]);
+
+        Instrument::create([
+             'supdt_id' => 2,
+             'brand'    =>  'Trimble',
+             'model'    =>  'C3-12X74',
+             'image'    =>  'trimble.jpg',
+        ]);
+
+        Instrument::create([
+             'supdt_id' => 2,
+             'brand'    =>  'Sokia',
+             'model'    =>  'C3-MX3D4',
+             'image'    =>  'sokia.jpg',
+        ]);
+
+        Instrument::create([
+             'supdt_id' => 2,
+             'brand'    =>  'Lica',
+             'model'    =>  'C3-X6VX',
              'image'    =>  'lica.jpg',
         ]);
     }

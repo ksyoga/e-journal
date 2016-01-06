@@ -47,6 +47,10 @@ class Requisition extends Model
         return $this->hasMany('App\Diary');
     }
 
+    public function week(){
+        return $this->hasMany('App\Week');
+    }
+
      
 
 }

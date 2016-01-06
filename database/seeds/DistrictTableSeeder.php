@@ -15,5 +15,8 @@ class DistrictTableSeeder extends Seeder
         District::create([
         	 'name'     =>  'Badulla',     
         ]);
+        District::create([
+             'name'     =>  'Jaffna',     
+        ]);
     }
 }

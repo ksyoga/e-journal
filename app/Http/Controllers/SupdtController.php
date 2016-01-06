@@ -29,15 +29,15 @@ class SupdtController extends Controller
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
             $surveyors = Surveyor::where('supdt_id',$user->id)->get();
-            //$requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
             $surveyors = Surveyor::where('supdt_id',$user->supdt->id)->get();
-            //$requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
         }
       
-        return view('supdt.index',compact('user','surveyors'));
+        return view('supdt.index',compact('user','surveyors','requisitions'));
         
     }
 

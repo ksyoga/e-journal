@@ -1,3 +1,4 @@
+@inject('nave','App\Http\Utilities\Topnave')
 <!-- Main Header -->
 <header class="main-header">
 
@@ -41,11 +42,11 @@
                     </div>
                     <!-- Message title and timestamp -->
                     <h4>
-                      Support Team
+                      Supdt.Of.Survey
                       <small><i class="fa fa-clock-o"></i> 5 mins</small>
                     </h4>
                     <!-- The message -->
-                    <p>Why not buy a new awesome theme?</p>
+                    <p>Why not you start TCO/TMP/2016/021 requisition?</p>
                   </a>
                 </li><!-- end message -->
               </ul><!-- /.menu -->
@@ -59,17 +60,19 @@
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
+            <span class="label label-danger">{{$nave::new_requisition()}}</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
-            <li>
+            <li class="header text-red">You have {{$nave::new_requisition()}} unmindful requisitions</li>
+            <li class="header">
               <!-- Inner Menu: contains the notifications -->
               <ul class="menu">
                 <li><!-- start notification -->
-                  <a href="#">
-                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                  </a>
+                  <? $lists = $nave::new_requisition_list() ?>
+                  @foreach($nave::new_requisition_list() as $list)
+                    <small>{{$list->requisition_no}} — ({{$list->work_load}}) — {{$list->surveyor->name}}</small>
+                    
+                  @endforeach
                 </li><!-- end notification -->
               </ul>
             </li>
@@ -80,11 +83,11 @@
         <li class="dropdown tasks-menu">
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
+            <i class="fa  fa-exchange"></i>
+            <span class="label  bg-purple">{{$nave::un_com_requi()}}</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 9 tasks</li>
+            <li>You have {{$nave::un_com_requi()}} uncompleted Requisitions</li>
             <li>
               <!-- Inner menu: contains the tasks -->
               <ul class="menu">
@@ -92,14 +95,15 @@
                   <a href="#">
                     <!-- Task title and progress text -->
                     <h3>
-                      Design some buttons
-                      <small class="pull-right">20%</small>
+                      Completed Work Load :
+                      {!!$nave::com_work_lodae()!!}
+                      <!-- <small class="pull-right">3/</small> -->
                     </h3>
                     <!-- The progress bar -->
                     <div class="progress xs">
                       <!-- Change the css width attribute to simulate progress -->
-                      <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                        <span class="sr-only">20% Complete</span>
+                      <div class="progress-bar progress-bar-aqua" style="width: {{$nave::com_work_pecentage()}}%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only">{{$nave::com_work_pecentage()}}% Complete</span>
                       </div>
                     </div>
                   </a>
@@ -107,7 +111,7 @@
               </ul>
             </li>
             <li class="footer">
-              <a href="#">View all tasks</a>
+              <a href="/requisition">View all Requisitions</a>
             </li>
           </ul>
         </li>

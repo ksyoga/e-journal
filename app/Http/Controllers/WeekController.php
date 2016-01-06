@@ -55,7 +55,7 @@ class WeekController extends Controller
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
-            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',2)->orderBy('id','desc')->get();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status','!=',3)->orderBy('id','desc')->get();
         }
         return view('week.create',compact('user','requisitions'));
     }
@@ -117,6 +117,7 @@ class WeekController extends Controller
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
             $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
+
         }
 
         return view('week.edit',compact('user','requisitions','week'));

@@ -21,5 +21,15 @@ class SupdtTableSeeder extends Seeder
              'year'         =>  '2015',
              
         ]);
+
+        Supdt::create([
+             'user_id'      =>  20000,
+             'division_id'  =>  2,
+             'name'         =>  'D.G.G.Kithsiri',
+             'image'        =>  '10105.jpg',
+             'month'        =>  '12',
+             'year'         =>  '2015',
+             
+        ]);
     }
 }

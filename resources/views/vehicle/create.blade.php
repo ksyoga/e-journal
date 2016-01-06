@@ -21,7 +21,7 @@
 
   <!-- Your Page Content Here -->
   		<form method="POST" action="/vehicle" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 				<input type="hidden" name="surveyor_id" value="{{ $user->id }}">
 				<input type="hidden" name="vehicle_id" value="{{$vehicle}}">
 		        	

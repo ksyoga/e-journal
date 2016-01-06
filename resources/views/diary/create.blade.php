@@ -22,7 +22,7 @@
   <!-- Your Page Content Here -->
 
   		<form method="POST" action="/diary" >
-		{{ csrf_field() }}
+		{!! csrf_field() !!}
 		<input type="hidden" name="surveyor_id" value="{{ $user->id }}">
 		<input type="hidden" name="year" value="{{ $user->year }}">
 		<input type="hidden" name="month" value="{{ $user->month }}">
@@ -50,7 +50,7 @@
 								<label for="field_1" class="control-label">Requisition No:</label>
 								<!-- <input class="form-control input-sm" name="field_1" id="field_1" placeholder="Requisition No."> -->
 								<select class="form-control input-sm" name="field_1" id="field_1" >
-									<option value=NULL>-</option>
+									<option value="">-</option>
 								 @foreach($requisitions as $requisition)
 			                      	<option value="{{$requisition->id}}">{{$requisition->requisition_no}}</option>
 			                      @endforeach
@@ -241,7 +241,7 @@
 									<label for="field_30" class="control-label">Requsition No.</label>
 									<!-- <input class="form-control input-sm" id="field_30" name="field_30" placeholder="Requsition No."> -->
 									<select class="form-control input-sm" name="field_30" id="field_30" >
-										<option value=NULL>-</option>
+										<option value="">-</option>
 									 @foreach($requisitions as $requisition)
 				                      	<option value="{{$requisition->id}}">{{$requisition->requisition_no}}</option>
 				                      @endforeach

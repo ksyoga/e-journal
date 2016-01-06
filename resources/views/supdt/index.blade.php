@@ -111,11 +111,11 @@
                   <div class="modal-footer">
                    
                     <form method="POST" action="/supdt/{{$surveyor->id}}" >
-                    {{ csrf_field() }}
+                    {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" value="{{$surveyor->month}}" required name="month" id="month">
                     <input type="hidden" value="{{$surveyor->year}}" required name="year" id="year">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     @if($surveyor->diary->count() == cal_days_in_month(CAL_GREGORIAN, $surveyor->month, $surveyor->year) && $lmonth==$surveyor->month)
                     <button type="submit" class="btn btn-primary">Approve {{date("F",mktime(0,0,0,$surveyor->month))}} Journal</button>
                     @endif

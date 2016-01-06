@@ -21,7 +21,7 @@
 
   <!-- Your Page Content Here -->
   		<form method="POST" action="/week" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 				<input type="hidden" name="surveyor_id" value="{{ $user->id }}">
 				<input type="hidden" name="year" value="{{ $user->year }}">
 				<input type="hidden" name="month" value="{{ $user->month }}">
@@ -42,16 +42,16 @@
 
 		                  			<div class="form-group">
 										<label for="day" class="control-label"> Date : </label>
-										<input class="form-control" type="date" name="day" id="day" placeholder=" Date:">
+										<input class="form-control" required type="date" name="day" id="day" placeholder=" Date:">
 									</div>
 
 									<div class="form-group">
 										<label for="req_no" class="control-label ">Requisition No </label>
 										<!-- <input class="form-control"  name="req_no" id="req_no" placeholder="Requisition No : "> -->
-										<select class="form-control" name="req_no" id="req_no" placeholder="Surveyor ">
-											<option value="-">-</option>
+										<select class="form-control" name="requ_id" id="requ_id" placeholder="Surveyor ">
+											<option value="">-</option>
 											@foreach($requisitions as $requisition )
-											<option value="{{$requisition->requisition_no}}" >{{$requisition->requisition_no}}</option>
+											<option value="{{$requisition->id}}" >{{$requisition->requisition_no}}</option>
 											@endforeach
 										</select>
 									</div>
@@ -97,10 +97,10 @@
 									<div class="form-group">
 										<label for="sfa_req_no" class="control-label ">Proposed duty to SFA Requisition No </label>
 										<!-- <input class="form-control"  name="sfa_req_no" id="sfa_req_no" placeholder="Requisition No : "> -->
-										<select class="form-control" name="sfa_req_no" id="sfa_req_no" placeholder="Surveyor ">
-											<option value="-">-</option>
+										<select class="form-control" name="sfa_requ_id" id="sfa_requ_id" placeholder="Surveyor ">
+											<option value="">-</option>
 											@foreach($requisitions as $requisition )
-											<option value="{{$requisition->requisition_no}}" >{{$requisition->requisition_no}}</option>
+											<option value="{{$requisition->id}}" >{{$requisition->requisition_no}}</option>
 											@endforeach
 										</select>
 									</div>

@@ -33,7 +33,7 @@
 		                </div><!-- /.box-header -->
 		                <!-- form start -->
 		                <form method="POST" action="/requisition/{{$requisition->id}}" >
-		                	{{ csrf_field() }}
+		                	{!! csrf_field() !!}
 		                	<input type="hidden" name="_method" value="PUT">
 							<input type="hidden" name="id" value="{{ $requisition->id }}">
 		                	<!-- <input type="hidden" name="supdt_id" id="supdt_id"  value="1"> -->
@@ -205,7 +205,7 @@
 		                </div>
 		                <div class="modal-body">
 		                  <form method="POST" action="/iutilize" >
-		                  {{ csrf_field() }}
+		                  {!! csrf_field() !!}
 		                  <input type="hidden" name="requisition_id" value="{{$requisition->id}}">
 		                  
 
@@ -251,7 +251,7 @@
 		                </div>
 		                <div class="modal-body">
 		                  <form method="POST" action="/vutilize" >
-		                  {{ csrf_field() }}
+		                  {!! csrf_field() !!}
 		                  <input type="hidden" name="requisition_id" value="{{$requisition->id}}">
 		                  
 

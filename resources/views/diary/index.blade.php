@@ -125,8 +125,8 @@
                         <!-- For Total -->
                         <tr>
                           <th scope="row">Total</th>
-                          <th>&nbsp;</th>
-                          <th>&nbsp;</th>
+                          <th>—</th>
+                          <th>—</th>
                           <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_3'))!!}</th>
                           <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_4'))!!}</th>
                           <th>{!!$utilities::dec2fracso($user->diary()->where('year',$user->year)->where('month',$user->month)->sum('field_5'))!!}</th>

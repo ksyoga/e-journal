@@ -21,7 +21,7 @@
 
   <!-- Your Page Content Here -->
   		<form method="POST" action="/instrument/{{$requist->id}}" class="form-horizontal">
-				{{ csrf_field() }}
+				{!! csrf_field() !!}
 				<input type="hidden" name="_method" value="PUT">
 				<input type="hidden" name="id" value="{{ $requist->id }}">
 				

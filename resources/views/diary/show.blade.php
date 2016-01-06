@@ -79,8 +79,13 @@
                         <tr>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">{!!$utilities::sldate($diary->day)!!}</th>
+                          @if($diary->field_1 != 0 || $diary->field_1 != NULL)
+                          <td align="center">{!!$utilities::spendday($diary->requisition->requisition_no)!!}</td>
+                          <td align="center">{!!$utilities::spendday($diary->requisition->category)!!}</td>
+                          @else
                           <td align="center">{!!$utilities::spendday($diary->field_1)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_2)!!}</td>
+                          @endif
                           <td align="center">{!!$utilities::spendday($diary->field_3)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_4)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_5)!!}</td>
@@ -113,8 +118,8 @@
                         <!-- For Total -->
                         <tr>
                           <th scope="row">Total</th>
-                          <th>&nbsp;</th>
-                          <th>&nbsp;</th>
+                          <th>—</th>
+                          <th>—</th>
                           <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_3'))!!}</th>
                           <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_4'))!!}</th>
                           <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_5'))!!}</th>
@@ -191,8 +196,13 @@
                               @endif
                           </th>
                           <td align="center">{!!$utilities::spendday($diary->field_29)!!}</td>
-                          <td align="center">{!!$utilities::spendday($diary->field_30)!!}</td>
-                          <td align="center">{!!$utilities::spendday($diary->field_31)!!}</td>
+                          @if($diary->field_30 != 0 || $diary->field_30 != NULL)
+                            <td align="center">{!!$utilities::spendday($diary->requisitionsfa->requisition_no)!!}</td>
+                            <td align="center">{!!$utilities::spendday($diary->requisitionsfa->category)!!}</td>
+                            @else
+                            <td align="center">{!!$utilities::spendday($diary->field_30)!!}</td>
+                            <td align="center">{!!$utilities::spendday($diary->field_31)!!}</td>
+                          @endif
                           <td align="center">{!!$utilities::spendday($diary->field_32)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_33)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_34)!!}</td>
@@ -229,7 +239,7 @@
                         <!-- For Total -->
                         <tr>
                           <th scope="row">Total</th>
-                          <th>{{$surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_29')}}</th>
+                          <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_29'))!!}</th>
                           <th>—</th>
                           <th>—</th>
                           <th>{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->where('month',$surveyor->month)->sum('field_32'))!!}</th>
@@ -274,7 +284,7 @@
               </div>
               <div class="modal-body">
               <form method="POST" action="/diary/{{$diary->id}}" >
-                {{ csrf_field() }}
+                {!! csrf_field() !!}
                 <input type="hidden" name="_method" value="PUT">
                   <div class="form-group">
                     <label for="recipient-name" class="control-label">Date : {{date_format(date_create($diary->day),'d/m/Y')}}</label>

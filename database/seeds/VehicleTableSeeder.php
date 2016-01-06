@@ -15,29 +15,57 @@ class VehicleTableSeeder extends Seeder
         Vehicle::create([
         	 'supdt_id'		=> 1,
         	 'brand' 		=>	'TOYOTA',
-        	 'vehicle_no'	=>	'EP HB-1274',
+        	 'vehicle_no'	=>	'C4 HB-1274',
              'image'    	=>  'toyota.jpg',
         ]);
 
         Vehicle::create([
         	 'supdt_id'		=> 1,
         	 'brand' 		=>	'ISUZU',
-        	 'vehicle_no'	=>	'WP WB-8278',
+        	 'vehicle_no'	=>	'C4 WB-8278',
              'image'    	=>  'isuzu.jpg',
         ]);
 
         Vehicle::create([
         	 'supdt_id'		=> 1,
         	 'brand' 		=>	'NISSAN',
-        	 'vehicle_no'	=>	'EP AX-3268',
+        	 'vehicle_no'	=>	'C4 AX-3268',
              'image'    	=>  'nissan.jpg',
         ]);
 
         Vehicle::create([
         	 'supdt_id'		=> 1,
         	 'brand' 		=>	'MITSUBISHI',
-        	 'vehicle_no'	=>	'NP SX-8280',
+        	 'vehicle_no'	=>	'C4 SX-8280',
              'image'    	=>  'mitsubishi.jpg',
+        ]);
+
+        Vehicle::create([
+             'supdt_id'     => 2,
+             'brand'        =>  'TOYOTA',
+             'vehicle_no'   =>  'C3 HB-1274',
+             'image'        =>  'toyota.jpg',
+        ]);
+
+        Vehicle::create([
+             'supdt_id'     => 2,
+             'brand'        =>  'ISUZU',
+             'vehicle_no'   =>  'C3 WB-8278',
+             'image'        =>  'isuzu.jpg',
+        ]);
+
+        Vehicle::create([
+             'supdt_id'     => 2,
+             'brand'        =>  'NISSAN',
+             'vehicle_no'   =>  'C3 AX-3268',
+             'image'        =>  'nissan.jpg',
+        ]);
+
+        Vehicle::create([
+             'supdt_id'     => 2,
+             'brand'        =>  'MITSUBISHI',
+             'vehicle_no'   =>  'C3 SX-8280',
+             'image'        =>  'mitsubishi.jpg',
         ]);
     }
 }

@@ -32,7 +32,7 @@
 		                </div><!-- /.box-header -->
 		                <!-- form start -->
 		                <form method="POST" action="/requisition" >
-		                	{{ csrf_field() }}
+		                	{!! csrf_field() !!}
 		                	<input type="hidden" name="supdt_id" id="supdt_id"  value="{{$user->id}}">
 		                	
 		                

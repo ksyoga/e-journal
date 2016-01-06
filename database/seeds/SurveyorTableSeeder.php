@@ -119,5 +119,25 @@ class SurveyorTableSeeder extends Seeder
         	 'year'		=>	2015,
         	 'month' 	=>	12,
         ]);  
+
+        // new Division
+
+        Surveyor::create([
+             'user_id'  => 10106,
+             'supdt_id' =>  2,
+             'name'     =>  'P.Dineshkumar',
+             'image'    =>  '10105.jpg',
+             'year'     =>  2015,
+             'month'    =>  12,
+        ]);
+
+        Surveyor::create([
+             'user_id'  => 10097,
+             'supdt_id' =>  2,
+             'name'     =>  'J.Vijayatharsan',
+             'image'    =>  '10045.jpg',
+             'year'     =>  2015,
+             'month'    =>  12,
+        ]);
     }
 }
