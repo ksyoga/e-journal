@@ -13,9 +13,11 @@ class DistrictTableSeeder extends Seeder
     public function run()
     {
         District::create([
+             'id'       => 1,
         	 'name'     =>  'Badulla',     
         ]);
         District::create([
+             'id'       => 2,
              'name'     =>  'Jaffna',     
         ]);
     }
