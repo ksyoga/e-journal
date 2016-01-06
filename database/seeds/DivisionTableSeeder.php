@@ -13,10 +13,12 @@ class DivisionTableSeeder extends Seeder
     public function run()
     {
          Division::create([
+             'id'           => 1,
          	 'district_id'	=>	'1',
         	 'name'     	=>  'BDC14, Class No 4',     
         ]);
          Division::create([
+             'id'           =>  2,
              'district_id'  =>  '2',
              'name'         =>  'BDC14, Class No 3',     
         ]);
