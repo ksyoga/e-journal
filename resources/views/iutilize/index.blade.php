@@ -41,10 +41,11 @@
               <h5 class="widget-user-desc">{{$instrument->model}} <span class="pull-right">Used Days : {{$instrument->iutilize()->sum('used_days')}}</span> </h5>
               --> 
               <div class="info-box-content">
-                <span class="info-box-text">{{$instrument->model}}<span class="pull-right">Total Utilized Days : {!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!}</span></span>
+                <span class="info-box-text">{{$instrument->model}}<span class="pull-right">Total Utilized Days : {!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!}</span> </span>
+                <span class="info-box-text"><span class="pull-right">Total Working Days : <i>{{$utilities::getWorkingDays("2016-01-01",date('Y-m-d'))}}</i></span> </span>
                 <span class="info-box-number">{{$instrument->brand}}</span>
                 <div class="progress progress-striped active" style="height:7px">
-                  <div class="progress-bar progress-bar-yellow" style="width:{{50+$instrument->iutilize()->sum('used_days')}}%"></div>
+                  <div class="progress-bar progress-bar-yellow" style="width:{{(($instrument->iutilize()->sum('used_days'))/($utilities::getWorkingDays("2016-01-01",date('Y-m-d'))))*100}}%"></div>
                 </div>
               </div><!-- /.info-box-content -->
 

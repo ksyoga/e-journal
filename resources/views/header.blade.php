@@ -37,7 +37,7 @@
                   <a href="#">
                     <div class="pull-left">
                       <!-- User Image -->
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src="{{url('dist/img')}}/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                     </div>
                     <!-- Message title and timestamp -->
@@ -87,7 +87,7 @@
             <span class="label  bg-purple">{{$nave::un_com_requi()}}</span>
           </a>
           <ul class="dropdown-menu">
-            <li>You have {{$nave::un_com_requi()}} uncompleted Requisitions</li>
+            <li class="header text-yellow">You have {{$nave::un_com_requi()}} uncompleted Requisitions</li>
             <li>
               <!-- Inner menu: contains the tasks -->
               <ul class="menu">

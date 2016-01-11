@@ -93,3 +93,22 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }*/
+/*Report Style*/
+
+.pageA4 {
+    
+    margin: auto;
+    width: 210mm;
+    height: 297mm;
+    background-color: #fff;
+    /*border:solid 1px  #999;*/
+     /* change the margins as you want them to be. */
+}
+.pageA3 {
+    margin: auto;
+    height: 420mm;
+    width: 594mm;
+    background-color: #fff;
+    border:solid 1px  #999;
+    
+}

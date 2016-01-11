@@ -36,4 +36,7 @@ Route::get('instrument/{id}/requist','InstrumentController@requist');
 Route::get('vehicle/{id}/requist','VehicleController@requist');
 
 
-
+/**
+// Report Controler
+*/
+Route::get('report/{status}/requi','ReportsController@requisition');
