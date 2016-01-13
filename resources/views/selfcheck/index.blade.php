@@ -47,6 +47,7 @@
                   <ul class="todo-list">
                     <li>
                       <!-- drag handle -->
+                      <div class="checkbox icheck">
                       <span>01</span>
                       <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
@@ -56,13 +57,14 @@
 
 
                       <!-- checkbox -->
+
                       <input type="checkbox"  name="field_1"  <?php  $selfchecks->field_1 == 'on' ? print "checked" : "" ?> >
                       <!-- todo text -->
                       <span class="text">Leave applications have been sent.</span>
                       <!-- Emphasis label -->
                       <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
                       <!-- General tools such as edit or delete-->
-                      
+                      </div>
                     </li>
                     <li>
                       <span>02</span>

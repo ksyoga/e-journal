@@ -12,6 +12,9 @@ use App\Requisition;
 use App\Category;
 use App\Vehicle;
 use App\Instrument;
+use App\IUtilize;
+use App\VUtilize;
+use DB;
 
 class ReportsController extends Controller
 {
@@ -23,8 +26,88 @@ class ReportsController extends Controller
      /**
    *Display Requisition Detailes
    **/
-   public function requisition($status=3){
-        //return $status;
-        return view('reports.index',compact('status'));
-   } 
+
+   
+   public function requisition($status_id=NULL){
+        
+        if($status_id==0){
+          $status = "Unmindfull Requisition";
+        }elseif($status_id==1){
+          $status = "Accepted Requisition";
+        }elseif($status_id==2){
+          $status = "Commance Requisition";
+        }elseif($status_id==3){
+          $status = "Completed Requisition";
+        }else{
+          $status = "Unknown Requisition";
+        }
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
+            $requisitions = Requisition::where('supdt_id',$user->id)->where('status',$status_id)->orderBy('issued','desc')->get();
+            $surveyor_id = $user->id;
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',$status_id)->orderBy('issued','desc')->get();
+             $surveyor_id = $user->id;  
+        }
+
+        return view('reports.requisitions',compact('status','requisitions','surveyor_id'));
+        
+      }
+
+      public function instrument($id=NULL){
+
+        $lable=["info","primary"];
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $instrument = Instrument::where('supdt_id',$user->id)->where('id',$id)->first();
+            $iutilizes = IUtilize::where('instrument_id',$id)->get();
+            $surveyor_id = $user->id;
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $instrument = Instrument::where('supdt_id',$user->supdt->id)->where('id',$id)->first();
+            $iutilizes = IUtilize::where('instrument_id',$id)->get();
+            $surveyor_id = $user->id;
+            // $iutilizes = DB::table('iutilize')
+            //             ->join('requisitions','iutilize.requisition_id','=','requisitions.id')
+            //             ->select('iutilize.*','requisitions.surveyor_id')
+            //             ->where('requisitions.surveyor_id' , '1')
+            //             ->where('iutilize.instrument_id','1')
+            //             ->get();
+            
+        }
+
+        return view('reports.instrument',compact('instrument','iutilizes','surveyor_id'));
+
+      }
+    
+//    vehicle detailes
+    
+    public function vehicle($id=NULL){
+
+        $lable=["info","primary"];
+
+        if(Auth::user()->rank == 'supdt'){
+
+            $user = Supdt::where('user_id',(Auth::user()->id))->first();
+            $vehicle = Vehicle::where('supdt_id',$user->id)->where('id',$id)->first();
+            $vutilizes = VUtilize::where('vehicle_id',$id)->get();
+            $surveyor_id = $user->id;  
+
+        }else{
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $vehicle = Vehicle::where('supdt_id',$user->supdt->id)->where('id',$id)->first();
+            $vutilizes = VUtilize::where('vehicle_id',$id)->get();
+            $surveyor_id = $user->id;  
+        }
+
+        return view('reports.vehicle',compact('vehicle','vutilizes','surveyor_id'));
+
+      }
+
 }

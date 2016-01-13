@@ -22,12 +22,12 @@ class CreateRequisitionTable extends Migration
             $table->integer('lots');
             $table->double('extent');
             $table->integer('surveyor_id')->unsigned();
-            $table->date('issued');
-            $table->date('commanced');
+            $table->date('issued')->nullable();
+            $table->date('commanced')->nullable();
             $table->double('fieldwork');
             $table->double('planwork');
             $table->integer('status');
-            $table->date('complet_date');
+            $table->date('complet_date')->nullable();
             $table->string('note');
             $table->timestamps();
             $table->foreign('supdt_id')->references('id')->on('supdts')->onDelete('cascade')->onUpdate('cascade');

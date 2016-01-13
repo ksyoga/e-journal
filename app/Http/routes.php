@@ -14,6 +14,13 @@ Route::get('/', function () {
 Route::get('admin', function () {
     return view('admin');
 });
+
+Route::get('dbtest', function () {
+	$utilize = DB::table('iutilize')->join('requisitions','iutilize.requisition_id','=','requisitions.id')->select('iutilize.*')->where('requisitions.surveyor_id' , 1)->where('iutilize.instrument_id',1)->get();
+
+    return $utilize;
+});
+
 Route::get('test', 'TestController@index');
 
 /**
@@ -40,3 +47,5 @@ Route::get('vehicle/{id}/requist','VehicleController@requist');
 // Report Controler
 */
 Route::get('report/{status}/requi','ReportsController@requisition');
+Route::get('report/{status}/instrument','ReportsController@instrument');
+Route::get('report/{status}/vehicle','ReportsController@vehicle');

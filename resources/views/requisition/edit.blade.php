@@ -73,7 +73,8 @@
 									<div class="form-group">
 									<label for="status" class="control-label ">Requisition Status : </label>
 										<select class="form-control" name="status"  id="status" placeholder="Category No ">
-											<option value="1" <?php  $requisition->status == 1 ? print "selected" : "" ?>  >Awarded</option>
+											<option value="0" <?php  $requisition->status == 0 ? print "selected" : "" ?>  >Unmindful</option>
+											<option value="1" <?php  $requisition->status == 1 ? print "selected" : "" ?>  >Accepted</option>
 											<option value="2" <?php  $requisition->status == 2 ? print "selected" : "" ?>  >Commance</option>
 											<option value="3" <?php  $requisition->status == 3 ? print "selected" : "" ?>  >Completed</option>
 										</select>
@@ -95,7 +96,7 @@
 					                        @foreach($requisition->iutilize()->orderBy('used_date')->get() as $instrument)
 					                          <tr>
 					                            <td class = "bottom-line">{!!$utilities::sldate($instrument->used_date)!!}</td>
-					                            <td class = "bottom-line">{{$instrument->instrument->brand}}</td>
+					                            <td class = "bottom-line">{{$instrument->instrument->brand}} - {{$instrument->instrument->model}}</td>
 					                            <td class = "bottom-line">{!!$utilities::spendday($instrument->used_days)!!}</td>
 					                          </tr>
 					                        @endforeach
@@ -157,13 +158,13 @@
 										<table style="width:100%">
 											<tr>
 												<th>Date</th>
-												<th>Total Station</th>
+												<th>Vehile</th>
 												<th>Days</th>
 											</tr>
 											 @foreach($requisition->vutilize()->orderBy('used_date')->get() as $vehicle)
 				                            <tr>
 				                                <td class = "bottom-line">{!!$utilities::sldate($vehicle->used_date)!!}</td>
-				                                <td class = "bottom-line">{{$vehicle->vehicle->vehicle_no}}</td>
+				                                <td class = "bottom-line">{{$vehicle->vehicle->brand}} - {{$vehicle->vehicle->vehicle_no}}</td>
 				                                <td class = "bottom-line">{!!$utilities::spendday($vehicle->used_days)!!}</td> 
 				                            			                                
 				                            </tr>
@@ -214,7 +215,7 @@
 		                        <select required class="form-control" name="instrument_id" id="instrument_id" >
 		                          <option value="">-</option>
 		                          @foreach($instuments as $instument)
-		                            <option value="{{$instument->id}}">{{$instument->brand}}</option>
+		                            <option value="{{$instument->id}}">{{$instument->brand}} - {{$instument->model}}</option>
 		                          @endforeach
 		                        </select>
 		                      
@@ -260,7 +261,7 @@
 		                        <select required class="form-control" name="vehicle_id" id="vehicle_id" >
 		                          <option value="">-</option>
 		                          @foreach($vehicles as $vehicle)
-		                            <option value="{{$vehicle->id}}">{{$vehicle->vehicle_no}}</option>
+		                            <option value="{{$vehicle->id}}">{{$vehicle->brand}} - {{$vehicle->vehicle_no}}</option>
 		                          @endforeach
 		                        </select>
 		                      

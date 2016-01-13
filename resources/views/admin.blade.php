@@ -1,3 +1,4 @@
+@inject('sidenave','App\Http\Utilities\Sidenave')
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -29,6 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="{{ url('dist/css/skins/skin-blue.min.css') }}">
+    <link rel="stylesheet" href="{{ url('plugins/iCheck/square/blue.css') }}">
 
     <link rel="stylesheet" href="{{url('css/reset.css') }}">
 
@@ -98,10 +100,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="menu-icon  fa fa-object-group bg-purple"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Requisition Detailes</h4>
-                    <span class="label label-danger ">Unmindful</span> 
-                    <span class="label label-warning ">Awarded</span> 
-                    <span class="label label-info ">Commance</span> 
-                    <span class="label label-success ">Completed</span>
+                    <a href="report/0/requi" target="_blank"><span class="label label-danger ">Unmindful</span></a> 
+                    <a href="report/1/requi" target="_blank"><span class="label label-warning ">Accepted</span></a> 
+                    <a href="report/2/requi" target="_blank"><span class="label label-info ">Commance</span></a> 
+                    <a href="report/3/requi" target="_blank"><span class="label label-success ">Completed</span></a>
                   </div>
               </li>
               <hr>
@@ -128,11 +130,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <hr>
 
               <li>
-                  <i class="menu-icon  fa fa-bar-chart bg-olive"></i>
+                  <i class="menu-icon  glyphicon glyphicon-screenshot bg-olive"></i>
                   <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Utilization Detailes</h4>
-                    <span class="label label-info">Total Station</span> 
-                    <span class="label label-primary">Vehicle</span> 
+                    <h4 class="control-sidebar-subheading">Total Station Utilization </h4>
+                    @foreach($sidenave::instrument() as $instrument)
+                      <a href="report/{{$instrument->id}}/instrument" target="_blank"><span class="label label-info">{{$instrument->brand}} {{$instrument->model}}</span></a>
+                    @endforeach
+                    <!-- <span class="label label-info">Trimble C4-12X74</span> 
+                    <span class="label label-primary">Sokia C4-MX3D4</span> 
+                    <span class="label label-primary">Lica C4-3X6-VX</span>  -->
+                  </div>
+              </li>
+              <hr>
+              <li>
+                  <i class="menu-icon  fa fa-truck bg-maroon"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Vehicle Utilization</h4>
+                    @foreach($sidenave::vehicle() as $vehicle)
+                      <a href="report/{{$vehicle->id}}/vehicle" target="_blank"><span class="label label-warning">{{$vehicle->brand}} {{$vehicle->vehicle_no}}</span></a>
+                    @endforeach
+                    <!-- <span class="label label-info">TOYOTA HB-1274</span> 
+                    <span class="label label-primary">ISUZU WB-8278</span> 
+                    <span class="label label-primary">NISSAN AX-3268</span> 
+                    <span class="label label-primary">MITSUBISHI SX-8280</span>  -->
                   </div>
               </li>
             </ul><!-- /.control-sidebar-menu -->
@@ -173,6 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/app.min.js') }}"></script>
     <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{url('plugins/iCheck/icheck.min.js') }}"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
@@ -182,7 +203,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
      $(".select2").select2();
       
-    </script
+    </script>
+    
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
          
   </body>
 </html>

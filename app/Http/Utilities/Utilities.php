@@ -10,7 +10,7 @@ class Utilities
 	
 	public static function status($id){
 		if($id==1){
-			return "<small class=\"label label-warning\">Awarded</small>";
+			return "<small class=\"label label-warning\">Accepted</small>";
 		}elseif ($id==2) {
 			return "<small class=\"label label-info\">Commance</small>";
 		}elseif ($id==3) {

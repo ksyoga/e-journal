@@ -75,11 +75,13 @@
     margin-bottom: 2px;
     border-left:2px solid #e6e7e8;
     color:#444;
+    font-weight: 600;
+    font-size: 0.9em;
 }
 .todo-list>li .text{
     display:inline-block;
     margin-left:5px;
-    font-weight:400;
+    
 }
 .control-label{
     font-weight: 600;
@@ -95,13 +97,24 @@
 }*/
 /*Report Style*/
 
-.pageA4 {
+.pageA4p {
     
     margin: auto;
-    width: 210mm;
-    height: 297mm;
+    width:200mm; /*width:210mm;*/
+    min-height: 282mm;/*min-height: 297mm;*/
+    padding: 5mm;
     background-color: #fff;
-    /*border:solid 1px  #999;*/
+    border:solid 1px  #999;
+     /* change the margins as you want them to be. */
+}
+.pageA4l {
+    
+    margin: auto;
+    width:287mm; /*width:210mm;*/
+    min-height: 200mm;/*min-height: 297mm;*/
+    padding: 5mm;
+    background-color: #fff;
+    border:solid 1px  #999;
      /* change the margins as you want them to be. */
 }
 .pageA3 {
