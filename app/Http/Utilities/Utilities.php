@@ -33,7 +33,7 @@ class Utilities
 	}
 
 	public static function spendday($id){
-		if($id === 0 ||$id == null||$id === '-'){
+		if($id === 0 ||$id == null||$id === '-'||$id == ' '){
 			//return "&nbsp -";
 			return "&#151";
 		}elseif ($id == 0.5) {

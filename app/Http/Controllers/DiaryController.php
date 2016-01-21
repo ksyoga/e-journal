@@ -119,7 +119,7 @@ class DiaryController extends Controller
      */
     public function edit($id)
     {
-        $sfas = SFA::all();
+        
         $categorys = Category::all();
         $diary =Diary::findOrFail($id);
         $selected_sfas = explode(',', $diary->field_50);
@@ -127,10 +127,12 @@ class DiaryController extends Controller
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();
             $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+            $sfas = SFA::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
             $requisitions = Requisition::where('surveyor_id',$user->id)->where('status',2)->orderBy('id','desc')->get();
+            $sfas = SFA::where('supdt_id',$user->supdt->id)->get();
         }
         return view('diary.edit',compact('user','sfas','categorys','requisitions','diary','selected_sfas'));
     }
@@ -148,6 +150,8 @@ class DiaryController extends Controller
         {
             $field_50 = implode(',',$request->field_50);
             $request['field_50'] = $field_50;
+        }else{
+            $request['field_50'] = NULL;
         }
         $diary = Diary::findOrFail($id);
         $diary->update($request->all());

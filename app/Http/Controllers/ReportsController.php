@@ -14,6 +14,7 @@ use App\Vehicle;
 use App\Instrument;
 use App\IUtilize;
 use App\VUtilize;
+use App\Diary;
 use DB;
 
 class ReportsController extends Controller
@@ -107,6 +108,34 @@ class ReportsController extends Controller
         }
 
         return view('reports.vehicle',compact('vehicle','vutilizes','surveyor_id'));
+
+      }
+
+      public function diary($year=2016,$month=1){
+
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $diarys = Diary::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            if(Auth::user()->surveyor->year == $year && Auth::user()->surveyor->month >= $month ){
+              return view('reports.diary',compact('user','diarys','year','month'));
+            }else{
+              $user_year = Auth::user()->surveyor->year;
+              $user_month = Auth::user()->surveyor->month;
+              return view('reports.no_dat', compact('user_year','user_month'));
+              
+            }
+            
+            
+
+      }
+
+      public function diaryforsupdt($year=2016,$month=1,$surveyor_id=NULL){
+
+            $user = Surveyor::where('id',$surveyor_id)->first();
+            $diarys = Diary::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            return view('reports.diary',compact('user','diarys','year','month'));
+            
+            
+            
 
       }
 

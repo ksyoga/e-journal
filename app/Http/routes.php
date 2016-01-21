@@ -49,3 +49,5 @@ Route::get('vehicle/{id}/requist','VehicleController@requist');
 Route::get('report/{status}/requi','ReportsController@requisition');
 Route::get('report/{status}/instrument','ReportsController@instrument');
 Route::get('report/{status}/vehicle','ReportsController@vehicle');
+Route::get('report/{year}/diary/{month}','ReportsController@diary');
+Route::get('report/{year}/diary/{month}/suvy/{id}','ReportsController@diaryforsupdt');

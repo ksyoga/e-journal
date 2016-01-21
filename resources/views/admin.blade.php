@@ -106,27 +106,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="report/3/requi" target="_blank"><span class="label label-success ">Completed</span></a>
                   </div>
               </li>
+               @if(Auth::user()->rank=="survy")
               <hr>
               <li>
                   <i class="menu-icon  fa fa fa-inbox bg-orange"></i>
                   <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Surveyor Journal</h4>
-                    <span class="label label-danger ">January</span> 
-                    <span class="label label-warning ">February</span> 
-                    <span class="label label-info ">March</span> 
-                    <span class="label label-success ">Aprial</span>
-
-                    <span class="label bg-orange ">May</span> 
-                    <span class="label bg-purple ">June</span> 
-                    <span class="label bg-olive ">July</span> 
-                    <span class="label label-primary">August</span>
-
-                    <span class="label label-danger ">September</span> 
-                    <span class="label label-warning ">October</span> 
-                    <span class="label label-info ">November</span> 
-                    <span class="label label-success ">December</span>
+                    {!!$sidenave::diaryMonth()!!}
                   </div>
               </li>
+              @endif
               <hr>
 
               <li>
@@ -136,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     @foreach($sidenave::instrument() as $instrument)
                       <a href="report/{{$instrument->id}}/instrument" target="_blank"><span class="label label-info">{{$instrument->brand}} {{$instrument->model}}</span></a>
                     @endforeach
-                    <!-- <span class="label label-info">Trimble C4-12X74</span> 
+                    <!-- <span class="label label-info">Trimble C4-12X74</span> </a>
                     <span class="label label-primary">Sokia C4-MX3D4</span> 
                     <span class="label label-primary">Lica C4-3X6-VX</span>  -->
                   </div>

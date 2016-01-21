@@ -99,7 +99,7 @@
                         <tr>
                           <td>{{date("F",mktime(0,0,0,$month))}} {{$year}} journal </td>
                           <td>{!!$utilities::journalapprove($surveyor->month,$month)!!}</td>
-                          <td><i class="fa fa-fw fa-print"></i></td>
+                          <td><a href="report/{{$year}}/diary/{{$month}}/suvy/{{$surveyor->id}}"><i class="fa fa-fw fa-print"></i></a></td>
                         </tr>
                        <?php $lmonth = $month; ?>
                       @endforeach
