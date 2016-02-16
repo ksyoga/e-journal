@@ -54,7 +54,7 @@
 					    @foreach($weeks as $week)
 					    <tr>
 					      <td>
-					       	{{date_format(date_create($week->day),'d/m/Y')}}
+					       	{!!$utilities::sldate($week->day)!!}
 					      	<!-- {{$week->day}}-->
 					      	@if(Auth::user()->rank=="survy")
 					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
@@ -65,21 +65,21 @@
 					      @else
 					      <td align="center">—</td>
 					      @endif
-					      <td>{{$week->pro_work}}</td>
+					      <td>{!!$utilities::spendday($week->pro_work)!!}</td>
 					      <td align="center">{!!$utilities::spendday($week->no_sfa)!!}</td>
-					      <td align="center">{{$week->instrument}}</td>
-					      <td align="center">{{$week->vehicle}}</td>
+					      <td align="center">{!!$utilities::spendday($week->instrument)!!}</td>
+					      <td align="center">{!!$utilities::spendday($week->vehicle)!!}</td>
 					      <td align="center">{!!$utilities::spendday($week->travel)!!}</td>
 					      @if($week->sfa_requ_id != NULL || $week->sfa_requ_id != 0)
 					      <td align="center">{!!$utilities::spendday($week->requ_sfa->requisition_no)!!}</td>
 					      @else
 					      <td align="center">—</td>
 					      @endif
-					      <td>{{$week->sfa_work_asign}}</td>
+					      <td>{!!$utilities::spendday($week->sfa_work_asign)!!}</td>
 					      <td align="center">
-					      	{{$week->ss_note}}
+					      	{!!$utilities::spendday($week->ss_note)!!}
 					      	@if(Auth::user()->rank=="supdt")
-					      		<a href="week/{{$week->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
+					      		<a href="{{action('WeekController@edit', ['id' => $week->id])}}" class="pull-right"><i class="fa fa-edit"></i></a>
 					      	@endif
 					      </td>
 					    </tr>

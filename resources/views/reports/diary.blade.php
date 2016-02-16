@@ -123,9 +123,9 @@
 
                         </tr>
                         @foreach($diarys as $diary)
-                          <tr @if($diary->field_10 == 1) style="color:#FF0000;"@elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) style="color:#00C0EF;" @endif>
+                          <tr @if($diary->field_10 == 1) class="holiday" @elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) class="leave" @endif>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
-                          <th scope="row">{!!$utilities::sldate($diary->day)!!}</th>
+                          <th scope="row"><i>{!!date("d",strtotime($diary->day))!!}</i></th>
                           @if($diary->field_1 != 0 || $diary->field_1 != NULL)
                           <td align="center">{!!$utilities::spendday($diary->requisition->requisition_no)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->requisition->category)!!}</td>

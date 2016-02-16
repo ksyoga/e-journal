@@ -76,7 +76,7 @@
                           <th><span data-toggle="tooltip" title="Attending plan amendments given by SS.Put X.">28</span></th>
                         </tr>
                         @foreach($diarys as $diary)
-                        <tr @if($diary->field_10 == 1) style="color:#FF0000;"@elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) style="color:#00C0EF;" @endif>
+                        <tr @if($diary->field_10 == 1) class="holiday" @elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) class="leave" @endif>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">{!!$utilities::sldate($diary->day)!!}</th>
                           @if($diary->field_1 != 0 || $diary->field_1 != NULL)
@@ -190,7 +190,7 @@
                         <tr @if($diary->field_10 == 1) style="color:#FF0000;"@elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) style="color:#00C0EF;" @endif>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">
-                              {{date_format(date_create($diary->day),'d/m/Y')}}
+                             {!!$utilities::sldate($diary->day)!!}
                               @if(Auth::user()->rank=="survy")
                                 <a href="diary/{{$diary->id}}/edit" class="pull-right"><i class="fa fa-edit"></i></a>
                               @endif

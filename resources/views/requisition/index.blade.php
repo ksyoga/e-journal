@@ -59,14 +59,14 @@
             	@foreach($requisitions as $requisition)
             	<tr>
   		        	<td>{!!$utilities::status($requisition->status)!!}</td>
-  		        	<td>{{$requisition->requisition_no}}</td>
+  		        	<td>{!!$utilities::spendday($requisition->requisition_no)!!}</td>
   		        	<td>{{$requisition->category}}</td>
   		        	<td>{{$requisition->work_load}}</td>
   		        	<td align="center">{{$requisition->lots}}</td>
                 <td><span class="pull-right">{{$requisition->extent}} </span></td>
   		        	<td>{!!$utilities::sldate($requisition->received_date)!!}</td>
                 <td>{!!$utilities::sldate($requisition->issued)!!}</td>
-  		        	<td>{{$requisition->surveyor->name}}</td>
+  		        	<td>{!!$utilities::spendday($requisition->surveyor->name)!!}</td>
   		        	<td>{!!$utilities::sldate($requisition->commanced)!!}</td>
                 <td>{!!$utilities::sldate($requisition->complet_date)!!}</td>
   		        	<td><span data-toggle="tooltip" title="Field Work Days">{!!$utilities::dec2fracso($requisition->fieldwork)!!}</span> </td>

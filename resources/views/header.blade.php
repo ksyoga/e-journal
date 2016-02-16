@@ -46,7 +46,7 @@
                       <small><i class="fa fa-clock-o"></i> 5 mins</small>
                     </h4>
                     <!-- The message -->
-                    <p>Why not you start TCO/TMP/2016/021 requisition?</p>
+                    <p> You must start TCO/TMP/2016/021 requisition..</p>
                   </a>
                 </li><!-- end message -->
               </ul><!-- /.menu -->
@@ -76,7 +76,7 @@
                 </li><!-- end notification -->
               </ul>
             </li>
-            <li class="footer"><a href="#">View all</a></li>
+            <li class="footer"><a href="/requisition">View all</a></li>
           </ul>
         </li>
         <!-- Tasks Menu -->

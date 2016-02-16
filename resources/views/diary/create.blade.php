@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -6,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Journal of November 2015
+        Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
         <!-- <small> Diyatalawa Division</small> -->
 
       </h1>

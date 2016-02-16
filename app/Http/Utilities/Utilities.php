@@ -26,8 +26,8 @@ class Utilities
 			//return "-";
 			return "&#151";
 		}else{
-			return date_format(date_create($date),'d/m/Y');
-			// return  "<i>".date_format(date_create($date),'d/m/Y')."</i>";
+			//return date_format(date_create($date),'d/m/Y');
+			return  "<i>".date_format(date_create($date),'d/m/Y')."</i>";
 		}
 		
 	}
