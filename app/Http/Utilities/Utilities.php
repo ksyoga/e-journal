@@ -197,6 +197,14 @@ public static function Leave($date,$leave_data){
 	}
 }
 
+public static function selfCheck($check){
+	if($check=="on"){
+		return "<i class=\"glyphicon glyphicon-ok\"></i>";
+	}else{
+		return "<i class=\"glyphicon glyphicon-remove\"></i>";
+	}
+}
+
 
 
 }

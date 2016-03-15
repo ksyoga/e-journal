@@ -47,7 +47,7 @@
 }
 
 .friday-seprater {
-    border-bottom: 2px solid #0000FF;
+    border-bottom: 2px solid #9a9a9a;
 }
 
 .diary-seprater tr:last-child {
@@ -106,11 +106,35 @@
 }
 
 #diary th.verticl {
-    height: 325px;
+    height: 205px;
+    padding: 0;
 }
 
 #diary tr th,
 #diary tr td {
+    border: 1px solid #3C8DBC;
+    padding: 5px 0;
+}
+#invo-table th.verticl {
+    height: 115px;
+    padding: 0;
+}
+#invo-table th {
+    text-align: center;
+    vertical-align: bottom;
+    /*height: 350px;*/
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#invo-table tr th,
+#invo-table tr td {
+    border: 1px solid #3C8DBC;
+    padding: 7px;
+}
+
+#amend-table tr th,
+#amend-table tr td {
     border: 1px solid #3C8DBC;
     padding: 7px;
 }
@@ -145,6 +169,11 @@
     margin-left: 5px;
 }
 
+#report-check  tr td {
+    padding: 3px 0 3px 3px;
+}
+
+
 .control-label {
     font-weight: 600;
     font-size: 0.9em;
@@ -178,14 +207,20 @@
     /* change the margins as you want them to be. */
 }
 
-.pageA3 {
-    margin: auto;
-    height: 410mm;
-    /*height: 420mm;*/
-    width: 584mm;
-    /*width: 594mm;*/
+/*
+Size    Width x Height (mm) Width x Height (in)
+A1      594   x 841 mm    23.4 x 33.1 in
+A2      420   x 594 mm    16.5 x 23.4 in
+A3      297   x 420 mm    11.7 x 16.5 in
+A4      210   x 297 mm    8.3 x 11.7 in*/
+
+.pageA3l {
+    font-size: 9px;
+    /*margin: auto;*/
+    /*height: 297mm;*/
+    /*width: 420mm;*/
     background-color: #fff;
-    border: solid 1px #999;
+    /*border: solid 1px #999;*/
 }
 
 .holiday {
@@ -194,4 +229,7 @@
 
 .leave {
     color: #0000FF;
+}
+.hrtyp{
+    border-top:2px solid #000;
 }

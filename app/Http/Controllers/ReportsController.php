@@ -15,6 +15,8 @@ use App\Instrument;
 use App\IUtilize;
 use App\VUtilize;
 use App\Diary;
+use App\Week;
+use App\SelfCheck;
 use DB;
 
 class ReportsController extends Controller
@@ -115,8 +117,10 @@ class ReportsController extends Controller
 
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
             $diarys = Diary::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            $weeks = Week::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            $selfchecks = SelfCheck::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->first();
             if(Auth::user()->surveyor->year == $year && Auth::user()->surveyor->month >= $month ){
-              return view('reports.diary',compact('user','diarys','year','month'));
+              return view('reports.diary',compact('user','diarys','weeks','selfchecks','year','month'));
             }else{
               $user_year = Auth::user()->surveyor->year;
               $user_month = Auth::user()->surveyor->month;

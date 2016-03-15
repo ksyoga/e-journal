@@ -16,6 +16,7 @@ class CreateDivisionsTable extends Migration
             $table->increments('id');
             $table->integer('district_id')->unsigned();
             $table->string('name',50);
+            $table->string('address',200);
             $table->timestamps();
             $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
         });
