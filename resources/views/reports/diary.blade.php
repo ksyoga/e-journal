@@ -123,7 +123,7 @@
 
                         </tr>
                         @foreach($diarys as $diary)
-                          <tr @if($diary->field_10 == 1) class="holiday" @elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) class="leave" @endif>
+                          <tr {!!$utilities::HoliDay($diary->day)!!} {!!$utilities::Leave($diary->day,$diary->field_11)!!}>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row"><i>{!!date("d",strtotime($diary->day))!!}</i></th>
                           @if($diary->field_1 != 0 || $diary->field_1 != NULL)

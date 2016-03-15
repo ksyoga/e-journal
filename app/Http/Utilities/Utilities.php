@@ -163,7 +163,39 @@ class Utilities
     return $workingDays;
 }
 
-//Example:
+public static function fDay($date){
+	if(date("w",strtotime($date))==5){
+		return "class=\"friday-seprater\"";
+		
+	}else{
+		return null;
+	}
+}
+
+public static function HoliDay($date){
+
+	$holidays=array("2016-01-15","2016-02-04","2016-02-22","2016-03-07",
+	                "2016-03-25","2016-04-13","2016-04-14","2016-04-21",
+	                "2016-02-22","2016-07-06","2016-07-19","2016-08-17",
+	                "2016-09-12","2016-09-16","2016-02-22","2016-11-14",
+	                "2016-12-12","2016-12-13");
+
+	if(in_array($date, $holidays) || date("w",strtotime($date))==6 || date("w",strtotime($date))==0){
+		return "class=\"holiday\"";
+	}
+	// }elseif(date("w",strtotime($date))==6 || date("w",strtotime($date))==0){
+	// 	return "class=\"text-red\"";
+		
+	// }else{
+	// 	return null;
+	// }
+}
+
+public static function Leave($date,$leave_data){
+	if($leave_data==0.5 || $leave_data==1){
+		return "class=\"leave\"";
+	}
+}
 
 
 

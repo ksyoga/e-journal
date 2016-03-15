@@ -78,7 +78,8 @@
                           <th><span data-toggle="tooltip" title="Attending plan amendments given by SS.Put X.">28</span></th>
                         </tr>
                         @foreach($diarys as $diary)
-                        <tr @if($diary->field_10 == 1) class="holiday" @elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) class="leave" @endif>
+                          <tr {!!$utilities::HoliDay($diary->day)!!} {!!$utilities::Leave($diary->day,$diary->field_11)!!}>
+                        
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">
                               {!!$utilities::sldate($diary->day)!!}
@@ -194,7 +195,7 @@
                           <th><span data-toggle="tooltip" title="Supdt.Of Surveys.">51</span></th>
                         </tr>
                         @foreach($diarys as $diary)
-                       <tr @if($diary->field_10 == 1) class="holiday" @elseif($diary->field_11 == 1 ||$diary->field_11==0.5 ) class="leave" @endif>
+                          <tr {!!$utilities::HoliDay($diary->day)!!} {!!$utilities::Leave($diary->day,$diary->field_11)!!}>
                           <!-- <th scope="row">{{$diary->day}}</th> -->
                           <th scope="row">
                               {!!$utilities::sldate($diary->day)!!}

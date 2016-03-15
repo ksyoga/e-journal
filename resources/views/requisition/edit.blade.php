@@ -86,7 +86,7 @@
 									</div>
 
 									<hr>
-										<label>Tatal Ststion Utilize <span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+										<label>Tatal Ststion Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
 										<table style="width:100%">
 											<tr>
 												<th>Date</th>
@@ -104,7 +104,7 @@
 									@endif
 								</div>
 								<div class="col-md-1">
-								&nbsp
+								&nbsp;
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -154,7 +154,7 @@
 
 									<hr>
 
-										<label>Vehicle Utilize <span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+										<label>Vehicle Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
 										<table style="width:100%">
 											<tr>
 												<th>Date</th>

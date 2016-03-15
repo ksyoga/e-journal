@@ -52,7 +52,7 @@
 					      <th scope="col">Work to be asssigned</th>
 					    </tr>
 					    @foreach($weeks as $week)
-					    <tr>
+					    <tr {!!$utilities::fDay($week->day)!!}>
 					      <td>
 					       	{!!$utilities::sldate($week->day)!!}
 					      	<!-- {{$week->day}}-->

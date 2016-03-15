@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @extends('admin')
 
 @section('content')
@@ -25,7 +26,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">November 2015</h3>
+                  <h3 class="box-title">{{$utilities::journalMonth($user->month)}} {{$user->year}}</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                 	
