@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> 
       @if(Auth::user()->rank=="survy")
-        {{Auth::user()->name}}'s Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
+        {{Auth::user()->name}}'s Journal of {{$utilities::journalMonth($month)}} {{$year}}
       @else
-        {{$user->name}}'s Journal  of {{$utilities::journalMonth($user->month)}} {{$user->year}}
+        {{$user->name}}'s Journal  of {{$utilities::journalMonth($month)}} {{$year}}
       @endif            
     </title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -36,9 +36,9 @@
     
     <div class="container-fluid pageA3l">
             <div class="row">
-              @if(Auth::user()->rank=="survy")
-                    <h4 class="text-center">Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}} <small class="pull-right text-danger">S347/N &nbsp;&nbsp;</small></h4>
-              @endif
+              
+                <h4 class="text-center">Journal of {{$utilities::journalMonth($month)}} {{$year}} <small class="pull-right text-danger">S347/N &nbsp;&nbsp;</small></h4>
+              
             </div>
             <div class="row">
               <div class="col-lg-4">
@@ -48,7 +48,9 @@
                     Rank:- Apprentice Surveyor
                     
                   @else
-                    {{$user->name}}'s Journal <small> of {{$utilities::journalMonth($user->month)}} {{$user->year}}</small>
+                     Name:- {{$user->name}}</br>
+                     Rank:- Apprentice Surveyor
+                   
                   @endif
                   </h6>
               </div>
@@ -58,6 +60,11 @@
               <div class="col-lg-3">
                 
                   @if(Auth::user()->rank=="survy")
+                    <h6>
+                    Address:- {{Auth::user()->division->address}}</br>
+                    Div.S.O:- {{Auth::user()->division->name}}
+                    </h6>
+                  @else
                     <h6>
                     Address:- {{Auth::user()->division->address}}</br>
                     Div.S.O:- {{Auth::user()->division->name}}
@@ -346,24 +353,17 @@
                           <th class="verticl"><div class = "verticalText">PW days - during the month</div></th>
                           <th class="verticl"><div class = "verticalText">Total PW days</div></th>
                         </tr>
+                        @foreach($involveds as $involved)
                         <tr>
-                          <th scope="row">&nbsp;</th>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
+                          <th scope="row">{!!$utilities::requ_no($involved->field_1)!!}</th>
+                          <td>{!!$utilities::last_month($user->id,$year,$month,$involved->field_1,0)!!}</td>
+                          <td>{{$involved->in_office+$involved->in_field+$involved->setin_out+$involved->surveying}}</td>
+                          <td>{!!$utilities::last_month($user->id,$year,$month,$involved->field_1,0)+ ($involved->in_office+$involved->in_field+$involved->setin_out+$involved->surveying)!!}</td>
+                          <td>{!!$utilities::last_month($user->id,$year,$month,$involved->field_1,1)!!}</td>
+                          <td>{{$involved->plan_work}}</td>
+                          <td>{!!$utilities::last_month($user->id,$year,$month,$involved->field_1,1)+$involved->plan_work !!}</td>
                         </tr>
-                        <tr>
-                          <th scope="row">&nbsp;</th>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                        </tr>
+                        @endforeach
                         <tr>
                           <th scope="row">&nbsp;</th>
                           <td>&nbsp;</td>
@@ -377,6 +377,7 @@
                     </table>
                   <!-- Days Invaove in each Requisition -->
                   <!-- Selfcheck -->
+               
                   <h6>Self Check by Surveyor at the end of the month</h6>
                   <table id="report-check" class="table table-condensed">
                     <tbody>
@@ -443,6 +444,7 @@
                     </tr>
                   </tbody>
                   </table>
+             
                   <!-- selfcheck -->
                   <!-- amendments -->
                   
@@ -457,16 +459,13 @@
                           <td>Date Receiver</td>
                           <td>Date completed &amp; Send</td>
                         </tr>
+                        @foreach($amendments as $amendment)
                         <tr>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
+                          <td>{{$amendment->plan_no}}</td>
+                          <td>{!!$utilities::sldate($amendment->received)!!}</td>
+                          <td>{!!$utilities::sldate($amendment->completion)!!}</td>
                         </tr>
-                        <tr>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                          <td>&nbsp;</td>
-                        </tr>
+                        @endforeach
                         <tr>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>

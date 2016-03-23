@@ -26,7 +26,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">{{$surveyor->name}}'s Self Check at {{$utilities::journalMonth($user->month)}} {{$user->year}} </h3>
+                  <h3 class="box-title">{{$surveyor->name}}'s Self Check at {{$utilities::journalMonth($surveyor->month)}} {{$surveyor->year}} </h3>
                   <!-- <div class="box-tools pull-right">
                     <ul class="pagination pagination-sm inline">
                       <li><a href="#">&laquo;</a></li>

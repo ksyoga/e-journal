@@ -21,16 +21,16 @@
     <section class="content">
 
   <!-- Your Page Content Here -->
-    
+
   		 <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">{{$surveyor->name}}'s following week Programme for {{$utilities::journalMonth($user->month)}} {{$user->year}}</h3>
+                  <h3 class="box-title">{{$surveyor->name}}'s following week Programme for {{$utilities::journalMonth($surveyor->month)}} {{$surveyor->year}}</h3>
                   <a href="week/create" class="text-muted pull-right"><button class="btn btn-xs btn-success" data-toggle="tooltip" title="Add Week Programe "><i class="glyphicon glyphicon-plus"></i></button></a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                	
+
 					<table id="mytable" class="table table-bordered table-hover week-seprater">
 					  <tbody>
 					    <tr>
@@ -83,16 +83,16 @@
 					      </td>
 					    </tr>
 					    @endforeach
-					    
+
 					  </tbody>
 					</table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
-              
+
             </div><!-- /.col -->
           </div><!-- /.row -->
-   
+
 
  	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

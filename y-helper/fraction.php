@@ -12,3 +12,6 @@ $utilize = DB::table('iutilize')
             ->join('orders', 'users.id', '=', 'orders.user_id')
             ->select('users.*', 'contacts.phone', 'orders.price')
             ->get();
+
+
+SELECT * FROM `journal`.`amendments` WHERE YEAR(`completion`)=2016 AND MONTH(`completion`) BETWEEN 1 AND 6

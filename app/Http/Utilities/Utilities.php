@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Utilities;
+use App\Requisition;
+use App\Diary;
+use DB;
 
 /**
 * Status
@@ -197,14 +200,42 @@ public static function Leave($date,$leave_data){
 	}
 }
 
-public static function selfCheck($check){
-	if($check=="on"){
+public static function selfCheck($field){
+	if($field=="on"){
 		return "<i class=\"glyphicon glyphicon-ok\"></i>";
 	}else{
 		return "<i class=\"glyphicon glyphicon-remove\"></i>";
 	}
 }
 
+public static function requ_no($id){
+	
+	$number = Requisition::where('id',$id)->value('requisition_no');
+	return $number;
+}
 
+public static function last_month($surveyor_id,$year,$month,$req_no,$work){
+
+	if($month == 1){
+		$year = $year-1;
+		$month=12;
+	}else{
+		$month = $month-1;
+	}
+	 $involved = Diary::select('year','month','field_1',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'))->where('surveyor_id',$surveyor_id)->where('year',$year)->where('month',$month)->where('field_1',$req_no)->where('field_1','!=',0)->first();
+
+	 if($work == 0){
+	 	$field =0;
+	 	$field += $involved->in_office+$involved->in_field+$involved->setin_out+$involved->surveying;
+	 	return $field;
+	 }elseif($work == 1){
+	  	$plan = 0;
+	  	$plan +=$involved->plan_work;
+	  	return $plan;
+	  }
+
+	
+
+}
 
 }

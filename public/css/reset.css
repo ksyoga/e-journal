@@ -132,7 +132,23 @@
     border: 1px solid #3C8DBC;
     padding: 7px;
 }
-
+#monthinvo th.verticl {
+    height: 215px;
+    padding: 0;
+}
+#monthinvo th {
+    text-align: center;
+    vertical-align: bottom;
+    /*height: 350px;*/
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#monthinvo tr th,
+#monthinvo tr td {
+    border: 1px solid #3C8DBC;
+    padding: 7px;
+}
 #amend-table tr th,
 #amend-table tr td {
     border: 1px solid #3C8DBC;

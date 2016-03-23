@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       {{$surveyor->name}}'s Journal of {{$utilities::journalMonth($user->month)}} {{$user->year}}
+       {{$surveyor->name}}'s Journal of {{$utilities::journalMonth($surveyor->month)}} {{$surveyor->year}}
 
         <!-- <small> Diyatalawa Division</small> -->
 
