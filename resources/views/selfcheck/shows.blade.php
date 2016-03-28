@@ -43,7 +43,7 @@
                     {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="PUT">
                 
-                      
+               
                   <ul class="todo-list">
                     <li>
                       <!-- drag handle -->
@@ -186,6 +186,7 @@
                       
                     </li>
                   </ul>
+              
                 </div><!-- /.box-body -->
                 <!-- <div class="box-footer clearfix no-border">
                   <button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Update Check List</button>

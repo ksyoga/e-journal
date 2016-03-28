@@ -56,8 +56,16 @@
                 <ul class="nav nav-stacked">
                   <li><a href="#">Awarded Work Load <span class="pull-right badge bg-blue">{{$surveyor->requisition()->sum('work_load')}}</span></a></li>
                   <li><a href="#">Completed Work Load <span class="pull-right badge bg-aqua">{{$surveyor->requisition()->where('status',3)->sum('work_load')}}</span></a></li>
-                  <li><a href="#">Involved Field Work Days  <span class="pull-right badge bg-green">{!!$utilities::dec2fracso($surveyor->requisition()->where('status',3)->sum('fieldwork'))!!}</span></a></li>
-                  <li><a href="#">Involved Plan Work Days  <span class="pull-right badge bg-yellow">{!!$utilities::dec2fracso($surveyor->requisition()->where('status',3)->sum('planwork'))!!}</span></a></li>
+                  <li><a href="#">Involved Field Work Days  <span class="pull-right badge bg-green">
+                  {!!$utilities::dec2fracso(
+                    $surveyor->diary()->where('year',$surveyor->year)->sum('field_3')+
+                    $surveyor->diary()->where('year',$surveyor->year)->sum('field_4')+
+                    $surveyor->diary()->where('year',$surveyor->year)->sum('field_5')+
+                    $surveyor->diary()->where('year',$surveyor->year)->sum('field_6')
+
+                    )!!}
+                  </span></a></li>
+                  <li><a href="#">Involved Plan Work Days  <span class="pull-right badge bg-yellow">{!!$utilities::dec2fracso($surveyor->diary()->where('year',$surveyor->year)->sum('field_7'))!!}</span></a></li>
                   <li><a href="#">Total Station Utilized Days <span class="pull-right badge">
                       <?php 
                         $iut=0; 
@@ -116,7 +124,7 @@
                     <input type="hidden" value="{{$surveyor->month}}" required name="month" id="month">
                     <input type="hidden" value="{{$surveyor->year}}" required name="year" id="year">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    @if($surveyor->diary->count() == cal_days_in_month(CAL_GREGORIAN, $surveyor->month, $surveyor->year) && $lmonth==$surveyor->month)
+                    @if($surveyor->diary->where('year',$surveyor->year)->where('month',$surveyor->month)->count() == cal_days_in_month(CAL_GREGORIAN, $surveyor->month, $surveyor->year) && $lmonth==$surveyor->month)
                     <button type="submit" class="btn btn-primary">Approve {{date("F",mktime(0,0,0,$surveyor->month))}} Journal</button>
                     @endif
                     </form>

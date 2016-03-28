@@ -46,19 +46,19 @@
                   <th>Requisition No</th>
                   <th>Category</th>
                   <th>Work Load</th>
-                  <th  colspan="2">Lots & Extent</th>
-                  <th  colspan="2">Received & Issued</th>
+                  <th  colspan="2">Lots &nbsp;&nbsp;& &nbsp;&nbsp;Extent</th>
+                  <th  colspan="2">Received &nbsp;&nbsp;& &nbsp;&nbsp;&nbsp;&nbsp;Issued</th>
                   <th>Surveyor</th>
-                  <th  colspan="2">Commance & Completed</th>
-                  <th colspan="2"><span data-toggle="tooltip" title="Field  & Plane Works">Work</span></th>
-                  <th colspan="2">Utilize</th>
+                  <th  colspan="2">Commance &nbsp;&nbsp;& &nbsp;&nbsp;Completed</th>
+                  <th><span data-toggle="tooltip" title="Field  & Plane Works">Work</span></th>
+                  <th><span data-toggle="tooltip" title="Totalstation  & Vehicles">Utilize</span></th>
                   <!-- <th>Note</th> -->
                   
                 </tr>
               
               @foreach($requisitions as $requisition)
               <tr>
-                <td>{!!$utilities::status($requisition->status)!!}</td>
+               <td>{!!$utilities::status($requisition->status)!!}</td>
                 <td>{{$requisition->requisition_no}}</td>
                 <td>{{$requisition->category}}</td>
                 <td>{{$requisition->work_load}}</td>
@@ -69,12 +69,10 @@
                 <td>{{$requisition->surveyor->name}}</td>
                 <td>{!!$utilities::sldate($requisition->commanced)!!}</td>
                 <td>{!!$utilities::sldate($requisition->complet_date)!!}</td>
-                <td><span data-toggle="tooltip" title="Field Work Days">{!!$utilities::dec2fracso($requisition->fieldwork)!!}</span> </td>
-                <td><span data-toggle="tooltip" title="Plan Work Days" class="pull-right">{!!$utilities::dec2fracso($requisition->planwork)!!}</span></td>
-                <td><span data-toggle="tooltip" title="Total Station Utilize">{!!$utilities::dec2fracso($requisition->iutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span></td> 
-                <td><span data-toggle="tooltip" title="Vehicle Utilize" class="pull-right">{!!$utilities::dec2fracso($requisition->vutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span></td>
+                <td><span data-toggle="tooltip" title="Field Work Days">{!!$utilities::dec2fracso($utilities::work_for_req($requisition->id,0))!!}</span>&nbsp;,&nbsp;&nbsp;<span data-toggle="tooltip" title="Plan Work Days">{!!$utilities::dec2fracso($utilities::work_for_req($requisition->id,1))!!}</span></td>
+                <td><span data-toggle="tooltip" title="Total Station Utilize">{!!$utilities::dec2fracso($requisition->iutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span>&nbsp;,&nbsp;&nbsp;<span data-toggle="tooltip" title="Vehicle Utilize" >{!!$utilities::dec2fracso($requisition->vutilize()->where('requisition_id',$requisition->id)->sum('used_days'))!!}</span></td>
                
-                <!-- <td >{{$requisition->note}}</td> -->
+               <!--  <td >{{$requisition->note}}</td> -->
                 
               </tr>
               @endforeach

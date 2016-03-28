@@ -100,8 +100,10 @@ class IUtilizeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+         IUtilize::findOrFail($id)->delete();
+
+        return redirect()->action('RequisitionController@edit',$request['requisition_id']);
     }
 }

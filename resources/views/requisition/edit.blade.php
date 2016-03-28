@@ -85,22 +85,6 @@
 										<textarea  id="note" name="note" class="textarea" placeholder="Surveyor Note" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$requisition->note}}</textarea>
 									</div>
 
-									<hr>
-										<label>Tatal Ststion Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
-										<table style="width:100%">
-											<tr>
-												<th>Date</th>
-												<th>Total Station</th>
-												<th>Days</th>
-											</tr>
-					                        @foreach($requisition->iutilize()->orderBy('used_date')->get() as $instrument)
-					                          <tr>
-					                            <td class = "bottom-line">{!!$utilities::sldate($instrument->used_date)!!}</td>
-					                            <td class = "bottom-line">{{$instrument->instrument->brand}} - {{$instrument->instrument->model}}</td>
-					                            <td class = "bottom-line">{!!$utilities::spendday($instrument->used_days)!!}</td>
-					                          </tr>
-					                        @endforeach
-					                      </table>
 									@endif
 								</div>
 								<div class="col-md-1">
@@ -138,49 +122,98 @@
 										<label for="commanced" class="control-label">Requisition Commance Date :</label>
 										<input class="form-control" type="date" value="{{$requisition->commanced}}" name="commanced" id="commanced" placeholder="Issued Date ">
 									</div>
-									<div class="form-group">
+									<div class="form-group hidden ">
 										<label for="fieldwork" class="control-label">No of Days for Field :</label>
 										<input class="form-control" type="number" min="0" step="0.5" value="{{$requisition->fieldwork}}" name="fieldwork" id="fieldwork" placeholder="Issued Date ">
 									</div>
-									<div class="form-group">
+									<div class="form-group hidden">
 										<label for="planwork" class="control-label">No of Days for Plan :</label>
 										<input class="form-control" type="number" min="0" step="0.5" value="{{$requisition->planwork}}" name="planwork" id="planwork" placeholder="Issued Date ">
+									</div>
+									<div class="form-group" style="height: 25px">
+										
 									</div>
 
 									<div class="form-group">
 										<label for="complet_date" class="control-label">Requisition Completed Date :</label>
 										<input class="form-control" type="date"  value="{{$requisition->complet_date}}" name="complet_date" id="complet_date" placeholder="Complet Date ">
 									</div>
-
-									<hr>
-
-										<label>Vehicle Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
-										<table style="width:100%">
-											<tr>
-												<th>Date</th>
-												<th>Vehile</th>
-												<th>Days</th>
-											</tr>
-											 @foreach($requisition->vutilize()->orderBy('used_date')->get() as $vehicle)
-				                            <tr>
-				                                <td class = "bottom-line">{!!$utilities::sldate($vehicle->used_date)!!}</td>
-				                                <td class = "bottom-line">{{$vehicle->vehicle->brand}} - {{$vehicle->vehicle->vehicle_no}}</td>
-				                                <td class = "bottom-line">{!!$utilities::spendday($vehicle->used_days)!!}</td> 
-				                            			                                
-				                            </tr>
-				                            @endforeach
-				                          
-				                        </table>
+									
+									<div class="form-group" style="height: 60px">
+										
+									</div>
 									@endif
 									
 								</div>
-		              
+		              	<button type="submit" class="btn btn-primary pull-right">Submit</button>
+		                </form>
 		                </div><!-- /.box-body -->
+
 		                 <div class="box-footer">
-		                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+		                    <!-- Delete Utilize  -->
+		              <div class="col-md-6">
+						<label>Tatal Ststion Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+						<table style="width:100%">
+							<tr>
+								<th>Date</th>
+								<th>Total Station</th>
+								<th>Days</th>
+								<th></th>
+							</tr>
+					        @foreach($requisition->iutilize()->orderBy('used_date')->get() as $instrument)
+					          <tr>
+					            <td class = "bottom-line">{!!$utilities::sldate($instrument->used_date)!!}</td>
+					            <td class = "bottom-line">{{$instrument->instrument->brand}} - {{$instrument->instrument->model}}</td>
+					            <td class = "bottom-line">{!!$utilities::spendday($instrument->used_days)!!}</td>
+					            <td class = "bottom-line">
+					           		<form action="/iutilize/{{ $instrument->id }}" method="POST">
+							            {{ csrf_field() }}
+							            {{ method_field('DELETE') }}
+										<input type="hidden" name="requisition_id" value="{{$requisition->id}}">
+							            <button class="btn btn-link pull-right"><i class=" pull-right text-red fa fa-trash-o"></i></button>
+							        </form>
+
+					            </td>
+					          </tr>
+					        @endforeach
+					      </table>
+					</div>
+					<div class="col-md-6">
+						<label>Vehicle Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+						<table style="width:100%">
+							<tr>
+								<th>Date</th>
+								<th>Vehile</th>
+								<th>Days</th>
+								<th></th>
+							</tr>
+							 @foreach($requisition->vutilize()->orderBy('used_date')->get() as $vehicle)
+					        <tr>
+					            <td class = "bottom-line">{!!$utilities::sldate($vehicle->used_date)!!}</td>
+					            <td class = "bottom-line">{{$vehicle->vehicle->brand}} - {{$vehicle->vehicle->vehicle_no}}</td>
+					            <td class = "bottom-line">{!!$utilities::spendday($vehicle->used_days)!!}</td> 
+					            <td class = "bottom-line">
+					            	
+									<form action="/vutilize/{{ $vehicle->id }}" method="POST">
+							            {{ csrf_field() }}
+							            {{ method_field('DELETE') }}
+										<input type="hidden" name="requisition_id" value="{{$requisition->id}}">
+							            <button class="btn btn-link pull-right"><i class=" pull-right text-red fa fa-trash-o"></i></button>
+							        </form>
+
+					            </td>
+					        </tr>
+					        @endforeach
+					      
+					    </table>
+					</div>
+
+		              <!-- Delete utilize -->
 		                </div>
 		              </div> <!-- box box-info -->
-		              </form>
+		              
+
+		              
 		              
 										
 					</div>	<!-- col-md-6 -->

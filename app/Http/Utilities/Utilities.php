@@ -214,7 +214,7 @@ public static function requ_no($id){
 	return $number;
 }
 
-public static function last_month($surveyor_id,$year,$month,$req_no,$work){
+public static function last_month($surveyor_id,$year,$month,$req_no,$work_type){
 
 	if($month == 1){
 		$year = $year-1;
@@ -224,11 +224,11 @@ public static function last_month($surveyor_id,$year,$month,$req_no,$work){
 	}
 	 $involved = Diary::select('year','month','field_1',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'))->where('surveyor_id',$surveyor_id)->where('year',$year)->where('month',$month)->where('field_1',$req_no)->where('field_1','!=',0)->first();
 
-	 if($work == 0){
+	 if($work_type == 0){
 	 	$field =0;
 	 	$field += $involved->in_office+$involved->in_field+$involved->setin_out+$involved->surveying;
 	 	return $field;
-	 }elseif($work == 1){
+	 }elseif($work_type == 1){
 	  	$plan = 0;
 	  	$plan +=$involved->plan_work;
 	  	return $plan;
@@ -237,5 +237,20 @@ public static function last_month($surveyor_id,$year,$month,$req_no,$work){
 	
 
 }
+
+public static function work_for_req($req_no,$work_type){
+
+	$work_for = Diary::select('year','month','field_1',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'))->where('field_1',$req_no)->where('field_1','!=',0)->first();
+
+	if($work_type == 0){
+	 	$field =0;
+	 	$field += $work_for->in_office+$work_for->in_field+$work_for->setin_out+$work_for->surveying;
+	 	return $field;
+	 }elseif($work_type == 1){
+	  	$plan = 0;
+	  	$plan +=$work_for->plan_work;
+	  	return $plan;
+	  }
+	}
 
 }

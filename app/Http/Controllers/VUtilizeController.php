@@ -104,8 +104,10 @@ class VUtilizeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        VUtilize::findOrFail($id)->delete();
+
+        return redirect()->action('RequisitionController@edit',$request['requisition_id']);
     }
 }

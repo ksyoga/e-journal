@@ -1,15 +1,15 @@
 <?php
 
- $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
- $host = $url["host"];
- $username = $url["user"];
- $password = $url["pass"];
- $database = substr($url["path"], 1);
+ // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+ // $host = $url["host"];
+ // $username = $url["user"];
+ // $password = $url["pass"];
+ // $database = substr($url["path"], 1);
 
- // $host = "localhost";
- // $username = "root";
- // $password ="" ;
- // $database = "journal";
+ $host = "localhost";
+ $username = "root";
+ $password ="" ;
+ $database = "journal";
 
 return [
 
@@ -65,7 +65,7 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host' => $host,
+            'host'      => $host,
             'database' => $database,
             'username' => $username,
             'password' => $password,
@@ -73,6 +73,7 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'strict'    => false,
+            'engine'    => 'InnoDB',
         ],
 
         'pgsql' => [
