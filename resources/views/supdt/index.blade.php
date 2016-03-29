@@ -8,7 +8,7 @@
     <section class="content-header">
       <h1>
         Surveyors Details
-        <small> {{Auth::user()->division->name}} Division</small>
+        <small> {{Auth::user()->division->name}}</small>
 
       </h1>
       <ol class="breadcrumb">

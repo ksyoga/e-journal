@@ -33,7 +33,7 @@
         
         <section class="content-header" style= "padding:0;">
           <h4>
-            {{Auth::user()->name}}'s {{$status}}<small> {{Auth::user()->division->name}} Division</small>
+            {{Auth::user()->name}}'s {{$status}}<small> {{Auth::user()->division->name}} </small>
 
           </h4>
         </section>

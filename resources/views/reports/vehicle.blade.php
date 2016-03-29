@@ -34,7 +34,7 @@
         <section class="content-header" style= "padding:0;">
           <h4>
             @if(Auth::user()->rank == 'supdt')
-              {{$vehicle->brand}} {{$vehicle->vehicle_no}} Vehicle Utilization<small> {{Auth::user()->division->name}} Division</small>
+              {{$vehicle->brand}} {{$vehicle->vehicle_no}} Vehicle Utilization<small> {{Auth::user()->division->name}} </small>
               <small class="pull-right text-yellow">
               Working Days : <i>{{$utilities::getWorkingDays("2016-01-01",date('Y-m-d'))}}</i> 
               but Utilized :{!!$utilities::dec2fracso($vehicle->vutilize()->sum('used_days'))!!} days
@@ -45,7 +45,7 @@
           </h4>
         </section>
 
-        <table class="table table-condensed">
+        <table class="table table-striped table-condensed">
             <tr @if($vehicle->vutilize()->first() != null)class="user{{$surveyor_id}}"@endif>
               <th>Date</th>
               <th>Surveyor</th>

@@ -34,7 +34,7 @@
         <section class="content-header" style= "padding:0;">
           <h4>
             @if(Auth::user()->rank == 'supdt')
-              {{$instrument->brand}} {{$instrument->model}} Total Station Utilization<small> {{Auth::user()->division->name}} Division</small>
+              {{$instrument->brand}} {{$instrument->model}} Total Station Utilization<small> {{Auth::user()->division->name}} </small>
               <small class="pull-right text-yellow">
               Working Days : <i>{{$utilities::getWorkingDays("2016-01-01",date('Y-m-d'))}}</i> 
               but Utilized :{!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!} days

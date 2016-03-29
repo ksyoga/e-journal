@@ -7,7 +7,7 @@
     <section class="content-header">
       <h1>
         Survey Field Assistants 
-        <small> {{Auth::user()->division->name}} Division</small>
+        <small> {{Auth::user()->division->name}}</small>
 
       </h1>
       <ol class="breadcrumb">

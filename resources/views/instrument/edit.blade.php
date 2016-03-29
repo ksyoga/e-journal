@@ -44,12 +44,12 @@
 
 		                  			<div class="form-group">
 										<label for="required_date" class="control-label"> Date : </label>
-										<input class="form-control" value="{{$requist->required_date}}" type="date" name="required_date" id="required_date" placeholder=" Date:">
+										<input class="form-control" value="{{$requist->required_date}}" type="date" name="required_date" id="required_date" placeholder=" Date:" disabled="disabled">
 									</div>
 
 									<div class="form-group">
 										<label for="request_for" class="control-label ">Purpose of Instrument :</label>
-										<textarea class="textarea" name="request_for" id="request_for" placeholder="Purpose of Instrument" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$requist->request_for}}</textarea>
+										<textarea class="textarea" name="request_for" id="request_for" placeholder="Purpose of Instrument" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" disabled="disabled">{{$requist->request_for}}</textarea>
 									</div>
 
 									
@@ -61,7 +61,7 @@
 
 		                  			<div class="form-group">
 										<label for="approved_by" class="control-label ">Total station required Statuses: </label>
-										<select class="form-control" name="approved_by" id="approved_by" placeholder="Surveyor ">
+										<select class="form-control" name="approved_by" id="approved_by" placeholder="Surveyor >
 											<option value="0" <?php  $requist->approved_by == 0 ? print "selected" : "" ?>>Pending</option>
 											<option value="1" <?php  $requist->approved_by == 1 ? print "selected" : "" ?>>Approved</option>
 											<option value="2" <?php  $requist->approved_by == 2 ? print "selected" : "" ?>>Denied</option>
@@ -70,7 +70,7 @@
 
 		                  			<div class="form-group">
 										<label for="supdt_note" class="control-label ">Supdt Note :</label>
-										<textarea class="textarea" name="supdt_note" id="supdt_note" placeholder="Supdt Note" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+										<textarea class="textarea" name="supdt_note" id="supdt_note" placeholder="Supdt Note" style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$requist->supdt_note}}</textarea>
 									</div>
 
 									

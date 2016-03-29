@@ -9,7 +9,7 @@
       <h1>
         Amendment Details
         <small> 
-            {{Auth::user()->division->name}} Division &nbsp;
+            {{Auth::user()->division->name}}  &nbsp;
              @if(Auth::user()->rank=="supdt")
               <a href="/amendment/create"><span class="label label-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></span></a>
               <!-- <a href="/amendment/create"> <button class="btn btn-xs btn-success" data-toggle="tooltip" title="Issue an Amendment"><i class="glyphicon glyphicon-plus"></i></button></a> -->
