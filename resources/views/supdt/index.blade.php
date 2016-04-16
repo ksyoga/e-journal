@@ -105,7 +105,7 @@
                     <table class="table table-hover">
                       @foreach($surveyor->diary->where('year',$surveyor->year)->sortBy('month')->lists('year','month') as $month=>$year)
                         <tr>
-                          <td>{{date("F",mktime(0,0,0,$month))}} {{$year}} journal </td>
+                          <td>{{date("F",mktime(0,0,0,$month,10))}} {{$year}} journal </td>
                           <td>{!!$utilities::journalapprove($surveyor->month,$month)!!}</td>
                           <td><a  href="report/{{$year}}/diary/{{$month}}/suvy/{{$surveyor->id}}" target="_blank"><i class="fa fa-fw fa-print"></i></a></td>
                         </tr>
@@ -125,7 +125,7 @@
                     <input type="hidden" value="{{$surveyor->year}}" required name="year" id="year">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     @if($surveyor->diary->where('year',$surveyor->year)->where('month',$surveyor->month)->count() == cal_days_in_month(CAL_GREGORIAN, $surveyor->month, $surveyor->year) && $lmonth==$surveyor->month)
-                    <button type="submit" class="btn btn-primary">Approve {{date("F",mktime(0,0,0,$surveyor->month))}} Journal</button>
+                    <button type="submit" class="btn btn-primary">Approve {{date("F",mktime(0,0,0,$surveyor->month,10))}} Journal</button>
                     @endif
                     </form>
                   </div>

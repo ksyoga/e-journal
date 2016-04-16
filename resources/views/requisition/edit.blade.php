@@ -152,7 +152,11 @@
 		                 <div class="box-footer">
 		                    <!-- Delete Utilize  -->
 		              <div class="col-md-6">
-						<label>Tatal Ststion Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+						<label>Tatal Ststion Utilize &nbsp;&nbsp;
+							@if(Auth::user()->rank=="survy")
+							<span class="pull-right"><a href="" data-toggle="modal" data-target="#iModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span>
+							@endif
+						</label>
 						<table style="width:100%">
 							<tr>
 								<th>Date</th>
@@ -166,20 +170,25 @@
 					            <td class = "bottom-line">{{$instrument->instrument->brand}} - {{$instrument->instrument->model}}</td>
 					            <td class = "bottom-line">{!!$utilities::spendday($instrument->used_days)!!}</td>
 					            <td class = "bottom-line">
+					            	@if(Auth::user()->rank=="survy")
 					           		<form action="/iutilize/{{ $instrument->id }}" method="POST">
 							            {{ csrf_field() }}
 							            {{ method_field('DELETE') }}
 										<input type="hidden" name="requisition_id" value="{{$requisition->id}}">
 							            <button class="btn btn-link pull-right"><i class=" pull-right text-red fa fa-trash-o"></i></button>
 							        </form>
-
+									@endif
 					            </td>
 					          </tr>
 					        @endforeach
 					      </table>
 					</div>
 					<div class="col-md-6">
-						<label>Vehicle Utilize &nbsp;&nbsp;<span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span></label>
+						<label>Vehicle Utilize &nbsp;&nbsp;
+							@if(Auth::user()->rank=="survy")
+							<span class="pull-right"><a href="" data-toggle="modal" data-target="#vModal{{$requisition->id}}"><i class="fa fa-plus  text-green"></i></a></span>
+							@endif
+						</label>
 						<table style="width:100%">
 							<tr>
 								<th>Date</th>
@@ -193,21 +202,21 @@
 					            <td class = "bottom-line">{{$vehicle->vehicle->brand}} - {{$vehicle->vehicle->vehicle_no}}</td>
 					            <td class = "bottom-line">{!!$utilities::spendday($vehicle->used_days)!!}</td> 
 					            <td class = "bottom-line">
-					            	
+					            	@if(Auth::user()->rank=="survy")
 									<form action="/vutilize/{{ $vehicle->id }}" method="POST">
 							            {{ csrf_field() }}
 							            {{ method_field('DELETE') }}
 										<input type="hidden" name="requisition_id" value="{{$requisition->id}}">
 							            <button class="btn btn-link pull-right"><i class=" pull-right text-red fa fa-trash-o"></i></button>
 							        </form>
-
+									@endif
 					            </td>
 					        </tr>
 					        @endforeach
 					      
 					    </table>
 					</div>
-
+					
 		              <!-- Delete utilize -->
 		                </div>
 		              </div> <!-- box box-info -->

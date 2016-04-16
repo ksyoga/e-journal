@@ -41,12 +41,19 @@
               <h5 class="widget-user-desc">{{$instrument->model}} <span class="pull-right">Used Days : {{$instrument->iutilize()->sum('used_days')}}</span> </h5>
               --> 
               <div class="info-box-content">
-                <span class="info-box-text">{{$instrument->model}}<span class="pull-right">Total Utilized Days : {!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!}</span> </span>
-                <span class="info-box-text"><span class="pull-right">Total Working Days : <i>{{$utilities::getWorkingDays("2016-01-01",date('Y-m-d'))}}</i></span> </span>
-                <span class="info-box-number">{{$instrument->brand}}</span>
-                <div class="progress progress-striped active" style="height:7px">
-                  <div class="progress-bar progress-bar-yellow" style="width:{{(($instrument->iutilize()->sum('used_days'))/($utilities::getWorkingDays("2016-01-01",date('Y-m-d'))))*100}}%"></div>
-                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                      <span class="info-box-number">{{$instrument->brand}}</span>
+                      <span class="info-box-text">{{$instrument->model}}</span>
+                    </div>
+                    <div class="col-md-5">
+                      <span class="pull-left">Total Working Days : <i>{{$utilities::getWorkingDays("2016-01-01",date('Y-m-d'))}}</i></span>
+                      <span class="pull-left">Total Utilized Days &nbsp;: <i>{!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!}</i></span>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="text" class="utlize" data-readonly="true" value="{{floor((($instrument->iutilize()->sum('used_days'))/$utilities::getWorkingDays("2016-01-01",date('Y-m-d')))*100)}}" data-width="60" data-height="60" data-fgColor="#0700CC">
+                    </div>
+                  </div>
               </div><!-- /.info-box-content -->
 
               </div>

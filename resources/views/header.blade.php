@@ -1,3 +1,4 @@
+@inject('utilities','App\Http\Utilities\Utilities')
 @inject('nave','App\Http\Utilities\Topnave')
 <!-- Main Header -->
 <header class="main-header">
@@ -137,10 +138,10 @@
               <br/>
                   @if(Auth::user()->rank=="supdt")
                     Supdt. of Surveys 
-                    <small>Surpervising for &nbsp;{{ date("F",mktime(null, null, null,($user->month))) }}  &nbsp; {!! ($user->year) !!}</small>
+                    <small>Surpervising for &nbsp;{{$utilities::journalMonth($user->month)}}  &nbsp; {!! ($user->year) !!}</small>
                   @else(Auth::user()->rank=="survy")
                      Government Surveyor
-                     <small>Journal of &nbsp;{{ date("F",mktime(null, null, null,($user->month))) }}  &nbsp; {!! ($user->year) !!}</small>
+                     <small>Journal of &nbsp;{{$utilities::journalMonth($user->month)}}  &nbsp; {!! ($user->year) !!}</small>
                   @endif
               </p>
             </li>

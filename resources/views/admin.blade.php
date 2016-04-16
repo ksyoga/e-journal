@@ -182,6 +182,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ url('dist/js/app.min.js') }}"></script>
     <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{url('plugins/iCheck/icheck.min.js') }}"></script>
+    <!-- jQuery Knob -->
+    <script src="{{url('plugins/knob/jquery.knob.js') }}"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
@@ -200,7 +202,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           radioClass: 'iradio_square-blue',
           increaseArea: '20%' // optional
         });
+
+        $(".utlize").knob({
+            'change' : function (v) { console.log(v); }
+        });
       });
+
+
     </script>
          
   </body>

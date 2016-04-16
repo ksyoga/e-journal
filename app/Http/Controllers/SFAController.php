@@ -32,7 +32,7 @@ class SFAController extends Controller
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
-            $sfas = SFA::where('supdt_id',$user->id)->get();
+            $sfas = SFA::where('supdt_id',$user->supdt_id)->get();
         }
       
         return view('sfa.index',compact('user','sfas'));

@@ -31,14 +31,14 @@ class RequisitionController extends Controller
         if(Auth::user()->rank == 'supdt'){
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();//->firstOrFail()//::findOrFail(1)
-            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('id','desc')->get();
+            $requisitions = Requisition::where('supdt_id',$user->id)->orderBy('status','asc')->orderBy('issued','dese')->get();
             $surveyors = Surveyor::where('supdt_id',$user->id)->get();
            // $vehicles = Vehicle::where('supdt_id',$user->id)->get();
            // $instuments = Instrument::where('supdt_id',$user->id)->get();
 
         }else{
             $user = Surveyor::where('user_id',(Auth::user()->id))->first();
-            $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('id','desc')->get();
+            $requisitions = Requisition::where('surveyor_id',$user->id)->orderBy('status','asc')->orderBy('issued','dese')->get();
             $surveyors = Surveyor::where('supdt_id',$user->supdt->id)->get();
             //$vehicles = Vehicle::where('supdt_id',$user->supdt->id)->get();
            // $instuments = Instrument::where('supdt_id',$user->supdt->id)->get();
@@ -98,7 +98,7 @@ class RequisitionController extends Controller
 
             $user = Supdt::where('user_id',(Auth::user()->id))->first();
             $surveyor = Surveyor::findOrFail($id);
-            $requisitions = Requisition::where('surveyor_id',$surveyor->id)->orderBy('issued','asc')->get();
+            $requisitions = Requisition::where('surveyor_id',$surveyor->id)->orderBy('status','asc')->orderBy('issued','dese')->get();
             //dd($requisitions);
             if(isset($requisitions['0']) == false){
                

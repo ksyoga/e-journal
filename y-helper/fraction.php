@@ -1,17 +1,22 @@
-SELECT * FROM `iutilize`
-INNER JOIN `requisitions` 
-ON `iutilize`.`requisition_id`= `requisitions`.`id`
-WHERE `requisitions`.`surveyor_id` = 1 AND `iutilize`.`instrument_id`=2
-
- $utilize = DB::table('iutilize')->join('requisitions','iutilize.requisition_id','=','requisitions.id')->select('iutilize.*')->get();
-
- $utilize = DB::table('iutilize')->join('requisitions','iutilize.requisition_id','=','requisitions.id')->select('iutilize.*')->where('requisitions.surveyor_id' , 1)->where('iutilize.instrument_id',1)->get();
-
-$utilize = DB::table('iutilize')
-            ->join('contacts', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.*', 'contacts.phone', 'orders.price')
-            ->get();
+  http://surveyor-journal.herokuapp.com
+ 'name'     =>  'S.M.R.A.Pathirathna',
+ 'email'    =>  'pathi@gmail.com',
+ 'password' =>  'pathi'
+ 
+ 			http://surveyor-journal.herokuapp.com
+             'name'     =>  'K.S.F.Ranwalage',
+             'email'    =>  'doma@gmail.com',
+             'password' =>  'doma'
 
 
-SELECT * FROM `journal`.`amendments` WHERE YEAR(`completion`)=2016 AND MONTH(`completion`) BETWEEN 1 AND 6
+http://surveyor-journal.herokuapp.com
+'name'     =>  'D.G.G.Kithsiri',
+'email'    =>  kith@gmail.com',
+'password' =>  kith
+
+			 http://surveyor-journal.herokuapp.com
+             'name'     =>  'P.Dineshkumar',
+             'email'    =>  'dina@gmail.com',
+             'password' =>  dina,
+
+

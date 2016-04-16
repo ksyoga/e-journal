@@ -220,7 +220,7 @@
                           <td align="center">{!!$utilities::spendday($diary->field_46)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_47)!!}</td>
                           <td align="center">{!!$utilities::spendday($diary->field_48)!!}</td>
-                          <td align="center">{!!$utilities::note($diary->field_49)!!}</td>
+                          <td align="left">{!!$utilities::spendday($diary->field_49)!!}</td>
                           <!-- <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$diary->field_49}}"></i></td> -->
                           <td align="center">{!!$utilities::spendday($diary->field_50)!!}</td>
                           

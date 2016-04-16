@@ -48,8 +48,10 @@ class Utilities
 		}
 	}
 
-	public static function journalMonth($month){
-		return date('F',mktime(0,0,0,$month));
+	public static function journalMonth(int $month){
+		//$month = 2;
+		//return date('F',mktime(0,0,0,$month));
+		return date("F",mktime(0,0,0,$month,10));
 	}
 	public static function note($id){
 		if($id === 0 ||$id == null||$id === '-'){
