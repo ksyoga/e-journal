@@ -277,6 +277,7 @@
           </div> 
           <p style="margin: -15px 0"><span class="pull-right text-danger">Data downloading and Data up loading should be done on the same day of the surveying</span></p>
           <hr class="hrtyp">
+          <div class="page-break"></div>
           <!-- programe of following week -->
               <div class="row">
                 <h4 class="text-center">Programme of the following week</h4>

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Utilities;
+use Illuminate\Support\Facades\Auth;
 use App\Requisition;
 use App\Diary;
+use App\Surveyor;
 use DB;
 
 /**
@@ -105,7 +107,7 @@ class Utilities
     $endDate = strtotime($endDate);
     $startDate = strtotime($startDate);
     $holidays=array("2016-01-15","2016-02-04","2016-02-22","2016-03-07",
-	                "2016-03-22","2016-03-25","2016-04-13","2016-04-14",
+	                "2016-03-22","2016-03-25","2016-04-13","2016-04-14","2016-04-15",
 	                "2016-04-21","2016-07-06","2016-07-19","2016-08-17",
 	                "2016-09-12","2016-09-16","2016-02-22","2016-11-14",
 	                "2016-12-12","2016-12-13");
@@ -180,7 +182,7 @@ public static function fDay($date){
 public static function HoliDay($date){
 
 	$holidays=array("2016-01-15","2016-02-04","2016-02-22","2016-03-07",
-	                "2016-03-22","2016-03-25","2016-04-13","2016-04-14",
+	                "2016-03-22","2016-03-25","2016-04-13","2016-04-14","2016-04-15",
 	                "2016-04-21","2016-07-06","2016-07-19","2016-08-17",
 	                "2016-09-12","2016-09-16","2016-02-22","2016-11-14",
 	                "2016-12-12","2016-12-13");
@@ -254,5 +256,48 @@ public static function work_for_req($req_no,$work_type){
 	  	return $plan;
 	  }
 	}
+
+public static function days_spend($surveyor_id,$year){
+
+	$involved_days = Diary::select('year',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'),DB::raw('SUM(field_8) as inspection'),DB::raw('SUM(field_9) as other_duty'),DB::raw('SUM(field_10) as holidays'),DB::raw('SUM(field_11) as p_leave'))->where('surveyor_id',$surveyor_id)->where('year',$year)->first();
+
+	 return $involved_days;
+}
+
+public static function days_spend_by_month($surveyor_id,$year,$month,$work_type){
+
+	
+	
+	$involved_days = Diary::select('year','month',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'),DB::raw('SUM(field_8) as inspection'),DB::raw('SUM(field_9) as other_duty'),DB::raw('SUM(field_10) as holidays'),DB::raw('SUM(field_11) as p_leave'))->where('surveyor_id',$surveyor_id)->where('year',$year)->where('month','<=',$month)->groupBy('month')->get();
+
+		//return $involved_days;
+		$days_data = "[";
+		foreach ($involved_days as $involved_day) {
+
+			if($work_type=='field_work'){
+				$days_data .= ($involved_day->in_office+$involved_day->in_field+$involved_day->setin_out+$involved_day->surveying).",";
+			}else{
+				$days_data .= $involved_day->$work_type.",";
+			}
+			
+		}
+		$days_data .= "]";
+		return $days_data;
+	 
+}
+
+public static function com_work_pecentage(){
+        
+        
+    $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+    $work_lodae = Requisition::where('surveyor_id',$user->id)->where('status','!=',0)->sum('work_load');
+    $com_work_lodae = Requisition::where('surveyor_id',$user->id)->where('status',3)->sum('work_load');
+    if($work_lodae==0){
+        return 0;
+    }
+    return ($com_work_lodae/$work_lodae)*100 ;
+                   
+        
+   	} 
 
 }

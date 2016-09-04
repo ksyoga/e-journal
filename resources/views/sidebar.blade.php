@@ -47,16 +47,17 @@
           <a href="#"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station </span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
-            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilization</a></li>
           </ul>
         </li>
         <li class="treeview {{Request::is('vehicle')?'active':''}} {{Request::is('vutilize')?'active':''}}">
           <a href="#"><i class="fa fa-truck"></i> <span>Vehicle </span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
-            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilization</a></li>
           </ul>
         </li>
+        <li class="{{Request::is('chart')?'active':''}}"><a href="/chart"><i class="fa fa-bar-chart"></i> <span>Data Presentation</span></a></li>
       @endif
 
       @if(Auth::user()->rank=="supdt")
@@ -70,14 +71,14 @@
           <a href="#"><i class="glyphicon glyphicon-screenshot"></i> <span>Total Station </span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{Request::is('instrument')?'active':''}}"><a href="/instrument"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
-            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+            <li class="{{Request::is('iutilize')?'active':''}}"><a href="/iutilize"><i class="glyphicon glyphicon-cog"></i>Utilization</a></li>
           </ul>
         </li>
         <li class="treeview {{Request::is('vehicle')?'active':''}} {{Request::is('vutilize')?'active':''}}">
           <a href="#"><i class="fa fa-truck"></i> <span>Vehicle </span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{Request::is('vehicle')?'active':''}}"><a href="/vehicle"><i class="glyphicon glyphicon-book"></i>Reservation</a></li>
-            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilize</a></li>
+            <li class="{{Request::is('vutilize')?'active':''}}"><a href="/vutilize"><i class="glyphicon glyphicon-cog"></i>Utilization</a></li>
           </ul>
         </li>
       @endif

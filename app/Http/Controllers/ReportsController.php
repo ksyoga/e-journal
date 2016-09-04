@@ -126,6 +126,38 @@ class ReportsController extends Controller
 
             if(Auth::user()->surveyor->year == $year && Auth::user()->surveyor->month >= $month ){
               return view('reports.diary',compact('user','diarys','weeks','selfchecks','year','month','amendments','involveds'));
+              //$pdf = \PDF::loadView('reports.diary',compact('user','diarys','weeks','selfchecks','year','month','amendments','involveds'));
+             // return $pdf->stream('journal')->setPaper('a3','landscape');
+            }else{
+              $user_year = Auth::user()->surveyor->year;
+              $user_month = Auth::user()->surveyor->month;
+              return view('reports.no_dat', compact('user_year','user_month'));
+
+            }
+
+
+
+      }
+      public function journal($year=2016,$month=1){
+
+            $user = Surveyor::where('user_id',(Auth::user()->id))->first();
+            $diarys = Diary::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            $weeks = Week::where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->orderBy('day','asc')->get();
+            $involveds = Diary::select('year','month','field_1',DB::raw('SUM(field_3) as in_office'),DB::raw('SUM(field_4) as in_field'),DB::raw('SUM(field_5) as setin_out'),DB::raw('SUM(field_6) as surveying'),DB::raw('SUM(field_7) as plan_work'))->where('surveyor_id',$user->id)->where('year',$year)->where('month',$month)->where('field_1','!=',0)->groupBy('field_1')->get();
+            $selfchecks = SelfCheck::firstOrCreate(['surveyor_id'=>$user->id,'year'=>$year,'month'=>$month]);
+            $amendments = DB::select('select * from amendments where surveyor_id = ? and  YEAR(`completion`) = ? AND MONTH(`completion`) = ?',[$user->id,$year,$month,]);
+
+
+            if(Auth::user()->surveyor->year == $year && Auth::user()->surveyor->month >= $month ){
+              //return view('reports.diary',compact('user','diarys','weeks','selfchecks','year','month','amendments','involveds'));
+              // $jour = \PDF::loadView('reports.journal');
+             //return $pdf->stream('journal');
+              //return view('reports.journal',compact('user','diarys','weeks','selfchecks','year','month','amendments','involveds'));
+              $pdf = \App::make('dompdf.wrapper');
+              $pdf->loadHTML('<h1>Test</h1>')->setPaper('a3','landscape');
+              return $pdf->stream();
+
+
             }else{
               $user_year = Auth::user()->surveyor->year;
               $user_month = Auth::user()->surveyor->month;

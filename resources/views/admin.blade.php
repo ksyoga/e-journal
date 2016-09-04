@@ -1,4 +1,6 @@
 @inject('sidenave','App\Http\Utilities\Sidenave')
+@inject('utilities','App\Http\Utilities\Utilities')
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -183,7 +185,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{url('plugins/iCheck/icheck.min.js') }}"></script>
     <!-- jQuery Knob -->
-    <script src="{{url('plugins/knob/jquery.knob.js') }}"></script>
+    <!-- <script src="{{url('plugins/knob/jquery.knob.js') }}"></script> -->
+    <!-- EASY PIE CHART -->
+    <script src="{{url('plugins/easypiechart/jquery.easypiechart.min.js') }}"></script>
+    <!-- charts -->
+    <script src="{{url('plugins/chartjs/Chart.min.js') }}"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
@@ -191,10 +197,48 @@ scratch. This page gets rid of all links and provides the needed markup only.
          fixed layout. -->
      <script>
 
-     $(".select2").select2();
+     $(".select2").select2(); 
       
     </script>
-    
+    @if(Request::is('iutilize') || Request::is('vutilize'))
+    <script>
+      $(function(){
+        $('.utlizechart').easyPieChart({
+        easing: 'easeOutBounce',
+        lineWidth: '7',
+        size: '70',
+        barColor: '#0700CC',
+        scaleColor: '#FC4619', 
+        onStep: function(from, to, percent) {
+          $(this.el).find('.percent').text(Math.round(percent));
+        }
+      });
+      });
+      
+    </script>
+    @endif
+     @if(Request::is('chart'))
+    <script>
+      $(function() {
+      $('.completed_load').easyPieChart({
+        easing: 'easeOutBounce',
+        lineWidth: '10',
+        size: '100',
+        barColor: '#75BCDD',
+        scaleColor: '#FC4619',
+        onStep: function(from, to, percent) {
+          $(this.el).find('.percent').text(Math.round(percent));
+        }
+      });
+      var chart = window.chart = $('.completed_load').data('easyPieChart');
+      $('.js_update').on('click', function() {
+        chart.update(Math.random() * 200 - 100);
+      });
+    });
+
+      
+    </script>
+    @endif
     <script>
       $(function () {
         $('input').iCheck({
@@ -202,14 +246,218 @@ scratch. This page gets rid of all links and provides the needed markup only.
           radioClass: 'iradio_square-blue',
           increaseArea: '20%' // optional
         });
-
-        $(".utlize").knob({
-            'change' : function (v) { console.log(v); }
-        });
       });
+      </script>
+    
+    @if(Request::is('chart'))
+    
+      <script>
+      $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
 
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    //var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    //var areaChart = new Chart(areaChartCanvas);
+
+    var Data = {
+     // labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug","Sept","Oct","Nov","Dec"],
+      datasets: [
+        {
+          label: "Holiday",
+          fillColor: "rgba(221, 75, 57, 0.9)",
+          strokeColor: "rgba(221, 75, 57, 0.8)",
+          pointColor: "rgba(221, 75, 57, 1)",
+          pointStrokeColor: "#dd4b39",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(221, 75, 57, 1)",
+          data: {{$utilities::days_spend_by_month($user->id,$user->year,$user->month,'holidays')}}
+        },
+        {
+          label: "Leave",
+          fillColor: "rgba(0, 166, 90,0.9)",
+          strokeColor: "rgba(0, 166, 90,0.8)",
+          pointColor: "#00a65a",
+          pointStrokeColor: "rgba(0, 166, 90,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(0, 166, 90,1)",
+          data: {{$utilities::days_spend_by_month($user->id,$user->year,$user->month,'p_leave')}}
+        },
+        {
+          label: "Other Dutey",
+          fillColor: "rgba(243, 156, 18, 0.9)",
+          strokeColor: "rgba(243, 156, 18,0.8)",
+          pointColor: "#f39c12",
+          pointStrokeColor: "rgba(243, 156, 18,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(243, 156, 18,1)",
+          data: {{$utilities::days_spend_by_month($user->id,$user->year,$user->month,'other_duty')}}
+        },
+        {
+          label: "Field Work",
+          fillColor: "rgba(0, 192, 239, 0.9)",
+          strokeColor: "rgba(0, 192, 239,0.8)",
+          pointColor: "#00c0ef",
+          pointStrokeColor: "rgba(0, 192, 239,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(0, 192, 239,1)",
+          data: {{$utilities::days_spend_by_month($user->id,$user->year,$user->month,'field_work')}}
+        },
+        {
+          label: "Plan Work",
+          fillColor: "rgba(0, 115, 183, 0.9)",
+          strokeColor: "rgba(0, 115, 183,0.8)",
+          pointColor: "#0073b7",
+          pointStrokeColor: "rgba(0, 115, 183,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(0, 115, 183,1)",
+          data: {{$utilities::days_spend_by_month($user->id,$user->year,$user->month,'plan_work')}}
+        }
+      ]
+    };
+
+    var Options = {
+      //Boolean - If we should show the scale at all
+      showScale: true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines: true,
+      //String - Colour of the grid lines
+      scaleGridLineColor: "rgba(0,0,0,.05)",
+      //Number - Width of the grid lines
+      scaleGridLineWidth: 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines: true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve: true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension: 0.3,
+      //Boolean - Whether to show a dot for each point
+      pointDot: true,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius: 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth: 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius: 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke: true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth: 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill: true,
+      //String - A legend template
+      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio: true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive: true
+    };
+
+    //Create the line chart
+    //areaChart.Line(areaChartData, areaChartOptions);
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+    var lineChart = new Chart(lineChartCanvas);
+    Options.datasetFill = false;
+    lineChart.Line(Data, Options);
+
+
+  //-------------
+  //- PIE CHART -
+  //-------------
+  // Get context with jQuery - using jQuery's .get() method.
+  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+  var pieChart = new Chart(pieChartCanvas);
+  var PieData = [
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['holidays']}},
+      color: "#f56954",
+      highlight: "#f56954",
+      label: "Holiday"
+    },
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['p_leave']}},
+      color: "#00a65a",
+      highlight: "#00a65a",
+      label: "Leave"
+    },
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['other_duty']}},
+      color: "#f39c12",
+      highlight: "#f39c12",
+      label: "Other Duties"
+    },
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['in_office']+$utilities::days_spend($user->id,$user->year)['in_field']+$utilities::days_spend($user->id,$user->year)['setin_out']+$utilities::days_spend($user->id,$user->year)['surveying']}},
+      color: "#00c0ef",
+      highlight: "#00c0ef",
+      label: "Field Work"
+    },
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['plan_work']}},
+      color: "#3c8dbc",
+      highlight: "#3c8dbc",
+      label: "Plan Work"
+    },
+    {
+      value: {{$utilities::days_spend($user->id,$user->year)['inspection']}},
+      color: "#d2d6de",
+      highlight: "#d2d6de",
+      label: "Insepection"
+    }
+  ];
+  var pieOptions = {
+    //Boolean - Whether we should show a stroke on each segment
+    segmentShowStroke: true,
+    //String - The colour of each segment stroke
+    segmentStrokeColor: "#fff",
+    //Number - The width of each segment stroke
+    segmentStrokeWidth: 1,
+    //Number - The percentage of the chart that we cut out of the middle
+    percentageInnerCutout: 50, // This is 0 for Pie charts
+    //Number - Amount of animation steps
+    animationSteps: 100,
+    //String - Animation easing effect
+    animationEasing: "easeOutBounce",
+    //Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate: true,
+    //Boolean - Whether we animate scaling the Doughnut from the centre
+    animateScale: false,
+    //Boolean - whether to make the chart responsive to window resizing
+    responsive: true,
+    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+    maintainAspectRatio: false,
+    //String - A legend template
+    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
+    //String - A tooltip template
+    tooltipTemplate: "<%=value %> <%=label%>"
+  };
+  //Create pie or douhnut chart
+  // You can switch between pie and douhnut using the method below.
+  pieChart.Doughnut(PieData, pieOptions);
+  //-----------------
+  //- END PIE CHART -
+  //-----------------
+
+    
+  });
+
+      
 
     </script>
-         
+     @endif    
   </body>
 </html>

@@ -51,3 +51,22 @@ Route::get('report/{status}/instrument','ReportsController@instrument');
 Route::get('report/{status}/vehicle','ReportsController@vehicle');
 Route::get('report/{year}/diary/{month}','ReportsController@diary');
 Route::get('report/{year}/diary/{month}/suvy/{id}','ReportsController@diaryforsupdt');
+
+
+/**
+PDF Report
+*/
+// Route::get('report/{year}/diary/{month}','ReportsController@journal');
+
+/**
+Charts
+**/
+Route::resource('chart','ChartsController');
+
+Route::get('pdf',function(){
+	$varname = 'K.S.Yogananth';
+	$pdf =PDF::loadView('reports.pdftest',compact('varname'))->setPaper('a3', 'landscape');
+	return $pdf->stream();
+	//PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf')
+
+});

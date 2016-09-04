@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Surveyors Details
+        Surveyor's Details
         <small> {{Auth::user()->division->name}}</small>
 
       </h1>
@@ -133,6 +133,8 @@
               </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
           @endforeach
+
+          
 
 
       </div><!-- /.row -->

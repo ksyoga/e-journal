@@ -249,3 +249,58 @@ A4      210   x 297 mm    8.3 x 11.7 in*/
 .hrtyp{
     border-top:2px solid #000;
 }
+
+/*charet*/
+.utlizechart {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  text-align: center;
+}
+.utlizechart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.percent {
+  display: inline-block;
+  line-height: 65px;
+  z-index: 2;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}
+
+.completed_load {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.completed_load canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.completed_load .percent {
+  display: inline-block;
+  line-height: 96px;
+  z-index: 2;
+  font-size: 18px;
+}
+.completed_load.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}
+.page-break {
+    page-break-after: always;
+}

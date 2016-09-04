@@ -51,7 +51,10 @@
                       <span class="pull-left">Total Utilized Days &nbsp;: <i>{!!$utilities::dec2fracso($instrument->iutilize()->sum('used_days'))!!}</i></span>
                     </div>
                     <div class="col-md-3">
-                      <input type="text" class="utlize" data-readonly="true" value="{{floor((($instrument->iutilize()->sum('used_days'))/$utilities::getWorkingDays("2016-01-01",date('Y-m-d')))*100)}}" data-width="60" data-height="60" data-fgColor="#0700CC">
+                      
+                      <span class="utlizechart" data-percent="{{floor((($instrument->iutilize()->sum('used_days'))/$utilities::getWorkingDays("2016-01-01",date('Y-m-d')))*100)}}">
+                          <span class="percent"></span>
+                      </span>
                     </div>
                   </div>
               </div><!-- /.info-box-content -->

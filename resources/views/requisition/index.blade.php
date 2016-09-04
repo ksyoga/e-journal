@@ -75,10 +75,11 @@
                 <td align="center"><i class="fa fa-file-text-o" data-toggle="tooltip" title="{{$requisition->note}}"></i></td>
                 <td align="right" width="50px;">
                    
-                      @if(Auth::user()->rank=="supdt")
+                      @if(Auth::user()->rank=="supdt" && $requisition->status == 0)
                         <i class=" pull-right text-red fa fa-trash-o"></i>
                         <a href="requisition/{{$requisition->id}}/edit"><i class="pull-right text-yellow fa fa-edit"></i></a>
-                        
+                      @elseif(Auth::user()->rank=="supdt" && $requisition->status != 0 ) 
+                        <i class=" pull-right text-yellow fa fa-lock" data-toggle="tooltip" title="It has been locked by Surveyor"></i>
                       @else
                         <a href="requisition/{{$requisition->id}}/edit"><i class="pull-right text-yellow fa fa-edit"></i></a>
                       @endif
